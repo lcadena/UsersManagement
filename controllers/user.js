@@ -8,25 +8,23 @@ const service = require('../services')
 function signUp(req, res) {
   const user = new User({
     email: req.body.email,
-    displayName: req.body.displayName,
-    apellido: req.body.apellido,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     password: req.body.password,
-    admin: req.body.admin,
+    signUpDate: req.body.signUpDate,
+    rol: req.body.rol,
   })
   user.save((err) => {
     if (err) res.status(500).send({message: `Error al crear el usuario: ${err}`})
-    //respuesta con estado 200 y mensaje que contiene un parametro token, creamos modulo a parte
-    //llamado service que tienen funcion crearToken la cual va a recibir el usuario que hemos creado
+    
     return res.status(200).send({ token: service.createToken(user) })
   })
 }
 
-/*buscar en la base de datos los usuarios que tengan el email que se pasa por la petición
-y si existe se da acceso creando un token que viajará en las cabeceras*/
 function signIn(req, res) {
   User.find({email: req.body.email}, (err, user) => {
     if (err) return res.status(500).send({ message: err })
-    if (!user) return res.status(404).send({ message: 'No existe el usaurio'})
+    if (!user) return res.status(404).send({ message: 'No existe el usuario'})
 
     req.user = user
     res.status(200).send({
@@ -36,9 +34,8 @@ function signIn(req, res) {
   })
 }
 
-//función que busca en bbdd un objeto de tipo user
 function getUsers(req, res) {
-  //busca todos los productos, claudator vacio
+  //busca todos los usuarios, claudator vacio
   User.find({}, (err, users) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if (!users) return res.status(404).send({message: 'No existen usuarios en la bbdd'})
@@ -47,7 +44,6 @@ function getUsers(req, res) {
   })
 }
 
-//función que actualiza usuario de la bbdd
 function updateUser(req, res) {
   //obtener el id de producto
   let userId = req.params.userId
@@ -55,14 +51,14 @@ function updateUser(req, res) {
   let update = req.body
   //funcion de mongoose le pasamos el id de producto y los parametros que queremos modificar
   User.findByIdAndUpdate(userId, update, (err, userUpdated) => {
-    if (err) res.status(500).send({message: `Error al actualizar el usario: ${err}`})
+    if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
 
     res.status(200).send({user: userUpdated})
   })
 }
-//peticion tipo get - funcion que muestra todos los productos de la bbdd
+
 function getUser(req, res) {
-  //obtener el id de producto
+  //obtener el id de usuario
   let userId = req.params.userId
   User.findById(userId, (err, user) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
@@ -72,10 +68,24 @@ function getUser(req, res) {
   })
 }
 
+function deleteUser(req, res) {
+  let userId = req.params.userId
+
+  User.findById(userId, (err, product) => {
+    if (err) res.status(500).send({message: `Error al borrar el usuario: ${err}`})
+
+    product.remove(err => {
+      if (err) res.status(500).send({message: `Error al borrar el usuario: ${err}`})
+      res.status(200).send({message: 'El usuario ha sido eliminado'})
+    })
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   getUsers,
   updateUser,
-  getUser
+  getUser,
+  deleteUser
 }

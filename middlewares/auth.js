@@ -3,6 +3,7 @@ determinadas rutas van a ser accesibles por usuarios y otras no si no esta auten
 'use strict'
 
 const services = require('../services')
+const User = require('../models/user')
 
 //funcion autenticacion - al ser middleware añadimos next para que el middleware pase
 //la funcionalidad al controlador final
@@ -25,5 +26,6 @@ function isAuth(req, res, next){
       res.status(response.status)
     })
 }
+
 
 module.exports = isAuth
