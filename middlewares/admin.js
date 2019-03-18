@@ -3,16 +3,23 @@
 const User = require('../models/user')
 
 function isAdmin(req, res, next) {
-    var rol = req.params.userRol
-  
-    User.indexOf(userRol, (err, user) => {
-      if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
-      if (!user) return res.status(404).send({message: 'No tienes autorización'})
-  
-      res.status(200).send({user})
-    })
-  
-  
+  //comprobar si en el objeto headers de la petición existe campo autorization
+  if (!req.headers.rol) {
+    return res.status(403).send({ message: 'No tienes autorización'})
   }
+  //si existe cabecera
+  //variable token que va a coger el token de las cabeceras y nos quedamos con la posición 1
+  const token = req.headers.rol.split(" ")[1]
+  //llamamos al service y le pasamos el token
+  services.decodeToken(token)
+  //como es una promesa va a tener unas funciones
+    .then(response => { //respuesta
+      req.user = response
+      next()
+    })
+    .catch(response => { //excepción
+      res.status(response.status)
+    })
+}
   
   module.exports = isAdmin
