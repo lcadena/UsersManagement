@@ -3,7 +3,7 @@
 
   <div class="form-group">
     <label>First Name</label>
-    <input type="text" class="form-control" formControlName="displayName"/>
+    <input type="text" class="form-control" formControlName="firstName"/>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.firstName">
         <div class="alert alert-danger" *ngIf="registerForm.get('firstName').hasError(validation.type) && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched)">
@@ -40,17 +40,16 @@
   <div class="form-group">
     <label>Rol</label>
     <select  class="form-control" id="rol">
-      <ng-container *ngFor="let rol of roles">
-        <option {{rol}}>
+        <option *ngFor="let rol of roles"> {{rol}}
         </option>
-      </ng-container>
-      <div class="validation-errors">
+         <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.firstName">
           <div class="alert alert-danger" *ngIf="registerForm.get('rol').hasError(validation.type) && (registerForm.get('rol').dirty || registerForm.get('rol').touched)">
             {{ validation.message }}
           </div>
         </ng-container>
       </div>
+
     </select>
   </div>
 

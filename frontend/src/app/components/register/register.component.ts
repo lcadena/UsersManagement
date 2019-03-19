@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   validation_messages: any;
 
-  roles: string[] = ['admin', 'user'];
+  roles: string[] = ['--select--', 'admin', 'user'];
 
   constructor(private userService: AuthService,
               private router: Router, private formBuilder: FormBuilder) {
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
 
        //hago un desplegable a escoger endre admin / user que sea obligatorio y ya
         rol: new FormControl('', Validators.compose([
-          Validators.required,
+          Validators.pattern("admin"||"user"),
         ])),
 
         password: new FormControl('', Validators.compose([
@@ -80,7 +80,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  register() {
+  /*register() {
     console.log(this.registerForm.value);
     let user = new User(this.registerForm.value.displayName, this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.confirmPassword);
     this.userService.signup(user)
@@ -94,9 +94,9 @@ export class RegisterComponent implements OnInit {
         err => {
           this.registerForm.get("email").setErrors({unique: true});
         });
-  }
+  }*/
 
- /* register() {
+  register() {
     console.log(this.registerForm.value);
     let user = new User( this.registerForm.value.email, this.registerForm.value.firstName, this.registerForm.value.lastName, this.registerForm.value.password, this.registerForm.value.rol);
     this.userService.signup(user)
@@ -106,18 +106,20 @@ export class RegisterComponent implements OnInit {
           let token = res['token'];
           localStorage.setItem('token', token);
 
-         // if (this.registerForm.value.rol =="admin"){
-         //  this.router.navigateByUrl("/api/product");}
+         if (this.registerForm.value.rol =="admin"){
+           this.router.navigateByUrl("/api/product");}
 
-         // else {
-         //  this.router.navigateByUrl("/api/product");
-        // }
-          this.router.navigateByUrl("/api/product");
+         else if(this.registerForm.value.rol =="user"){
+           this.router.navigateByUrl("/api/product");
+         }
+          else
+            this.router.navigateByUrl("/api/product");
         },
+
         err => {
           this.registerForm.get("email").setErrors({unique: true});
         });
-  }*/
+  }
 
 
 }
