@@ -38,9 +38,9 @@ export class RegisterComponent implements OnInit {
           Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])),
 
        //hago un desplegable a escoger endre admin / user que sea obligatorio y ya
-        rol: new FormControl('', Validators.compose([
-          Validators.pattern("admin"||"user"),
-        ])),
+      //  rol: new FormControl('', Validators.compose([
+      //    Validators.pattern("admin"||"user"),
+      //  ])),
 
         password: new FormControl('', Validators.compose([
           Validators.required,
@@ -66,9 +66,9 @@ export class RegisterComponent implements OnInit {
         { type: 'unique', message: 'Email must be unique'} ,
         { type: 'pattern', message: 'It must be valid. Must contain a @ and only one dot in the domain. Domain between 2 and 3 characters long' }
       ],
-      'rol': [
-        { type: 'required', message: 'Rol is required' },
-      ],
+    //  'rol': [
+    //    { type: 'required', message: 'Rol is required' },
+    //  ],
       'password': [
         { type: 'required', message: 'Password is required' },
         { type: 'pattern', message: 'It must be valid. Must contain at least one number and must be between 4 and 8 characters' }
@@ -80,21 +80,14 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  /*register() {
-    console.log(this.registerForm.value);
-    let user = new User(this.registerForm.value.displayName, this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.confirmPassword);
-    this.userService.signup(user)
-      .subscribe(
-        res => {
-          console.log(res);
-          let token = res['token'];
-          localStorage.setItem('token', token);
-          this.router.navigateByUrl("/api/product");
-        },
-        err => {
-          this.registerForm.get("email").setErrors({unique: true});
-        });
-  }*/
+  /* //html de rol
+          <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.firstName">
+          <div class="alert alert-danger" *ngIf="registerForm.get('rol').hasError(validation.type) && (registerForm.get('rol').dirty || registerForm.get('rol').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>*/
 
   register() {
     console.log(this.registerForm.value);
@@ -107,13 +100,13 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('token', token);
 
          if (this.registerForm.value.rol =="admin"){
-           this.router.navigateByUrl("/api/product");}
+           this.router.navigateByUrl("/api/login");}
 
          else if(this.registerForm.value.rol =="user"){
-           this.router.navigateByUrl("/api/product");
+           this.router.navigateByUrl("/api/login");
          }
           else
-            this.router.navigateByUrl("/api/product");
+            this.router.navigateByUrl("/api/login");
         },
 
         err => {

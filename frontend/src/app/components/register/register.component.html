@@ -42,13 +42,6 @@
     <select  class="form-control" id="rol">
         <option *ngFor="let rol of roles"> {{rol}}
         </option>
-         <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages.firstName">
-          <div class="alert alert-danger" *ngIf="registerForm.get('rol').hasError(validation.type) && (registerForm.get('rol').dirty || registerForm.get('rol').touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
-      </div>
 
     </select>
   </div>
