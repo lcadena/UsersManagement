@@ -8,10 +8,10 @@ const service = require('../services')
 function signUp(req, res) {
   const user = new User({
     email: req.body.email,
-    firstName: req.body.firstName,
+    firstName: req.body.lastName,
     lastName: req.body.lastName,
     password: req.body.password,
-    signUpDate: req.body.signUpDate,
+    //signUpDate: req.body.signUpDate,//lo quito para que directamente se coja la del servidor con mongoose
     rol: req.body.rol,
   })
   user.save((err) => {

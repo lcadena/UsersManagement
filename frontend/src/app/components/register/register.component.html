@@ -1,0 +1,95 @@
+<h2>Register</h2>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+
+  <div class="form-group">
+    <label>First Name</label>
+    <input type="text" class="form-control" formControlName="displayName"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.firstName">
+        <div class="alert alert-danger" *ngIf="registerForm.get('firstName').hasError(validation.type) && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" formControlName="lastName"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.lastName">
+        <div class="alert alert-danger" *ngIf="registerForm.get('lastName').hasError(validation.type) && (registerForm.get('lastName').dirty || registerForm.get('lastName').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" formControlName="email"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="alert alert-danger" *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Rol</label>
+    <select  class="form-control" id="rol">
+      <ng-container *ngFor="let rol of roles">
+        <option {{rol}}>
+        </option>
+      </ng-container>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.firstName">
+          <div class="alert alert-danger" *ngIf="registerForm.get('rol').hasError(validation.type) && (registerForm.get('rol').dirty || registerForm.get('rol').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="password"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="alert alert-danger" *ngIf="registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Confirm Password</label>
+    <input type="password" class="form-control" formControlName="confirmPassword"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.confirmPassword">
+        <div class="alert alert-danger" *ngIf="registerForm.get('confirmPassword').hasError(validation.type) && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+    <a [routerLink]="['']" style="margin-left: 30px">Cancel</a>
+  </div>
+
+</form>
+
+
+
+
+
+
+
+
+
