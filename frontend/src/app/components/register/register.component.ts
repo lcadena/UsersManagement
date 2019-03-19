@@ -110,9 +110,20 @@ export class RegisterComponent implements OnInit {
         },
 
         err => {
-          this.registerForm.get("email").setErrors({unique: true});
+          console.log(err);
+          this.handleError(err);
         });
+
   }
 
+private handleError(err: HttpErrorResponse) {
+  if( err.status == 500 ) {
+    alert(err);
+  } else if ( err.status == 404 ) {
+    alert('404 not found');
+  }
+  else
+    this.registerForm.get("email").setErrors({unique: true});
+}
 
 }

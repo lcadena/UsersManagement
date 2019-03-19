@@ -11,7 +11,7 @@ api_user.get('/user', userCtrl.getUsers)
 api_user.get('/user/:userId', userCtrl.getUser)
 //loguin y registro
 api_user.post('/signup', userCtrl.signUp)
-api_user.post('/signin', auth, userCtrl.signIn)
+api_user.post('/signin', userCtrl.signIn)
 //modificar info user
 api_user.put('/user/:userId', userCtrl.updateUser)
 //borrar usuario por id

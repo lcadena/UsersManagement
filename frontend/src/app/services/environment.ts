@@ -1,4 +1,4 @@
 export class Environment {
-  urlUser: string = "http://localhost:3001/api/";
-  urlProduct: string = "http://localhost:3001/api/product";
+  urlUser: string = "http://localhost:3000/api/";
+  urlProduct: string = "http://localhost:3000/api/product";
 }
