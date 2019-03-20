@@ -5,8 +5,8 @@ const bodyParser = require('body-parser')
 const app = express()
 const api_user = require('./routes/user')
 const hbs = require('express-handlebars')
-/*var swaggerUi = require('swagger-ui-express'),
-    swaggerDocument = require('./swagger.json');*/
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('../swagger.json');
 
 
 app.use(bodyParser.urlencoded({ extended: false}))

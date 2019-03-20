@@ -12,7 +12,6 @@ const UserSchema = new Schema({
   lastName: String,
   password: { type: String, select: false },
   signUpDate: { type: Date, default: Date.now() },
-  //booleano para administrador
   rol: {type: String, enum: ['admin', 'user']}
   
 })
@@ -31,11 +30,5 @@ UserSchema.pre('save', (next) => {
   })
 })
 
-UserSchema.methods.gravatar = function() {
-  if(!this.email) return `https://gravatar.com/avatar/?s=200&d=retro`
-  //hash que por defecto pone gravatar en la url de nuestros avatares
-  const md5 = crypto.createHash('md5').update(this.email).digest('hex')
-  return `https://gravatar.com/avatar/${md5}?s=200&d=retro`
-}
 
 module.exports = mongoose.model('User', UserSchema)

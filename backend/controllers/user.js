@@ -11,23 +11,28 @@ function signUp(req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     password: req.body.password,
-    signUpDate: req.body.signUpDate,
-    rol: req.body.rol,
+    rol: req.body.rol
   })
+  
   user.save((err) => {
     if (err) res.status(500).send({message: `Error al crear el usuario: ${err}`})
-    
+        
     return res.status(200).send({ token: service.createToken(user) })
   })
 }
-
+//función loguin
 function signIn(req, res) {
-  User.find({email: req.body.email}, (err, user) => {
-    if (err) return res.status(500).send({ message: err })
-    if (!user) return res.status(404).send({ message: 'No existe el usuario'})
+  var name = req.body.name
+  var password = req.body.password
 
-    req.user = user
-    res.status(200).send({
+  User.findOne({name: name, password: password}, function(err, user) {
+    if (err) {
+      next(err);
+    }
+    if (!user) {
+      return res.status(404).send("No existe este usuario/contraseña incorrecta")
+    }
+    return res.status(200).send({
       message: 'Te has logueado correctamente',
       token: service.createToken(user) //envia el token al cliente
     })
@@ -45,13 +50,14 @@ function getUsers(req, res) {
 }
 
 function updateUser(req, res) {
-  //obtener el id de producto
+  //obtener el id de 
   let userId = req.params.userId
   //parametros a actualizar estan en el body de la req
   let update = req.body
   //funcion de mongoose le pasamos el id de producto y los parametros que queremos modificar
   User.findByIdAndUpdate(userId, update, (err, userUpdated) => {
     if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
+    if (!user) return res.status(404).send({message: 'El usuario no existe'})
 
     res.status(200).send({user: userUpdated})
   })
