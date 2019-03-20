@@ -8,7 +8,7 @@ const service = require('../services')
 function signUp(req, res) {
   const user = new User({
     email: req.body.email,
-    firstName: req.body.firstName,
+    firstName: req.body.lastName,
     lastName: req.body.lastName,
     password: req.body.password,
     rol: req.body.rol
@@ -24,7 +24,6 @@ function signUp(req, res) {
 function signIn(req, res) {
   var name = req.body.name
   var password = req.body.password
-
   User.findOne({name: name, password: password}, function(err, user) {
     if (err) {
       next(err);
