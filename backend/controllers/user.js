@@ -72,6 +72,7 @@ function getUsers(req, res) {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if (!users) return res.status(404).send({message: 'No existen usuarios en la bbdd'})
     //se envia una respuesta en res, la respuesta sera un json de producto
+    console.log(users)
     res.send(200, { users })
   })
 }

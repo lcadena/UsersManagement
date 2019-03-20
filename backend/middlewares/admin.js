@@ -1,5 +1,6 @@
 'use strict'
 
+const services = require('../services')
 const User = require('../models/user')
 
 function isAdmin (req, res, next) {
@@ -15,8 +16,24 @@ function isAdmin (req, res, next) {
   //como es una promesa va a tener unas funciones
     .then(response => { //respuesta
       ///buscar id usuario con token y ver el rol
-      req.user = response
-      next()
+      let userID = response
+      console.log(response)
+      User.findById(userID, (err, userEncontrado) => {
+        console.log(userEncontrado)
+        if (err) {
+          return res.status(500).send({message: `Error en la petición: ${err}`})
+        }
+        if (userEncontrado) {
+          var rol = userEncontrado.rol
+          console.log(rol)
+          if (rol == 'admin') {
+            res.status(200).send({user: user, message: "Eres administrador"})
+            req.user = response
+            next()
+          }
+          return res.status(404).send({message: 'No tienes permisos de administrador'})
+        }
+      })
     })
     .catch(response => { //excepción
       res.status(response.status)
