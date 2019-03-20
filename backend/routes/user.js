@@ -7,7 +7,7 @@ const auth = require('../middlewares/auth')
 const admin = require('../middlewares/admin')
 
 //busquedas
-api_user.get('/user', userCtrl.getUsers)
+api_user.get('/user', auth, userCtrl.getUsers)
 api_user.get('/user/:userId', userCtrl.getUser)
 //loguin y registro
 api_user.post('/signup', userCtrl.signUp)

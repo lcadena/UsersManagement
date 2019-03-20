@@ -6,25 +6,53 @@ const service = require('../services')
 
 //función para el registro
 function signUp(req, res) {
+  var email = req.body.email
   const user = new User({
     email: req.body.email,
-    firstName: req.body.lastName,
+    firstName: req.body.firstName,
     lastName: req.body.lastName,
     password: req.body.password,
     rol: req.body.rol
   })
   
-  user.save((err) => {
+  User.findOne({email: email}, function (err, userEncontrado) {
+    console.log(email)
+    console.log(user)
+    if (err) {
+      next(err);
+    }
+    if (!userEncontrado) {
+      console.log("no hay usuario");
+      user.save((err, userSaved) => {
+        console.log(userSaved)
+        if (err) res.status(500).send({message: `Error al crear el usuario: ${err}`})
+        return res.status(200).send({
+          message: "Usuario registrado",
+          user: userSaved,
+          token: service.createToken(user)
+        })
+      })
+    } else {
+      return res.status(404).send("Usuario existente")
+    }
+
+  })
+  /*user.save((err) => {
     if (err) res.status(500).send({message: `Error al crear el usuario: ${err}`})
         
-    return res.status(200).send({ token: service.createToken(user) })
-  })
+    return res.status(200).send({ 
+      message: "Te has registrado correctamente",
+      token: service.createToken(user) 
+    })
+  })*/
 }
+
 //función loguin
 function signIn(req, res) {
   var name = req.body.name
   var password = req.body.password
   User.findOne({name: name, password: password}, function(err, user) {
+    console.log(user)
     if (err) {
       next(err);
     }

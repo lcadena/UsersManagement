@@ -8,6 +8,7 @@ const User = require('../models/user')
 //funcion autenticacion - al ser middleware añadimos next para que el middleware pase
 //la funcionalidad al controlador final
 function isAuth(req, res, next){
+  console.log(req)
   //comprobar si en el objeto headers de la petición existe campo autorization
   if (!req.headers.authorization) {
     return res.status(403).send({ message: 'No tienes autorización'})
@@ -19,6 +20,7 @@ function isAuth(req, res, next){
   services.decodeToken(token)
   //como es una promesa va a tener unas funciones
     .then(response => { //respuesta
+      console.log(response)
       req.user = response
       next()
     })
