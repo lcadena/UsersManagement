@@ -49,9 +49,9 @@ function signUp(req, res) {
 
 //función loguin
 function signIn(req, res) {
-  var name = req.body.name
+  var email = req.body.email
   var password = req.body.password
-  User.findOne({name: name, password: password}, function(err, user) {
+  User.findOne({email: email, password: password}, function(err, user) {
     console.log(user)
     if (err) {
       next(err);
@@ -68,12 +68,13 @@ function signIn(req, res) {
 
 function getUsers(req, res) {
   //busca todos los usuarios, claudator vacio
-  User.find({}, (err, users) => {
+  User.find({}, (err, userslist) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
-    if (!users) return res.status(404).send({message: 'No existen usuarios en la bbdd'})
+    if (!userslist) return res.status(404).send({message: 'No existen usuarios en la bbdd'})
     //se envia una respuesta en res, la respuesta sera un json de producto
-    console.log(users)
-    res.send(200, { users })
+    console.log(userslist)
+    //res.send(200, { users })
+    res.status(200).send({usuarios: userslist})
   })
 }
 

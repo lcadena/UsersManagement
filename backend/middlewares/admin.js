@@ -6,7 +6,7 @@ const User = require('../models/user')
 function isAdmin (req, res, next) {
   //comprobar si en el objeto headers de la petición existe campo autorization
   if (!req.headers.authorization) {
-    return res.status(403).send({ message: 'No tienes autorización'})
+    return res.status(403).send({ message: 'No ha enviado el token de verificación'})
   }
   //si existe cabecera
   //variable token que va a coger el token de las cabeceras y nos quedamos con la posición 1
@@ -27,11 +27,15 @@ function isAdmin (req, res, next) {
           var rol = userEncontrado.rol
           console.log(rol)
           if (rol == 'admin') {
-            res.status(200).send({user: user, message: "Eres administrador"})
+            res.status(200).send({message: "Eres administrador"})
             req.user = response
             next()
+          } 
+          if (rol !== 'admin') {
+            return res.status(404).send({message: 'No tienes permisos de administrador para realizar esta petición'})
           }
-          return res.status(404).send({message: 'No tienes permisos de administrador'})
+        } else {
+          return res.status(500).send({message: `Error: ${err}`})
         }
       })
     })
