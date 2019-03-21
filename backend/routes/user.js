@@ -7,7 +7,7 @@ const auth = require('../middlewares/auth')
 const admin = require('../middlewares/admin')
 
 //listar usuarios en la bbdd
-api_user.get('/user', admin, userCtrl.getUsers)
+api_user.get('/user', userCtrl.getUsers)
 //busqueda de usuario por id 
 api_user.get('/user/:userId', userCtrl.getUser)
 //registro
