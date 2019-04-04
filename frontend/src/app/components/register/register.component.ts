@@ -21,6 +21,8 @@ export class RegisterComponent implements OnInit {
 
   roles: string[] = ['--select--', 'admin', 'user'];
 
+  rol: string; //recogida del rol
+
   constructor(private userService: AuthService,
               private router: Router, private formBuilder: FormBuilder) {
 
@@ -91,7 +93,8 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(this.registerForm.value);
-    let user = new User( this.registerForm.value.email, this.registerForm.value.firstName, this.registerForm.value.lastName, this.registerForm.value.password, this.registerForm.value.rol);
+    console.log (this.rol);
+    let user = new User( this.registerForm.value.email, this.registerForm.value.firstName, this.registerForm.value.lastName, this.registerForm.value.password/*,  this.registerForm.value.rol*/);
     this.userService.signup(user)
       .subscribe(
         res => {
@@ -100,13 +103,13 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('token', token);
 
          if (this.registerForm.value.rol =="admin"){
-           this.router.navigateByUrl("/api/login");}
+           this.router.navigateByUrl("/api/product");}
 
          else if(this.registerForm.value.rol =="user"){
            this.router.navigateByUrl("/api/login");
          }
           else
-            this.router.navigateByUrl("/api/login");
+            this.router.navigateByUrl("/api/product");
         },
 
         err => {

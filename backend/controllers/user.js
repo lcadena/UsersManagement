@@ -12,10 +12,10 @@ function signUp(req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     password: req.body.password,
-    rol: req.body.rol
+    //rol: req.body.rol
   })
-  
-  User.findOne({email: email}, function (err, userEncontrado) {
+
+ User.findOne({email: email}, function (err, userEncontrado) {
     console.log(email)
     console.log(user)
     if (err) {
@@ -39,31 +39,46 @@ function signUp(req, res) {
   })
   /*user.save((err) => {
     if (err) res.status(500).send({message: `Error al crear el usuario: ${err}`})
-        
-    return res.status(200).send({ 
+
+    return res.status(200).send({
       message: "Te has registrado correctamente",
-      token: service.createToken(user) 
+      token: service.createToken(user)
     })
   })*/
 }
 
 //función loguin
-function signIn(req, res) {
-  var email = req.body.email
-  var password = req.body.password
-  User.findOne({email: email, password: password}, function(err, user) {
+/*function signIn(req, res) {
+  User.find({ email: req.body.email }, (err, user) => {
+    console.log(!user)
     console.log(user)
-    if (err) {
-      next(err);
-    }
-    if (!user) {
-      return res.status(404).send("No existe este usuario/contraseña incorrecta")
-    }
-    return res.status(200).send({
+    if (err) return res.status(500).send({message: err})
+    if (user.length === 0) return res.status(404).send({message: 'No existe el usuario'})
+
+
+    res.user = user
+    res.status(200).send({
       message: 'Te has logueado correctamente',
-      token: service.createToken(user) //envia el token al cliente
+      token: service.createToken(user)
     })
-  })
+  }*/
+
+function signIn(req, res) {
+ var email = req.body.email
+ var password = req.body.password
+ User.findOne({email: email, password: password}, function(err, user) {
+   console.log(user)
+   if (err) {
+     next(err);
+   }
+   if (!user) {
+     return res.status(404).send("No existe este usuario/contraseña incorrecta")
+   }
+   return res.status(200).send({
+     message: 'Te has logueado correctamente',
+     token: service.createToken(user) //envia el token al cliente
+   })
+ })
 }
 
 function getUsers(req, res) {
