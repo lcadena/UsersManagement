@@ -14,8 +14,9 @@ function signUp(req, res) {
     password: req.body.password,
     //rol: req.body.rol
   })
+}
 
- User.findOne({email: email}, function (err, userEncontrado) {
+ /*User.findOne({email: email}, function (err, userEncontrado) {
     console.log(email)
     console.log(user)
     if (err) {
@@ -36,7 +37,7 @@ function signUp(req, res) {
       return res.status(404).send("Usuario existente")
     }
 
-  })
+  })*/
   /*user.save((err) => {
     if (err) res.status(500).send({message: `Error al crear el usuario: ${err}`})
 
@@ -44,12 +45,12 @@ function signUp(req, res) {
       message: "Te has registrado correctamente",
       token: service.createToken(user)
     })
-  })*/
-}
+  })
+}*/
 
 //función loguin
-/*function signIn(req, res) {
-  User.find({ email: req.body.email }, (err, user) => {
+function signIn(req, res) {
+  User.find({email: req.body.email}, (err, user) => {
     console.log(!user)
     console.log(user)
     if (err) return res.status(500).send({message: err})
@@ -61,9 +62,10 @@ function signUp(req, res) {
       message: 'Te has logueado correctamente',
       token: service.createToken(user)
     })
-  }*/
+  })
+}
 
-function signIn(req, res) {
+/*function signIn(req, res) {
  var email = req.body.email
  var password = req.body.password
  User.findOne({email: email, password: password}, function(err, user) {
@@ -79,7 +81,7 @@ function signIn(req, res) {
      token: service.createToken(user) //envia el token al cliente
    })
  })
-}
+}*/
 
 function getUsers(req, res) {
   //busca todos los usuarios, claudator vacio
