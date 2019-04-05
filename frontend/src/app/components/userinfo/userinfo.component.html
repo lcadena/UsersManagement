@@ -1,6 +1,7 @@
 <h2>Users</h2>
-<button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See my products</button>
-
+<p><p>
+<button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See all the products</button>
+</p><p>
 
 <div *ngFor = "let user of users; let i=index">
   <input type="hidden" value="{{user.email}}">
@@ -10,6 +11,8 @@
     <p><b>Las Name:</b> {{user.lastName}}</p>
     <p><b>Email:</b> {{user.email}}</p>
     <button class="btn btn-primary" [routerLink]="['/api/user/', user._id]"><i class="fa fa-eye"></i>&nbsp;See user details</button>
+    <button class="btn btn-primary" [routerLink]="['/api/addproduct']" > Add new product to the user </button>
+    <button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i> See user products</button>
     <button class="btn btn-danger" (click)="confirmDelete(user._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
   </div>
 </div>
@@ -17,3 +20,4 @@
 <p><p>
   <button class="logout" (click)="goBack()"><i class="fa fa-toggle-left" aria-hidden="true"></i>   Log out</button>
 </p><p>
+

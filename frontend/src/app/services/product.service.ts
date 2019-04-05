@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from "../models/product";
 import { Environment } from "./environment";
 import {Observable} from "rxjs";
-import {User} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +26,9 @@ export class ProductService {
     return this.http.get(this.environment.urlProduct + `/${_id}`);
   }
 
-  postProduct(product: Product) {
-    return this.http.post(this.environment.urlProduct, product);
+  //añade nuevo producto
+  saveProduct(product: Product) {
+    return this.http.post(this.environment.urlProduct, product)
   }
 
   putProduct(product: Product) {

@@ -1,6 +1,8 @@
 <h2>Products</h2>
+<p><p>
 <button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</button>
-<div *ngFor = "let product of products; let i=index">
+</p><p>
+  <div *ngFor = "let product of products; let i=index">
   <input type="hidden" value="{{product._id}}">
   <div class="border border-secondary">
     <span *ngIf="product.category === 'computers'"><img src="https://img.icons8.com/color/96/000000/laptop.png"></span>
