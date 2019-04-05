@@ -13,12 +13,14 @@ export class UserinfodetailComponent implements OnInit {
   user: User;
 
   constructor(private activatedRouter: ActivatedRoute, private userinfoService: UserinfoService) {
-    //this.user = new User();
+    this.user = new User("","", "","","","",null);
   }
 
   ngOnInit() {
     this.activatedRouter.params.subscribe(params => {
       if (typeof params['id'] !== 'undefined') {
+        console.log("params", params);
+        console.log("user: ", this.user);
         this.user._id = params['id'];
       } else {
         this.user._id = '';

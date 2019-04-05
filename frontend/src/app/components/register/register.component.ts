@@ -94,7 +94,7 @@ export class RegisterComponent implements OnInit {
   register() {
     console.log(this.registerForm.value);
     console.log (this.rol);
-    let user = new User( this.registerForm.value.email, this.registerForm.value.firstName, this.registerForm.value.lastName, this.registerForm.value.password/*,  this.registerForm.value.rol*/);
+    let user = new User( this.registerForm.value.email, this.registerForm.value.firstName, this.registerForm.value.lastName, this.registerForm.value.password, "","",null/*,  this.registerForm.value.rol*/);
     this.userService.signup(user)
       .subscribe(
         res => {

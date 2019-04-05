@@ -7,7 +7,8 @@ export class User {
   _id: string;
   signUpDate: Date;
 
-  constructor(email = '', firstName = '', lastName = '', password = '', rol = '', _id = '', signUpDate){
+  constructor(email: string = '', firstName: string = '', lastName:string = '',
+              password:string = '', rol:string = '', _id:string = '', signUpDate:Date){
     this.email = email;
     this.firstName = firstName;
     this.lastName = lastName;

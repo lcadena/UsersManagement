@@ -14,7 +14,7 @@ export class UserinfoService {
   users: User[];
 
   constructor(private http: HttpClient) {
-    this.selectedUser = new User();
+    this.selectedUser = new User("","","","","","", null);
     this.environment = new Environment();
   }
 
