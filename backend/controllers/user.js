@@ -99,7 +99,7 @@ function signIn(req, res) {
 
 function getUsers(req, res) {
   //busca todos los usuarios, claudator vacio
-  User.find({}, (err, userslist) => {
+  User.find({}, {products:0}, (err, userslist) => { //l'array de productes no m'ho dona
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if (!userslist) return res.status(404).send({message: 'No existen usuarios en la bbdd'})
     //se envia una respuesta en res, la respuesta sera un json de producto

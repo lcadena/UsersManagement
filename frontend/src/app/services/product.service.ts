@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from "../models/product";
 import { Environment } from "./environment";
+import {Observable} from "rxjs";
+import {User} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +19,8 @@ export class ProductService {
     this.environment = new Environment();
   }
 
-  getProducts() {
-    return this.http.get(this.environment.urlProduct);
+  getProducts():Observable<Product[]> {
+    return this.http.get<Product[]>(this.environment.urlProduct);
   }
 
   getSingleProduct(_id: string) {
