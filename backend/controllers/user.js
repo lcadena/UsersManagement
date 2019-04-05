@@ -6,6 +6,7 @@ const service = require('../services')
 
 //función para el registro
 function signUp(req, res) {
+  console.log("SIGNUP");
   var email = req.body.email
   const user = new User({
     email: req.body.email,
@@ -13,10 +14,40 @@ function signUp(req, res) {
     lastName: req.body.lastName,
     password: req.body.password,
     //rol: req.body.rol
+  });
+
+  //Guarda el usuario en la bbdd
+      console.log("no hay usuario");
+      user.save((err, userSaved) => {
+        console.log(userSaved)
+        if (err) res.status(500).send({message: `Error al crear el usuario: ${err}`})
+        return res.status(200).send({
+          message: "Usuario registrado",
+          user: userSaved,
+          token: service.createToken(user)
+        })
+      })
+}
+
+//función loguin
+function signIn(req, res) {
+  User.find({email: req.body.email}, (err, user) => {
+    console.log(!user)
+    console.log(user)
+    if (err) return res.status(500).send({message: err})
+    if (user.length === 0) return res.status(404).send({message: 'No existe el usuario'})
+
+
+
+    res.user = user
+    res.status(200).send({
+      message: 'Te has logueado correctamente',
+      token: service.createToken(user)
+    })
   })
 }
 
- /*User.findOne({email: email}, function (err, userEncontrado) {
+/*User.findOne({email: email}, function (err, userEncontrado) {
     console.log(email)
     console.log(user)
     if (err) {
@@ -38,32 +69,15 @@ function signUp(req, res) {
     }
 
   })*/
-  /*user.save((err) => {
-    if (err) res.status(500).send({message: `Error al crear el usuario: ${err}`})
+/*user.save((err) => {
+  if (err) res.status(500).send({message: `Error al crear el usuario: ${err}`})
 
-    return res.status(200).send({
-      message: "Te has registrado correctamente",
-      token: service.createToken(user)
-    })
+  return res.status(200).send({
+    message: "Te has registrado correctamente",
+    token: service.createToken(user)
   })
+})
 }*/
-
-//función loguin
-function signIn(req, res) {
-  User.find({email: req.body.email}, (err, user) => {
-    console.log(!user)
-    console.log(user)
-    if (err) return res.status(500).send({message: err})
-    if (user.length === 0) return res.status(404).send({message: 'No existe el usuario'})
-
-
-    res.user = user
-    res.status(200).send({
-      message: 'Te has logueado correctamente',
-      token: service.createToken(user)
-    })
-  })
-}
 
 /*function signIn(req, res) {
  var email = req.body.email
@@ -90,8 +104,8 @@ function getUsers(req, res) {
     if (!userslist) return res.status(404).send({message: 'No existen usuarios en la bbdd'})
     //se envia una respuesta en res, la respuesta sera un json de producto
     console.log(userslist)
-    //res.send(200, { users })
-    res.status(200).send({usuarios: userslist})
+    //res.send(200, { userList })
+    res.status(200).send(userslist)
   })
 }
 
@@ -109,9 +123,9 @@ function updateUser(req, res) {
   })
 }
 
-function getUser(req, res) {
+function getSingleUser(req, res) {
   //obtener el id de usuario
-  let userId = req.params.userId
+  let userId = req.params.userId // coge de un parametro el id? (por ejemplo si yo le paso el mail me devuelve el id?)
   User.findById(userId, (err, user) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if (!user) return res.status(404).send({message: 'El usuario no existe'})
@@ -138,6 +152,6 @@ module.exports = {
   signIn,
   getUsers,
   updateUser,
-  getUser,
+  getUser: getSingleUser,
   deleteUser
 }

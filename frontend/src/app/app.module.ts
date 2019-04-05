@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { InterceptorService } from "./services/interceptor.service";
 import { ProductdetailComponent } from './components/productdetail/productdetail.component';
+import { UserinfoComponent } from "./components/userinfo/userinfo.component";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProductdetailComponent } from './components/productdetail/productdetail
     ProductsComponent,
     LoginComponent,
     RegisterComponent,
-    ProductdetailComponent
+    ProductdetailComponent,
+    UserinfoComponent
   ],
   imports: [
     BrowserModule,

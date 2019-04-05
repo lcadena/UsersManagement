@@ -103,13 +103,13 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('token', token);
 
          if (this.registerForm.value.rol =="admin"){
-           this.router.navigateByUrl("/api/product");}
+           this.router.navigateByUrl("/api/userinfo");}
 
          else if(this.registerForm.value.rol =="user"){
-           this.router.navigateByUrl("/api/login");
+           this.router.navigateByUrl("/api/userinfo");
          }
           else
-            this.router.navigateByUrl("/api/product");
+            this.router.navigateByUrl("/api/userinfo");
         },
 
         err => {
