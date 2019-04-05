@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Environment } from "./environment";
 import {User} from "../models/user";
 import {Observable} from "rxjs";
-import {Product} from "../models/product";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ export class UserinfoService {
   users: User[];
 
   constructor(private http: HttpClient) {
-    //this.selectedUser = new User();
+    this.selectedUser = new User();
     this.environment = new Environment();
   }
 
@@ -23,7 +22,7 @@ export class UserinfoService {
     return this.http.get<User[]>(this.environment.urlUserList);
   }
 
-  getSingleUser(_id: string) {
+  getUser(_id: string) {
     return this.http.get(this.environment.urlUserList + `/${_id}`);
   }
 

@@ -24,11 +24,11 @@ export class UserinfodetailComponent implements OnInit {
         this.user._id = '';
       }
     });
-    this.getSingleUser(this.user._id);
+    this.getUser(this.user._id);
   }
 
-  getSingleUser(id: string) {
-    this.userinfoService.getSingleUser(id)
+  getUser(id: string) {
+    this.userinfoService.getUser(id)
       .subscribe(res =>{
         this.user = res["user"];
       });

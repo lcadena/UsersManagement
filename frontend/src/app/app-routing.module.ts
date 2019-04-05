@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'api/product/:id', component: ProductdetailComponent, canActivate: [MyguardGuard], pathMatch: 'full'},
   { path: '', redirectTo: '/api/signin', pathMatch: 'full' },
   { path: 'api/userinfo', component: UserinfoComponent, canActivate: [MyguardGuard] },
-  {path: 'api/userinfodetail', component: UserinfodetailComponent, canActivate: [MyguardGuard]}
+  {path: 'api/user/:id', component: UserinfodetailComponent, canActivate: [MyguardGuard]}
 ];
 
 @NgModule({
