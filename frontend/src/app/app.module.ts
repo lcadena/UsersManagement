@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { InterceptorService } from "./services/interceptor.service";
 import { ProductdetailComponent } from './components/productdetail/productdetail.component';
 import { UserinfoComponent } from "./components/userinfo/userinfo.component";
+import {UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
 
 @NgModule({
   declarations: [
@@ -19,8 +20,10 @@ import { UserinfoComponent } from "./components/userinfo/userinfo.component";
     LoginComponent,
     RegisterComponent,
     ProductdetailComponent,
-    UserinfoComponent
-  ],
+    UserinfoComponent,
+    UserinfodetailComponent
+],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

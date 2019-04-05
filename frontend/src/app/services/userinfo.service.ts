@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Environment } from "./environment";
 import {User} from "../models/user";
 import {Observable} from "rxjs";
+import {Product} from "../models/product";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class UserinfoService {
   users: User[];
 
   constructor(private http: HttpClient) {
-    this.selectedUser = new User();
+    //this.selectedUser = new User();
     this.environment = new Environment();
   }
 

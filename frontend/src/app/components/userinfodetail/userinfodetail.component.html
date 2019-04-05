@@ -1,0 +1,12 @@
+<h2>User Detail of {{user.firstName}}</h2>
+<button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See my products</button>
+<button class="logout" (click)="goBack()" [routerLink]="['']">Log out</button>
+
+<div class="border border-secondary">
+  <span><img src="https://img.icons8.com/bubbles/2x/user.png"></span>
+  <h2>{{user.firstName}}</h2>
+  <p><b>Las Name:</b> {{user.lastName}}</p>
+  <p><b>Email:</b> {{user.email}}</p>
+  <p><b>Id:</b> {{user._id}}</p>
+  <p><b>Sing up date:</b> {{user.signUpDate}}</p>
+</div>
