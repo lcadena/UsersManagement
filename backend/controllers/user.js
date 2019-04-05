@@ -35,7 +35,7 @@ function signIn(req, res) {
     console.log(!user)
     console.log(user)
     if (err) return res.status(500).send({message: err})
-    if (user.length === 0) return res.status(404).send({message: 'No existe el usuario'})
+    if (user.length === 0) return res.status(404).send('No existe el usuario')
 
 
 
@@ -119,7 +119,7 @@ function updateUser(req, res) {
     if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
     if (!user) return res.status(404).send({message: 'El usuario no existe'})
 
-    res.status(200).send({user: userUpdated})
+    res.status(200).send({userUpdated})
   })
 }
 
@@ -130,7 +130,7 @@ function getSingleUser(req, res) {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if (!user) return res.status(404).send({message: 'El usuario no existe'})
 
-    res.status(200).send({user: user})
+    res.status(200).send({user})
   })
 }
 
@@ -142,7 +142,7 @@ function deleteUser(req, res) {
 
     product.remove(err => {
       if (err) res.status(500).send({message: `Error al borrar el usuario: ${err}`})
-      res.status(200).send({message: 'El usuario ha sido eliminado'})
+      res.status(200).send('El usuario ha sido eliminado')
     })
   })
 }
