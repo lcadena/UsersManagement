@@ -14,7 +14,7 @@ function getProducts (req, res) {
         res.send(200, { products })
     })
 }
-
+//obtener prducto
 function getProduct (req,res) {
     let productId = req.params.productId
     
@@ -26,7 +26,7 @@ function getProduct (req,res) {
     })
 }
 
-
+//modificar - actualizar un  producto
 function saveProduct (req, res) {
     console.log('POST /api/product')
     console.log(req.body) //Mostrar todo el cuerpo (body)
@@ -44,7 +44,7 @@ function saveProduct (req, res) {
         res.status(200).send({product: productStored})
     })
 }
-
+//añadir un producto a la base de daos
 function updateProduct (req, res) {
     let productId = req.params.productId
     let update = req.body
@@ -55,7 +55,7 @@ function updateProduct (req, res) {
         res.status(200).send({product: productUpdated})
     })
 }
-
+//eliminar producto
 function deleteProduct (req, res) {
     let productId = req.params.productId
 
