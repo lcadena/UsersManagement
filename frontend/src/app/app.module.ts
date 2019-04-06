@@ -12,6 +12,7 @@ import { InterceptorService } from "./services/interceptor.service";
 import { ProductdetailComponent } from './components/productdetail/productdetail.component';
 import { UserinfoComponent } from "./components/userinfo/userinfo.component";
 import {UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
+import {AddproductComponent} from "./components/addproduct/addproduct.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {UserinfodetailComponent} from "./components/userinfodetail/userinfodetai
     RegisterComponent,
     ProductdetailComponent,
     UserinfoComponent,
-    UserinfodetailComponent
+    UserinfodetailComponent,
+    AddproductComponent
 ],
 
   imports: [
