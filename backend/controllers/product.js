@@ -70,6 +70,8 @@ function deleteProduct (req, res) {
     })
 }
 
+
+
 module.exports = {
     getProducts,
     getProduct,

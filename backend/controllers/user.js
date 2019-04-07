@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose')
 const User = require('../models/user')
+const Product = require('../models/product')
 const service = require('../services')
 
 //función para el registro
@@ -117,7 +118,7 @@ function updateUser(req, res) {
   //funcion de mongoose le pasamos el id de producto y los parametros que queremos modificar
   User.findByIdAndUpdate(userId, update, (err, userUpdated) => {
     if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
-    if (!user) return res.status(404).send({message: 'El usuario no existe'})
+    if (!userUpdated) return res.status(404).send({message: 'El usuario no existe'})
 
     res.status(200).send({userUpdated})
   })
@@ -147,11 +148,51 @@ function deleteUser(req, res) {
   })
 }
 
+function getUserswithProducts(req, res) {
+  //busca todos los usuarios, claudator vacio
+  User.find({ }, (err, userslistwithproducts) => { //l'array de productes no m'ho dona
+    Product.populate(userslistwithproducts, {path: "product"}, (err, userslistwithproducts) => {
+      if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
+      if (!userslistwithproducts) return res.status(404).send({message: 'No existen usuarios en la bbdd'})
+      //se envia una respuesta en res, la respuesta sera un json de producto
+      console.log(userslistwithproducts)
+      //res.send(200, { userList })
+      res.status(200).send(userslistwithproducts)
+
+    })
+  })
+}
+
+function addProductToUser(req, res) {
+  let userId = req.params.userId
+  let productId = req.params.productId
+  //let update = req.body
+  User.update({_id: userId}, {"$push": {"products": productId}}, (err, result) => {
+    if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
+    if (!result) return res.status(404).send({message: 'El usuario no existe'})
+
+    res.status(200).send(result)
+    })
+}
+
+function getProductsofUser(req, res) {
+  let userId = "5c920b2be0ae95436cd293ab"
+  User.findById({_id: userId}, (err, result)  => {
+    console.log(result.products)
+    result.products.array.forEach(element => {
+      console.log(element)
+    });
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   getUsers,
   updateUser,
   getUser: getSingleUser,
-  deleteUser
+  deleteUser,
+  getUserswithProducts,
+  addProductToUser,
+  getProductsofUser
 }

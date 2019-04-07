@@ -13,7 +13,7 @@ const UserSchema = new Schema({
   password: { type: String, select: false },
   signUpDate: { type: Date, default: Date.now() },
   rol: {type: String, enum: ['admin', 'user']},
-  products:  [{ type: Schema.Types.ObjectId, ref: 'Products' }]
+  products:  [{ type: Schema.Types.ObjectId, ref: 'Product' }]
   
 })
 

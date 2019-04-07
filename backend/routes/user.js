@@ -25,6 +25,10 @@ api.delete('/user/:userId', userCtrl.deleteUser)
 api.get('/private', auth, (req, res) => {
     res.status(200).send({ message: 'Tienes acceso'})
 })
+///rutas usuarios con productos
+api.get('/usersList', userCtrl.getUserswithProducts)
+api.put('/:userId/products/:productId', userCtrl.addProductToUser)
+api.get('/userId/products/productId', userCtrl.getProductsofUser)
 
 //listar productos en la bbdd
 api.get('/product', auth, productCtrl.getProducts)
