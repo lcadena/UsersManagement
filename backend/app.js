@@ -38,5 +38,17 @@ app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.get('/login', (req, res) => {
     res.render('login')
 })
+//cabecera de cros mas restictiva
 
+app.use((req, res, next) =>{
+    res.header("Access-Control-Allow-Origin","http://localhost:4200");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    if (req.method == 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
+    }
+    next()
+})
 module.exports = app
