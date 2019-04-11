@@ -27,6 +27,10 @@ export class AddproductComponent implements OnInit {
           Validators.required,
           Validators.pattern(/.{3,15}$/)])),
 
+        price: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.pattern(/^((?!(0))[0-9]{2,4})$/)])),
+
         category: new FormControl('', Validators.compose([
           Validators.required,
           Validators.pattern(/.{3,25}$/)])),
@@ -49,6 +53,10 @@ export class AddproductComponent implements OnInit {
         { type: 'required', message: 'Category is required'},
         { type: 'pattern', message: 'It has to be between 3 and 25 characters long'}
       ],
+      'price': [
+        { type: 'required', message: 'Price is required'},
+        { type: 'pattern', message: 'It can not begin by a 0 and has to be between 2 and 4 digits long'}
+      ],
       'description': [
         { type: 'required', message: 'Description is required' },
         { type: 'pattern', message: 'It has to be between 3 and 250 characters long' }
@@ -58,7 +66,15 @@ export class AddproductComponent implements OnInit {
 
   addProduct() {
     console.log(this.addproductForm.value);
-    let product = new Product("", this.addproductForm.value.name, "",0, this.addproductForm.value.category, this.addproductForm.value.description);
+    //let product2 = new Product("", this.addproductForm.value.name, "",parseInt(this.addproductForm.value.price), this.addproductForm.value.category, this.addproductForm.value.description);
+    let product = new Product();
+    product._id = "";
+    product.name = this.addproductForm.value.name;
+    product.picture = "";
+    product.price = this.addproductForm.value.price;
+    product.category = this.addproductForm.value.category;
+    product.description = this.addproductForm.value.description;
+
     this.addproductService.saveProduct(product)
       .subscribe(
         res => {

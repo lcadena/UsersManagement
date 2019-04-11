@@ -29,7 +29,7 @@ function getProduct (req,res) {
 //modificar - actualizar un  producto
 function saveProduct (req, res) {
     console.log('POST /api/product')
-    console.log(req.body) //Mostrar todo el cuerpo (body)
+    console.log(req.body) //Mostrar el cuerpo (body)
 
     let product = new Product()
     product.name = req.body.name

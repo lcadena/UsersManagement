@@ -17,6 +17,7 @@ const UserSchema = new Schema({
   
 })
 
+//encriptacion de datos
 UserSchema.pre('save', (next) => {
   let user = this
   bcrypt.genSalt(10, (err, salt) => {

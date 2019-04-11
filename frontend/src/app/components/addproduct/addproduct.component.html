@@ -14,6 +14,18 @@
   </div>
 
   <div class="form-group">
+    <label>Price</label>
+    <input type="text" class="form-control" formControlName="price"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.price">
+        <div class="alert alert-danger" *ngIf="addproductForm.get('price').hasError(validation.type) && (addproductForm.get('price').dirty || addproductForm.get('price').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="form-group">
     <label>Category: phones, accessories, computers</label>
     <input type="text" class="form-control" formControlName="category"/>
     <div class="validation-errors">
