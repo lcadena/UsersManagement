@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit {
   rol: string; //recogida del rol
 
   constructor(private userService: AuthService,
-              private router: Router, private formBuilder: FormBuilder) {
+              private router: Router, 
+              private formBuilder: FormBuilder) {
 
     this.registerForm = this.formBuilder.group({
         firstName: new FormControl('', Validators.compose([

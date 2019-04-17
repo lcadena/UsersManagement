@@ -13,7 +13,7 @@ import { ProductdetailComponent } from './components/productdetail/productdetail
 import { UserinfoComponent } from "./components/userinfo/userinfo.component";
 import {UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
 import {AddproductComponent} from "./components/addproduct/addproduct.component";
-import { ProductsuserComponent } from './components/productsuser/productsuser.component';
+//import { ProductsuserComponent } from './components/productsuser/productsuser.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { ProductsuserComponent } from './components/productsuser/productsuser.co
     UserinfoComponent,
     UserinfodetailComponent,
     AddproductComponent,
-    ProductsuserComponent
+    //ProductsuserComponent
 ],
 
   imports: [
