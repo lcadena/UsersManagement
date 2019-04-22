@@ -69,6 +69,36 @@ api.put('/:ticketId/prodtick/:productId', ticketCtrl.addProductToTicket)
 //listar los productos de un ticket - FUNCIONA
 api.get('/prodtick/:ticketId', ticketCtrl.getProductsofTicket)
 
+/*TIENDAS Y PRODUCTOS*/
+//añadir un producto a una tienda
+api.put('/:tiendaId/prodtienda/:productId', tiendaCtrl.addProductToTienda)
+//listar los productos de una tienda
+api.get('/prodtienda/:ticketId', tiendaCtrl.getProductsofTienda)
+
+
+/*TIENDAS: http://localhost:3000/api/tienda*/
+//Añadir una tienda en la bbdd
+api.post('/tienda', tiendaCtrl.saveTienda)
+//listar todas las tiendas
+api.get('/tiendas', tiendaCtrl.getTiendas)
+//modificar info tienda
+api.put('/tienda/:tiendaId', tiendaCtrl.updateTienda)
+//eliminar tienda por id - FUNCIONA
+api.delete('/tienda/:tiendaId', tiendaCtrl.deleteTienda)
+
+
+/*ALARMAS: http://localhost:3000/api/alarma*/
+//listar alarmas en la bbdd
+api.get('/alarmas', alarmaCtrl.getAlarmas)
+//crear/añadir una alarma
+api.post('/alarma', alarmaCtrl.saveAlarma)
+//modificar info alarma
+api.put('/alarma/:alarmaId', alarmaCtrl.updateAlarma)
+//eliminar producto por id - FUNCIONA
+api.delete('/alarma/:alarmaId', alarmaCtrl.deleteAlarma)
+
+
+
 
 
 module.exports = api

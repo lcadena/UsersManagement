@@ -76,7 +76,7 @@ function getProductsofTienda(req, res) {
   
       Product.find({'_id': { $in: result.products}}, (err, productsOfTienda) => {
         if(productsOfTienda.length == 0) {
-          return res.status(204).send({message: 'La tienda no tiene productos'})
+          return res.status(204).send({message: 'La tienda no tiene Productos'})
           //ÉS UN 404???
         } else {
           console.log(productsOfTienda)
@@ -86,12 +86,30 @@ function getProductsofTienda(req, res) {
     })
 }
 
+//eliminar producto
+function deleteTienda (req, res) {
+    let alarmaId = req.params.alarmaId
+
+    tienda.findById(alarmaId, (err, alarma) => {
+        if (err) res.status(500).send({message: `Error al eliminarla: ${err}`})
+    
+        alarma.remove(err => {
+            if (err) res.status(500).send({message: `Error al eliminarla: ${err}`})
+            
+            res.status(200).send({message: `tienda eliminada`})
+        })
+    })
+}
+
+
+
 module.exports = {
     saveTienda,
     getTiendas,
     updateTienda,
     addProductToTienda,
-    getProductsofTienda
+    getProductsofTienda,
+    deleteTienda
 }
 
 
