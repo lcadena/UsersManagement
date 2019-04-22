@@ -11,7 +11,8 @@ function getProducts (req, res) {
         if (!products) return res.status(404).send({message: 'No existen productos'})
        
         //Finalizar petición y comprobar que funciona
-        res.send(200, { products })
+        return res.status(200).send({products})
+        //res.send(200, { products })
     })
 }
 //obtener prducto
@@ -22,7 +23,7 @@ function getProduct (req,res) {
         if (err) return res.status(500).send({message: `Error al realizar la petición: ${err} `})
         if (!product) return res.status(404).send({message: `El producto no existe`})
   
-        res.status(200).send({ product })
+        return res.status(200).send({ product })
     })
 }
 
@@ -33,10 +34,11 @@ function saveProduct (req, res) {
 
     let product = new Product()
     product.name = req.body.name
-    product.picture = req.body.picture
-    product.price = req.body.price
     product.category = req.body.category
-    product.description = req.body.description
+    product.lugar = req.body.lugar
+    product.price = req.body.price
+    /*product.garantia = req.body.garantia
+    product.devolucion = req.body.devolucion*/
 
     product.save((err, productStored) => {
         if (err) res.status(500).send({message: `Error al salvar en la BBDD: ${err}`})
@@ -44,7 +46,7 @@ function saveProduct (req, res) {
         res.status(200).send({product: productStored})
     })
 }
-//añadir un producto a la base de daos
+//añadir un producto a la base de datos
 function updateProduct (req, res) {
     let productId = req.params.productId
     let update = req.body

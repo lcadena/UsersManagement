@@ -3,6 +3,7 @@
 const mongoose = require('mongoose')
 const User = require('../models/user')
 const Product = require('../models/product')
+const Ticket = require('../models/ticket')
 const service = require('../services')
 
 //función para el registro
@@ -37,8 +38,6 @@ function signIn(req, res) {
     console.log(user)
     if (err) return res.status(500).send({message: err})
     if (user.length === 0) return res.status(404).send('No existe el usuario')
-
-
 
     res.user = user
     res.status(200).send({
@@ -106,7 +105,7 @@ function getUsers(req, res) {
     //se envia una respuesta en res, la respuesta sera un json de producto
     console.log(userslist)
     //res.send(200, { userList })
-    res.status(200).send(userslist)
+    return res.status(200).send(userslist)
   })
 }
 
@@ -120,7 +119,7 @@ function updateUser(req, res) {
     if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
     if (!userUpdated) return res.status(404).send({message: 'El usuario no existe'})
 
-    res.status(200).send({userUpdated})
+    return res.status(200).send(userUpdated)
   })
 }
 
@@ -131,7 +130,7 @@ function getSingleUser(req, res) {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if (!user) return res.status(404).send({message: 'El usuario no existe'})
 
-    res.status(200).send({user})
+    return res.status(200).send(user)
   })
 }
 
@@ -143,7 +142,7 @@ function deleteUser(req, res) {
 
     product.remove(err => {
       if (err) res.status(500).send({message: `Error al borrar el usuario: ${err}`})
-      res.status(200).send('El usuario ha sido eliminado')
+      return res.status(200).send('El usuario ha sido eliminado')
     })
   })
 }
@@ -156,13 +155,13 @@ function getUserswithProducts(req, res) {
       if (!userslistwithproducts) return res.status(404).send({message: 'No existen usuarios en la bbdd'})
       //se envia una respuesta en res, la respuesta sera un json de producto
       console.log(userslistwithproducts)
-      //res.send(200, { userList })
-      res.status(200).send(userslistwithproducts)
+      return res.status(200).send(userslistwithproducts)
 
     })
   })
 }
 
+///añadir producto a usario
 function addProductToUser(req, res) {
   let userId = req.params.userId
   let productId = req.params.productId
@@ -170,18 +169,59 @@ function addProductToUser(req, res) {
   User.update({_id: userId}, {"$push": {"products": productId}}, (err, result) => {
     if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
     if (!result) return res.status(404).send({message: 'El usuario no existe'})
-
-    res.status(200).send(result)
+    console.log(result)
+    return res.status(200).send(result)
     })
 }
 
+//añadir ticket a usuario
+function addTicketToUser(req, res) {
+  let userId = req.params.userId
+  let ticketId = req.params.ticketId
+  User.update({_id: userId}, {"$push": {"tickets": ticketId}}, (err, result) => {
+    if(err) return res.status(500).send({message: `Error al actualizar el usaurio: ${err}`})
+    if(!result) return res.status(404).send({message: 'El usuario no existe'})
+    console.log(result)
+    return res.status(200).send(result)
+  })
+}
+
+
+///listar productos de un usuario 
 function getProductsofUser(req, res) {
-  let userId = "5c920b2be0ae95436cd293ab"
+  let userId = req.params.userId
   User.findById({_id: userId}, (err, result)  => {
     console.log(result.products)
-    result.products.array.forEach(element => {
-      console.log(element)
-    });
+    if(err) return res.status(500).send(`Error al relizar petición: ${err}`)
+    if(!result) return res.status(400).send({message: 'El usuario no existe'})
+
+    Product.find({'_id': { $in: result.products}}, (err, productsOfUser) => {
+      if(productsOfUser.length == 0) {
+        return res.status(204).send({message: 'El usuario no tiene productos'})
+      } else {
+        console.log(productsOfUser)
+        return res.status(200).send(productsOfUser)
+      }
+    })
+  })
+}
+
+////listar tickets de un usuario 
+function getTicketsofUser(req, res) {
+  let userId = req.params.userId
+  User.findById({_id: userId}, (err, result) => {
+    console.log(result.tickets)
+    if(err) return res.status(500).send(`Error al realizar la petición: ${err}`)
+    if(!result) return res.status(400).send({message: 'El usuario no existe'})
+
+    Ticket.find({'_id': { $in: result.tickets}}, (err, ticketsOfUser) => {
+      if(ticketsOfUser.length == 0) {
+        return res.status(204).send({message: 'El usaurio no tiene tickets'})
+      } else {
+        console.log(ticketsOfUser)
+        return res.status(200).send(ticketsOfUser)
+      }
+    })
   })
 }
 
@@ -194,5 +234,7 @@ module.exports = {
   deleteUser,
   getUserswithProducts,
   addProductToUser,
-  getProductsofUser
+  addTicketToUser,
+  getProductsofUser,
+  getTicketsofUser
 }
