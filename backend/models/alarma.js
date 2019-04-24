@@ -10,7 +10,7 @@ const Schema = mongoose.Schema
 //crea los campos del esquema del producto
 const AlarmSchema = Schema({
   name: String,
-  limit: number,
+  limit: { type: Number, default:0 },
   category: String,
   initDate: Date,
   FinDate: Date,

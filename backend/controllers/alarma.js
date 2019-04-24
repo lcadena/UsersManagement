@@ -3,7 +3,6 @@
 const mongoose = require('mongoose')
 const User = require('../models/user')
 const Alarma = require('../models/alarma')
-const Alarma = require('../models/Alarma')
 const service = require('../services')
 
 function saveAlarma(req, res) {
