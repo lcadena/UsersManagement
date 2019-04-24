@@ -79,14 +79,18 @@ api.get('/prodtienda/:ticketId', tiendaCtrl.getProductsofTienda)
 
 
 /*TIENDAS: http://localhost:3000/api/tienda*/
-//Añadir una tienda en la bbdd
-api.post('/tienda', tiendaCtrl.saveTienda)
-//listar todas las tiendas
-api.get('/tiendas', tiendaCtrl.getTiendas)
-//modificar info tienda
+//Añadir una tienda en la bbdd - funciona
+api.post('/tienda', tiendaCtrl.saveTienda) 
+//listar todas las tiendas - funciona
+api.get('/tiendas', tiendaCtrl.getTiendas) 
+//modificar info tienda - funciona
 api.put('/tienda/:tiendaId', tiendaCtrl.updateTienda)
-//eliminar tienda por id - FUNCIONA
+//eliminar tienda por id - 
 api.delete('/tienda/:tiendaId', tiendaCtrl.deleteTienda)
+
+/*TIENDAS Y USUARIO:*/
+//Añadir una tienda a un user
+api.put('/:userId/tiendauser/:tiendaId', userCtrl.addTiendaToUser)
 
 
 /*ALARMAS: http://localhost:3000/api/alarma*/
