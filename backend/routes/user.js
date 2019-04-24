@@ -53,7 +53,7 @@ api.get('/products/:userId', userCtrl.getProductsofUser)
 /*TICKETS: http://localhost:3000/api/ticket*/
 //listar productos en la bbdd - FUNCIONA
 api.get('/tickets', ticketCtrl.getTickets)
-//crear/añadir un producto - FUNCIONA
+//crear/añadir un tcket - FUNCIONA
 api.post('/ticket', ticketCtrl.saveTicket)
 //modificar info product - FUNCIONA
 api.put('/ticket/:ticketId', ticketCtrl.updateTicket)
