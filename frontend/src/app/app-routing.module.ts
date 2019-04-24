@@ -8,6 +8,8 @@ import {ProductdetailComponent} from "./components/productdetail/productdetail.c
 import {UserinfoComponent} from "./components/userinfo/userinfo.component";
 import {UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
 import {AddproductComponent} from "./components/addproduct/addproduct.component";
+import {TicketComponent} from "./components/ticket/ticket.component";
+import {TiendaComponent } from "./components/tienda/tienda.component";
 
 const routes: Routes = [
   { path: 'api/signin', component: LoginComponent },
@@ -17,7 +19,10 @@ const routes: Routes = [
   { path: '', redirectTo: '/api/signin', pathMatch: 'full' },
   { path: 'api/userinfo', component: UserinfoComponent, canActivate: [MyguardGuard] },
   { path: 'api/user/:id', component: UserinfodetailComponent, canActivate: [MyguardGuard] },
-  { path: 'api/addproduct', component: AddproductComponent, canActivate: [MyguardGuard] }
+  { path: 'api/addproduct', component: AddproductComponent, canActivate: [MyguardGuard] },
+  { path: 'api/ticket', component: TicketComponent},
+  { path: 'api/tienda', component: TiendaComponent}
+
 ];
 
 @NgModule({

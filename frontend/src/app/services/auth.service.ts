@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { User } from "../models/user";
 import { Environment } from "./environment";
+import { Ticket } from '../models/ticket';
+import { Tienda } from '../models/tienda';
 
 @Injectable({
   providedIn: 'root'
@@ -23,4 +25,16 @@ export class AuthService {
   signin(user: User)  {
     return this.http.post(this.environment.urlUser + "signin", user)
   }
+
+
+  // servicios de los tickets
+
+  saveTickets(ticket: Ticket) {
+    return this.http.post(this.environment.urlUser + "ticket", ticket)
+  }
+
+  saveTienda(tienda: Tienda) {
+    return this.http.post(this.environment.urlUser + "ticket", tienda)
+  }
+
 }
