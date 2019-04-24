@@ -18,7 +18,7 @@ api.post('/signin', userCtrl.signIn)
 
 /*USUARIOS: http://localhost:3000/api/user*/
 //listar usuarios en la bbdd - FUNCIONA
-api.get('/user', userCtrl.getUsers)
+api.get('/users', userCtrl.getUsers)
 //busqueda de usuario por id - FUNCIONA
 api.get('/user/:userId', userCtrl.getUser)
 //modificar info user - FUNCIONA
@@ -32,7 +32,7 @@ api.get('/private', auth, (req, res) => {
 
 /*PRODUCTOS: http://localhost:3000/api/product*/
 //listar productos en la bbdd - FUNCIONA
-api.get('/product', productCtrl.getProducts)
+api.get('/products', productCtrl.getProducts)
 //busqueda de producto por id - FUNCIONA
 api.get('/product/:productId', productCtrl.getProduct)
 //crear/añadir un producto - FUNCIONA
@@ -51,7 +51,7 @@ api.put('/:userId/products/:productId', userCtrl.addProductToUser)
 api.get('/products/:userId', userCtrl.getProductsofUser)
 
 /*TICKETS: http://localhost:3000/api/ticket*/
-//listar productos en la bbdd - FUNICIONA
+//listar productos en la bbdd - FUNCIONA
 api.get('/tickets', ticketCtrl.getTickets)
 //crear/añadir un producto - FUNCIONA
 api.post('/ticket', ticketCtrl.saveTicket)
@@ -72,20 +72,20 @@ api.put('/:ticketId/prodtick/:productId', ticketCtrl.addProductToTicket)
 api.get('/prodtick/:ticketId', ticketCtrl.getProductsofTicket)
 
 /*TIENDAS Y PRODUCTOS*/
-//añadir un producto a una tienda
+//añadir un producto a una tienda - FUNCIONA
 api.put('/:tiendaId/prodtienda/:productId', tiendaCtrl.addProductToTienda)
-//listar los productos de una tienda
-api.get('/prodtienda/:ticketId', tiendaCtrl.getProductsofTienda)
+//listar los productos de una tienda - FUNCIONA
+api.get('/prodtienda/:tiendaId', tiendaCtrl.getProductsofTienda)
 
 
 /*TIENDAS: http://localhost:3000/api/tienda*/
-//Añadir una tienda en la bbdd - funciona
+//Añadir una tienda en la bbdd - FUNCIONA
 api.post('/tienda', tiendaCtrl.saveTienda) 
-//listar todas las tiendas - funciona
+//listar todas las tiendas - FUNCIONA
 api.get('/tiendas', tiendaCtrl.getTiendas) 
-//modificar info tienda - funciona
+//modificar info tienda - FUNCIONA
 api.put('/tienda/:tiendaId', tiendaCtrl.updateTienda)
-//eliminar tienda por id - 
+//eliminar tienda por id - FUNCIONA
 api.delete('/tienda/:tiendaId', tiendaCtrl.deleteTienda)
 
 /*TIENDAS Y USUARIO:*/

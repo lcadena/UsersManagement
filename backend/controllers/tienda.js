@@ -1,11 +1,7 @@
 'use strict'
 
-const mongoose = require('mongoose')
-const User = require('../models/user')
 const Product = require('../models/product')
-const Ticket = require('../models/ticket')
 const Tienda = require('../models/tienda')
-const service = require('../services')
 
 function saveTienda(req, res) {
     console.log('POST /api/tienda')
@@ -45,12 +41,27 @@ function updateTienda(req, res) {
     })
 }
 
+//eliminar producto
+function deleteTienda (req, res) {
+  let tiendaId = req.params.tiendaId
+
+  Tienda.findById(tiendaId, (err, tienda) => {
+      if (err) res.status(500).send({message: `Error al eliminarla: ${err}`})
+  
+      tienda.remove(err => {
+          if (err) res.status(500).send({message: `Error al eliminarla: ${err}`})
+          
+          res.status(200).send({message: `tienda eliminada`})
+      })
+  })
+}
+
 //Añadir producto a un tienda
 function addProductToTienda(req, res) {
     let tiendaId = req.params.tiendaId
     let productId = req.params.productId
 
-    Tienda.update({_id: tiendaId}, {"$push": {"listaProductos": productId}}, (err, result) => {
+    Tienda.update({_id: tiendaId}, {"$push": {"products": productId}}, (err, result) => {
       if (err) res.status(500).send({message: `Error al actualizar la tienda: ${err}`})
       if (!result) return res.status(404).send({message: 'La tienda no existe'})
   
@@ -62,13 +73,12 @@ function addProductToTienda(req, res) {
 function getProductsofTienda(req, res) {
     let tiendaId = req.params.tiendaId
     Tienda.findById({_id: tiendaId}, (err, result)  => {
-      console.log(result.products)
       if(err) return res.status(500).send(`Error al realizar la petición: ${err}`)
-      if(!result) return res.status(400).send({message: 'La tienda no existe'})
+      if(!result) return res.status(404).send({message: 'La tienda no existe'})
   
       Product.find({'_id': { $in: result.products}}, (err, productsOfTienda) => {
         if(productsOfTienda.length == 0) {
-          return res.status(404).send({message: 'La tienda no tiene Productos'})
+          return res.status(404).send({message: 'La tienda no tiene productos'})
         } else {
           console.log(productsOfTienda)
           return res.status(200).send(productsOfTienda)
@@ -77,20 +87,7 @@ function getProductsofTienda(req, res) {
     })
 }
 
-//eliminar producto
-function deleteTienda (req, res) {
-    let alarmaId = req.params.alarmaId
 
-    tienda.findById(alarmaId, (err, alarma) => {
-        if (err) res.status(500).send({message: `Error al eliminarla: ${err}`})
-    
-        alarma.remove(err => {
-            if (err) res.status(500).send({message: `Error al eliminarla: ${err}`})
-            
-            res.status(200).send({message: `tienda eliminada`})
-        })
-    })
-}
 
 
 
