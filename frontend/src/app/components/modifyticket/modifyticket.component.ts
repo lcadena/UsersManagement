@@ -27,6 +27,7 @@ export class ModifyticketComponent implements OnInit {
   ngOnInit() {
     //al cargar se me listan los tickets
     this.listTickets();
+   
     
   }
 

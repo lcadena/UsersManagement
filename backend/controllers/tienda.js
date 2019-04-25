@@ -25,7 +25,7 @@ function getTiendas(req, res) {
       if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
       if (!tiendas) return res.status(404).send({message: 'No existen tiendas en la bbdd'})
       console.log(tiendas)
-      res.status(200).send(tiendas)
+      res.status(200).send({tiendas})
     })
 }
 

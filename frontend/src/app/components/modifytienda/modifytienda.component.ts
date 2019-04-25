@@ -15,7 +15,7 @@ api.put('/tienda/:tiendaId', tiendaCtrl.updateTienda)
 export class ModifytiendaComponent implements OnInit {
 
   tiendaForm: FormGroup;
-  list: Tienda[];
+  lista: Tienda[];
 
   constructor(private tiendaService: AuthService, private router: Router, private formBuilder: FormBuilder) {
 
@@ -29,22 +29,22 @@ export class ModifytiendaComponent implements OnInit {
 
   ngOnInit() {
     //cargas la lista de tiendas
-    this.listTienda()
+    this.listTiendas()
   }
 
 
-   listTienda(){
+  listTiendas(){
     console.log("listado de las tiendas")
-    this.tiendaService.getTickets()
+    this.tiendaService.getTiendas()
       .subscribe(
         res => {
           console.log ("respuesta "+ res);
-          this.list = res["tiendas"];
-        })
+          this.lista = res["tiendas"];
+        })  
   }  
 
   modify(tienda: Tienda){
-    console.log("El ticket a modificar  " + tienda._id)
+    console.log("El tienda a modificar  " + tienda._id)
    this.tiendaService.modifytienda(tienda)
    .subscribe(
      res => {

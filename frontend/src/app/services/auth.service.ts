@@ -41,12 +41,14 @@ export class AuthService {
   getTickets():Observable<Ticket>{
     return this.http.get<Ticket>(this.environment.urlUser + "tickets")
   }
+  getTiendas():Observable<Tienda>{
+    return this.http.get<Tienda>(this.environment.urlUser + "tiendas")
+  }
 
-  modifyticket(ticket: Ticket){
-    
-    return this.http.put(this.environment.urlTicket + `/${ticket._id}`)
+  modifyticket(ticket: Ticket){    
+    return this.http.put(this.environment.urlTicket + `/${ticket._id}`, null, null)
   }
   modifytienda(tienda: Tienda){
-    return this.http.put(this.environment.urlTienda + `/${tienda._id}` )
+   return this.http.put(this.environment.urlTienda + `/${tienda._id}`, null, null )
   }
 }

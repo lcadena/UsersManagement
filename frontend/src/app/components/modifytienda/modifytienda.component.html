@@ -1,7 +1,8 @@
-<h2> modifytienda </h2>
+<h2> Modify Tienda </h2>
 
-<div *ngFor = "let tienda of list; let i=index">
+<div *ngFor = "let tienda of lista; let i=index">
   <p><b>Modify tienda:</b> {{tienda._id}}</p>
+
   <p>Rellena los campos a modificar</p>
 
   <form [formGroup]="tiendaForm" (ngSubmit)="modify(tienda)">

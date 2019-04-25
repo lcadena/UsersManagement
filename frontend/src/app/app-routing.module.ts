@@ -16,17 +16,23 @@ import {ModifyticketComponent } from "./components/modifyticket/modifyticket.com
 const routes: Routes = [
   { path: 'api/signin', component: LoginComponent },
   { path: 'api/signup', component: RegisterComponent },
-  { path: 'api/product', component: ProductsComponent, canActivate: [MyguardGuard] },
-  { path: 'api/product/:id', component: ProductdetailComponent, canActivate: [MyguardGuard], pathMatch: 'full'},
-  { path: '', redirectTo: '/api/signin', pathMatch: 'full' },
+  { path: '', redirectTo: '/api/signin', pathMatch: 'full' },   
   { path: 'api/userinfo', component: UserinfoComponent, canActivate: [MyguardGuard] },
   { path: 'api/user/:id', component: UserinfodetailComponent, canActivate: [MyguardGuard] },
+
+  { path: 'api/product', component: ProductsComponent, canActivate: [MyguardGuard] },
+  { path: 'api/product/:id', component: ProductdetailComponent, canActivate: [MyguardGuard], pathMatch: 'full'},
   { path: 'api/addproduct', component: AddproductComponent, canActivate: [MyguardGuard] },
+
   { path: 'api/ticket', component: AddticketComponent},
   { path: 'api/tienda', component: AddtiendaComponent},
+
+  { path: 'api/tiendas', component: ModifytiendaComponent},
   { path: 'api/tienda/:id', component: ModifytiendaComponent},
-  { path: 'api/ticket/:id', component: ModifyticketComponent},
-  { path: 'api/tickets', component: ModifyticketComponent}
+  
+  { path: 'api/tickets', component: ModifyticketComponent, },
+  { path: 'api/ticket/:id', component: ModifyticketComponent}
+ 
 ];
 
 @NgModule({
