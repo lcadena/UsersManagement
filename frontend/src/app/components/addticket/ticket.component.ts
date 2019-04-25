@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   templateUrl: './ticket.component.html',
   styleUrls: ['./ticket.component.css']
 })
-export class TicketComponent implements OnInit {
+export class AddticketComponent implements OnInit {
 
   ticketsForm: FormGroup;
 

@@ -13,8 +13,10 @@ import { ProductdetailComponent } from './components/productdetail/productdetail
 import { UserinfoComponent } from "./components/userinfo/userinfo.component";
 import {UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
 import {AddproductComponent} from "./components/addproduct/addproduct.component";
-import { TiendaComponent } from './components/tienda/tienda.component';
-import { TicketComponent } from './components/ticket/ticket.component';
+import { AddtiendaComponent } from './components/addtienda/tienda.component';
+import { AddticketComponent } from './components/addticket/ticket.component';
+import { ModifytiendaComponent } from './components/modifytienda/modifytienda.component';
+import { ModifyticketComponent } from './components/modifyticket/modifyticket.component';
 //import { ProductsuserComponent } from './components/productsuser/productsuser.component';
 
 @NgModule({
@@ -27,8 +29,10 @@ import { TicketComponent } from './components/ticket/ticket.component';
     UserinfoComponent,
     UserinfodetailComponent,
     AddproductComponent,
-    TiendaComponent,
-    TicketComponent,
+    AddtiendaComponent,
+    AddticketComponent,
+    ModifytiendaComponent,
+    ModifyticketComponent,
     //ProductsuserComponent
 ],
 

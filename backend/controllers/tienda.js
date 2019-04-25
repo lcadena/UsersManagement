@@ -2,7 +2,7 @@
 
 const Product = require('../models/product')
 const Tienda = require('../models/tienda')
-
+ // funcion de salva /add tienda
 function saveTienda(req, res) {
     console.log('POST /api/tienda')
     //imprime cuerpo de petición

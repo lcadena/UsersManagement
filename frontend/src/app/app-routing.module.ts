@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
@@ -8,8 +8,10 @@ import {ProductdetailComponent} from "./components/productdetail/productdetail.c
 import {UserinfoComponent} from "./components/userinfo/userinfo.component";
 import {UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
 import {AddproductComponent} from "./components/addproduct/addproduct.component";
-import {TicketComponent} from "./components/ticket/ticket.component";
-import {TiendaComponent } from "./components/tienda/tienda.component";
+import {AddticketComponent} from "./components/addticket/ticket.component";
+import {AddtiendaComponent } from "./components/addtienda/tienda.component";
+import {ModifytiendaComponent } from "./components/modifytienda/modifytienda.component";
+import {ModifyticketComponent } from "./components/modifyticket/modifyticket.component";
 
 const routes: Routes = [
   { path: 'api/signin', component: LoginComponent },
@@ -20,9 +22,11 @@ const routes: Routes = [
   { path: 'api/userinfo', component: UserinfoComponent, canActivate: [MyguardGuard] },
   { path: 'api/user/:id', component: UserinfodetailComponent, canActivate: [MyguardGuard] },
   { path: 'api/addproduct', component: AddproductComponent, canActivate: [MyguardGuard] },
-  { path: 'api/ticket', component: TicketComponent},
-  { path: 'api/tienda', component: TiendaComponent}
-
+  { path: 'api/ticket', component: AddticketComponent},
+  { path: 'api/tienda', component: AddtiendaComponent},
+  { path: 'api/tienda/:id', component: ModifytiendaComponent},
+  { path: 'api/ticket/:id', component: ModifyticketComponent},
+  { path: 'api/tickets', component: ModifyticketComponent}
 ];
 
 @NgModule({

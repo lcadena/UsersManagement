@@ -32,7 +32,7 @@ export class ProductService {
   }
 
   putProduct(product: Product) {
-    return this.http.put(this.environment.urlProduct + `/${product._id}`, product);
+    return this.http.put(this.environment.urlProduct + `/${product._id}`, product)
   }
 
   deleteProduct(_id: string) {

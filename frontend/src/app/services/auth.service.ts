@@ -4,6 +4,7 @@ import { User } from "../models/user";
 import { Environment } from "./environment";
 import { Ticket } from '../models/ticket';
 import { Tienda } from '../models/tienda';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,14 +28,24 @@ export class AuthService {
   }
 
 
-  // servicios de los tickets
+  // servicios de los tickets y las tiendas (hacer otro servicio)
 
   saveTickets(ticket: Ticket) {
-    return this.http.post(this.environment.urlUser + "ticket", ticket)
+    return this.http.post(this.environment.urlTicket, ticket)
   }
 
   saveTienda(tienda: Tienda) {
-    return this.http.post(this.environment.urlUser + "ticket", tienda)
+    return this.http.post(this.environment.urlTienda, tienda)
   }
 
+  getTickets():Observable<Ticket>{
+    return this.http.get<Ticket>(this.environment.urlUser + "tickets")
+  }
+
+  modifyticket(ticket: Ticket){
+    return this.http.put(this.environment.urlTicket + `/${ticket._id}`)
+  }
+  modifytienda(tienda: Tienda){
+    return this.http.put(this.environment.urlTienda + `/${tienda._id}` )
+  }
 }

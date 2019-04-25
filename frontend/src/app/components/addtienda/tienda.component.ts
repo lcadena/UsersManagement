@@ -9,7 +9,7 @@ import { Tienda } from "../../models/tienda";
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.css']
 })
-export class TiendaComponent implements OnInit {
+export class AddtiendaComponent implements OnInit {
 
   tiendaForm: FormGroup;
 

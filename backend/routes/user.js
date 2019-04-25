@@ -86,7 +86,7 @@ api.get('/tiendas', tiendaCtrl.getTiendas)
 //modificar info tienda - FUNCIONA
 api.put('/tienda/:tiendaId', tiendaCtrl.updateTienda)
 //eliminar tienda por id - FUNCIONA
-api.delete('/tienda/:tiendaId', tiendaCtrl.deleteTienda)
+api.delete('/tiendas/:tiendaId', tiendaCtrl.deleteTienda)
 
 /*TIENDAS Y USUARIO:*/
 //Añadir una tienda a un user
