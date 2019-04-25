@@ -30,6 +30,14 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.6",
-    "nodemon": "^1.18.10"
-  }
+    "nodemon": "^1.18.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcadena/UsersManagement.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lcadena/UsersManagement/issues"
+  },
+  "homepage": "https://github.com/lcadena/UsersManagement#readme"
 }

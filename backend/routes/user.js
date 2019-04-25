@@ -51,9 +51,9 @@ api.put('/:userId/products/:productId', userCtrl.addProductToUser)
 api.get('/products/:userId', userCtrl.getProductsofUser)
 
 /*TICKETS: http://localhost:3000/api/ticket*/
-//listar productos en la bbdd - FUNCIONA
+//listar tickets en la bbdd - FUNCIONA
 api.get('/tickets', ticketCtrl.getTickets)
-//crear/añadir un tcket - FUNCIONA
+//añadir un ticket - FUNCIONA
 api.post('/ticket', ticketCtrl.saveTicket)
 //modificar info product - FUNCIONA
 api.put('/ticket/:ticketId', ticketCtrl.updateTicket)
@@ -89,7 +89,7 @@ api.put('/tienda/:tiendaId', tiendaCtrl.updateTienda)
 api.delete('/tiendas/:tiendaId', tiendaCtrl.deleteTienda)
 
 /*TIENDAS Y USUARIO:*/
-//Añadir una tienda a un user
+//Añadir una tienda a un user - FUNCIONA
 api.put('/:userId/tiendauser/:tiendaId', userCtrl.addTiendaToUser)
 
 
@@ -100,7 +100,7 @@ api.get('/alarmas', alarmaCtrl.getAlarmas)
 api.post('/alarma', alarmaCtrl.saveAlarma)
 //modificar info alarma
 api.put('/alarma/:alarmaId', alarmaCtrl.updateAlarma)
-//eliminar producto por id - FUNCIONA
+//eliminar alarma por id 
 api.delete('/alarma/:alarmaId', alarmaCtrl.deleteAlarma)
 
 
