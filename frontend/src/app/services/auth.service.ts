@@ -5,6 +5,7 @@ import { Environment } from "./environment";
 import { Ticket } from '../models/ticket';
 import { Tienda } from '../models/tienda';
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,23 +15,26 @@ export class AuthService {
   environment: Environment;
   selectedUser: User;
 
+  
   constructor(private http: HttpClient) {
     this.selectedUser = new User("","","","","","", null);
     this.environment = new Environment();
+
   }
+
 
   signup(user: User) {
     return this.http.post(this.environment.urlUser + "signup", user)
   }
 
-  signin(user: User)  {
+  signin(user: User,)  {
     return this.http.post(this.environment.urlUser + "signin", user)
   }
 
 
   // servicios de los tickets y las tiendas (hacer otro servicio)
 
-  saveTickets(ticket: Ticket) {
+  saveTickets(ticket: Ticket) {      
     return this.http.post(this.environment.urlTicket, ticket)
   }
 
@@ -39,7 +43,7 @@ export class AuthService {
   }
 
   getTickets():Observable<Ticket>{
-    return this.http.get<Ticket>(this.environment.urlUser + "tickets")
+    return this.http.get<Ticket>(this.environment.urlUser + "tickets" )
   }
   getTiendas():Observable<Tienda>{
     return this.http.get<Tienda>(this.environment.urlUser + "tiendas")
