@@ -37,7 +37,7 @@ export class AddproductComponent implements OnInit {
 
         description: new FormControl('', Validators.compose([
           Validators.required,
-          Validators.pattern(/.{3,250}$/)])),
+          Validators.pattern(/.{3,23}$/)])),
 
       }
     )
@@ -58,8 +58,8 @@ export class AddproductComponent implements OnInit {
         { type: 'pattern', message: 'It can not begin by a 0 and has to be between 2 and 4 digits long'}
       ],
       'description': [
-        { type: 'required', message: 'Description is required' },
-        { type: 'pattern', message: 'It has to be between 3 and 250 characters long' }
+        { type: 'required', message: 'Dates are required' },
+        { type: 'pattern', message: 'It has to be between 3 and 22 characters long: XX/XX/XXXX--XX/XX/XXXX' }
       ]
     }
   }
@@ -73,6 +73,8 @@ export class AddproductComponent implements OnInit {
     product.picture = "";
     product.price = this.addproductForm.value.price;
     product.category = this.addproductForm.value.category;
+    product.garantia = null;
+    product.devolucion = null;
     product.description = this.addproductForm.value.description;
 
     this.addproductService.saveProduct(product)
