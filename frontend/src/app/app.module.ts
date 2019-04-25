@@ -21,6 +21,7 @@ import { ModifyuserComponent } from './components/modifyuser/modifyuser.componen
 import { ModifyproductComponent } from './components/modifyproduct/modifyproduct.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
+import { ProductsfromticketComponent } from './productsfromticket/productsfromticket.component';
 //import { ProductsuserComponent } from './components/productsuser/productsuser.component';
 
 @NgModule({
@@ -41,6 +42,7 @@ import { TiendaComponent } from './components/tienda/tienda.component';
     ModifyproductComponent,
     TicketComponent,
     TiendaComponent,
+    ProductsfromticketComponent,
     //ProductsuserComponent
 ],
 
