@@ -1,0 +1,14 @@
+
+<h2> LIST Ticket </h2>
+
+<div *ngFor = "let ticket of list; let i=index">
+    <div class="border border-secondary">
+
+  <p><b>ID ticket:</b> {{ticket._id}}</p>
+  <p><b>name ticket:</b> {{ticket.name}}</p>
+  <p><b>cif ticket:</b> {{ticket.cif}}</p>
+  <p><b>foto ticket:</b> {{ticket.foto}</p>
+  <p><b>expedicion ticket:</b> {{ticket.expedicion}}</p>
+  <p><b>products ticket:</b> {{ticket.products}}</p>
+  </div>
+</div>

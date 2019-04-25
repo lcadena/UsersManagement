@@ -13,6 +13,8 @@
     <p><b>Email:</b> {{user.email}}</p>
     <button class="btn btn-primary btn-block" [routerLink]="['/api/user/', user._id]"><i class="fa fa-eye"></i>&nbsp;See user details</button>
     <button class="btn btn-primary btn-block" [routerLink]="['/api/product']"><i class="fa fa-clone"></i> See user products</button>
+    <button class="btn btn-primary btn-block" [routerLink]="['/api/tickets']"><i class="fa fa-eye"></i> See ticket</button>
+    <button class="btn btn-primary btn-block" [routerLink]="['/api/tiendas']"><i class="fa fa-eye"></i> See tienda </button>
     <button class="btn btn-info btn-block" [routerLink]="['/api/addproduct']" ><i class="fa fa-plus"></i> Add new product to the user </button>
     <button class="btn btn-danger btn-block" (click)="confirmDelete(user._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
   </div>

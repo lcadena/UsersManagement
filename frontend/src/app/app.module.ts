@@ -19,6 +19,8 @@ import { ModifytiendaComponent } from './components/modifytienda/modifytienda.co
 import { ModifyticketComponent } from './components/modifyticket/modifyticket.component';
 import { ModifyuserComponent } from './components/modifyuser/modifyuser.component';
 import { ModifyproductComponent } from './components/modifyproduct/modifyproduct.component';
+import { TicketComponent } from './components/ticket/ticket.component';
+import { TiendaComponent } from './components/tienda/tienda.component';
 //import { ProductsuserComponent } from './components/productsuser/productsuser.component';
 
 @NgModule({
@@ -37,6 +39,8 @@ import { ModifyproductComponent } from './components/modifyproduct/modifyproduct
     ModifyticketComponent,
     ModifyuserComponent,
     ModifyproductComponent,
+    TicketComponent,
+    TiendaComponent,
     //ProductsuserComponent
 ],
 

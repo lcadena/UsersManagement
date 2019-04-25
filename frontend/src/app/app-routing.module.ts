@@ -8,6 +8,8 @@ import {ProductdetailComponent} from "./components/productdetail/productdetail.c
 import {UserinfoComponent} from "./components/userinfo/userinfo.component";
 import {UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
 import {AddproductComponent} from "./components/addproduct/addproduct.component";
+import {TicketComponent} from "./components/ticket/ticket.component";
+import {TiendaComponent} from "./components/tienda/tienda.component";
 import {AddticketComponent} from "./components/addticket/addticket.component";
 import {AddtiendaComponent } from "./components/addtienda/addtienda.component";
 import {ModifytiendaComponent } from "./components/modifytienda/modifytienda.component";
@@ -27,10 +29,10 @@ const routes: Routes = [
   { path: 'api/ticket', component: AddticketComponent},
   { path: 'api/tienda', component: AddtiendaComponent},
 
-  { path: 'api/tiendas', component: ModifytiendaComponent},
+  { path: 'api/tiendas', component: TiendaComponent},
   { path: 'api/tienda/:id', component: ModifytiendaComponent},
   
-  { path: 'api/tickets', component: ModifyticketComponent, },
+  { path: 'api/tickets', component: TicketComponent, },
   { path: 'api/ticket/:id', component: ModifyticketComponent}
  
 ];
