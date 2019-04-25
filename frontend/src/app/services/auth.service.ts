@@ -43,6 +43,7 @@ export class AuthService {
   }
 
   modifyticket(ticket: Ticket){
+    
     return this.http.put(this.environment.urlTicket + `/${ticket._id}`)
   }
   modifytienda(tienda: Tienda){

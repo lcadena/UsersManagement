@@ -13,8 +13,8 @@ import { ProductdetailComponent } from './components/productdetail/productdetail
 import { UserinfoComponent } from "./components/userinfo/userinfo.component";
 import {UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
 import {AddproductComponent} from "./components/addproduct/addproduct.component";
-import { AddtiendaComponent } from './components/addtienda/tienda.component';
-import { AddticketComponent } from './components/addticket/ticket.component';
+import { AddtiendaComponent } from './components/addtienda/addtienda.component';
+import { AddticketComponent } from './components/addticket/addticket.component';
 import { ModifytiendaComponent } from './components/modifytienda/modifytienda.component';
 import { ModifyticketComponent } from './components/modifyticket/modifyticket.component';
 //import { ProductsuserComponent } from './components/productsuser/productsuser.component';

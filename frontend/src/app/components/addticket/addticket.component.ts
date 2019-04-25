@@ -5,9 +5,9 @@ import { AuthService } from "../../services/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-ticket',
-  templateUrl: './ticket.component.html',
-  styleUrls: ['./ticket.component.css']
+  selector: 'app-addticket',
+  templateUrl: './addticket.component.html',
+  styleUrls: ['./addticket.component.css']
 })
 export class AddticketComponent implements OnInit {
 

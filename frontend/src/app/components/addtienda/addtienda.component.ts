@@ -5,9 +5,9 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Tienda } from "../../models/tienda";
 
 @Component({
-  selector: 'app-tienda',
-  templateUrl: './tienda.component.html',
-  styleUrls: ['./tienda.component.css']
+  selector: 'app-addtienda',
+  templateUrl: './addtienda.component.html',
+  styleUrls: ['./addtienda.component.css']
 })
 export class AddtiendaComponent implements OnInit {
 
