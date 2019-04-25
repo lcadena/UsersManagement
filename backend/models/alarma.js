@@ -16,4 +16,4 @@ const AlarmSchema = Schema({
   FinDate: Date,
 })
 
-module.exports = mongoose.model('Alarm', AlarmSchema)
+module.exports = mongoose.model('Alarma', AlarmSchema)

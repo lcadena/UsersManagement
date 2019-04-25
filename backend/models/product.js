@@ -7,7 +7,8 @@ const crypto = require('crypto')
 //Crear esquema producto
 const ProductSchema = Schema({
     name: String,
-    category: {type: String, enum: ['computers', 'phones', 'accessories']},
+    category: {type: String, enum: ['telefono', 'transporte', 'restaurante', 'compra', 'comida',
+    'casa','deporte','higiene','taxi','salud','fiesta','vehiculo']},
     lugar:  String,
     price: { type: Number, default:0 },
     garantia: { type: Date, default: Date.now() },

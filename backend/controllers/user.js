@@ -174,6 +174,19 @@ function addProductToUser(req, res) {
     })
 }
 
+///añadir tienda a usario
+function addTiendaToUser(req, res) {
+  let userId = req.params.userId
+  let tiendaId = req.params.tiendaId
+  //let update = req.body
+  User.update({_id: userId}, {"$push": {"tiendas": tiendaId}}, (err, result) => {
+    if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
+    if (!result) return res.status(404).send({message: 'El usuario no existe'})
+    console.log(result)
+    return res.status(200).send(result)
+    })
+}
+
 //añadir ticket a usuario
 function addTicketToUser(req, res) {
   let userId = req.params.userId
@@ -234,6 +247,7 @@ module.exports = {
   deleteUser,
   getUserswithProducts,
   addProductToUser,
+  addTiendaToUser,
   addTicketToUser,
   getProductsofUser,
   getTicketsofUser

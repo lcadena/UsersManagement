@@ -14,7 +14,8 @@ const UserSchema = new Schema({
   signUpDate: { type: Date, default: Date.now() },
   rol: {type: String, enum: ['admin', 'user']},
   products:  [{ type: Schema.Types.ObjectId, ref: 'Product' }],
-  tickets: [{ type: Schema.Types.ObjectId, ref: 'Ticket' }]
+  tickets: [{ type: Schema.Types.ObjectId, ref: 'Ticket' }],
+  tiendas: [{ type: Schema.Types.ObjectId, ref: 'Tienda'}]
   
 })
 
