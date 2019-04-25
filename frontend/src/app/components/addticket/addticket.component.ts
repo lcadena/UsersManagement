@@ -28,7 +28,7 @@ export class AddticketComponent implements OnInit {
   }
   addTickets(){
     console.log(this.ticketsForm);
-    let ticket = new Ticket(this.ticketsForm.value.name, this.ticketsForm.value.cif, this.ticketsForm.value.foto, this.ticketsForm.value.expedicion, this.ticketsForm.value.products)
+    let ticket = new Ticket(this.ticketsForm.value._id, this.ticketsForm.value.name, this.ticketsForm.value.cif, this.ticketsForm.value.foto, this.ticketsForm.value.expedicion, this.ticketsForm.value.products)
     
     this.ticketService.saveTickets(ticket)
       .subscribe(

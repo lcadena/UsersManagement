@@ -28,8 +28,8 @@ export class AddtiendaComponent implements OnInit {
 
   addTienda(){
     console.log(this.tiendaForm);
-    let tienda = new Tienda(this.tiendaForm.value.name, this.tiendaForm.value.cif, this.tiendaForm.value.products)
-    
+    let tienda = new Tienda(this.tiendaForm.value._id, this.tiendaForm.value.name, this.tiendaForm.value.direccion)
+  
     this.tiendaService.saveTienda(tienda)
       .subscribe(
         res => {
