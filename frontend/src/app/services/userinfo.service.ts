@@ -19,7 +19,7 @@ export class UserinfoService {
   }
 
   getUsers():Observable<User[]> { //tengo que recibir el tipo User para que me haga bien la lista
-    return this.http.get<User[]>(this.environment.urlUserList);
+    return this.http.get<User[]>(this.environment.urlUser + 'users');
   }
 
   getUser(_id: string) {

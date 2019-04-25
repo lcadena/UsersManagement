@@ -19,7 +19,7 @@ export class ProductService {
   }
 
   getProducts():Observable<Product[]> {
-    return this.http.get<Product[]>(this.environment.urlProduct);
+    return this.http.get<Product[]>(this.environment.urlUser + 'products');
   }
 
   getSingleProduct(_id: string) {
