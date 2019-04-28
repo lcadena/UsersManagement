@@ -3,7 +3,7 @@ import {Router} from "@angular/router";
 import {ProductService} from "../../services/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {Product} from "../../models/product";
-import { User } from '../../models/user';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-productsuser',

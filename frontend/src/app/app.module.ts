@@ -21,7 +21,6 @@ import { ModifyuserComponent } from './components/modifyuser/modifyuser.componen
 import { ModifyproductComponent } from './components/modifyproduct/modifyproduct.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
-import { ProductsfromticketComponent } from './productsfromticket/productsfromticket.component';
 import { ProductsuserComponent } from './components/productsuser/productsuser.component';
 import { TicketsuserComponent } from './components/ticketsuser/ticketsuser.component';
 import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.component';
@@ -46,7 +45,6 @@ import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.compo
     ModifyproductComponent,
     TicketComponent,
     TiendaComponent,
-    ProductsfromticketComponent,
     ProductsuserComponent,
     TicketsuserComponent,
     TiendasuserComponent,

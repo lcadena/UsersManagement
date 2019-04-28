@@ -1,3 +1,15 @@
-<p>
-  ticketsuser works!
-</p>
+<p> Lista de ticket del usuario </p>
+
+
+
+<button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</button>
+
+<div *ngFor = "let ticket of tickets; let i=index">
+    <div class="border border-secondary">
+
+  <p><b>ID ticket:</b> {{ticket._id}}</p>
+  <p><b>name ticket:</b> {{ticket.name}}</p>  
+  <p><b>cif ticket:</b> {{ticket.cif}}</p>
+  </div>
+
+</div>
