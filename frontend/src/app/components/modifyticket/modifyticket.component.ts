@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../services/auth.service";
+import { TicketService } from "../../services/ticket.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import { Ticket } from "../../models/ticket";
@@ -14,7 +14,7 @@ export class ModifyticketComponent implements OnInit {
   ticketsForm: FormGroup;
   list: Ticket[];
 
-  constructor(private ticketService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private ticketService: TicketService, private router: Router, private formBuilder: FormBuilder) {
     this.ticketsForm = this.formBuilder.group({
       name: new FormControl(),
       cif: new FormControl(),

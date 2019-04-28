@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const User = require('../models/user')
 const Product = require('../models/product')
 const Ticket = require('../models/ticket')
+const Tiendas = require('../models/tienda')
 const service = require('../services')
 
 //función para el registro
@@ -219,7 +220,7 @@ function getProductsofUser(req, res) {
   })
 }
 
-////listar tickets de un usuario 
+//listar tickets de un usuario 
 function getTicketsofUser(req, res) {
   let userId = req.params.userId
   User.findById({_id: userId}, (err, result) => {
@@ -238,6 +239,29 @@ function getTicketsofUser(req, res) {
   })
 }
 
+//listar tiendas por usuario
+function getTiendasofUser(req, res) {
+  let userId = req.params.userId
+  User.findById({_id: userId}, (err, result) => {
+    console.log(result.tiendas)
+    if(err) return res.status(500).send(`Error al realizar la petición: ${err}`)
+    if(!result) return res.status(400).send({message: 'El usuario no existe'})
+
+    Tiendas.find({'_id': { $in: result.tiendas}}, (err, tiendasOfUser) => {
+      if(tiendasOfUser.length == 0) {
+        return res.status(204).send({message: 'El usaurio no tiene tiendas'})
+      } else {
+        console.log(tiendasOfUser)
+        return res.status(200).send(tiendasOfUser)
+      }
+    })
+  })
+}
+
+
+
+
+
 module.exports = {
   signUp,
   signIn,
@@ -250,5 +274,6 @@ module.exports = {
   addTiendaToUser,
   addTicketToUser,
   getProductsofUser,
-  getTicketsofUser
+  getTicketsofUser, 
+  getTiendasofUser
 }

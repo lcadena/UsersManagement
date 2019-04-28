@@ -48,8 +48,9 @@ api.delete('/product/:productId', productCtrl.deleteProduct)
 api.get('/usersproducts', userCtrl.getUserswithProducts)
 //añadir un producto a un usuario - FUNCIONA *
 api.put('/:userId/products/:productId', userCtrl.addProductToUser)
-//listar los productos de un usuario - FUNCIONA *
+//listar los productos de un usuario - FUNCIONA **
 api.get('/products/:userId', userCtrl.getProductsofUser)
+
 
 /*TICKETS: http://localhost:3000/api/ticket*/
 //listar tickets en la bbdd - FUNCIONA **
@@ -63,7 +64,7 @@ api.put('/ticket/:ticketId', ticketCtrl.updateTicket)
 /*TICKETS Y USUARIOS*/
 //añadir un ticket a un usuario - FUNCIONA *
 api.put('/:userId/tickets/:ticketId', userCtrl.addTicketToUser)
-//listar los tickets de un usuario - FUNCIONA *
+//listar los tickets de un usuario - FUNCIONA **
 api.get('/tickets/:userId', userCtrl.getTicketsofUser)
 
 /*TICKETS Y PRODUCTOS*/
@@ -71,13 +72,6 @@ api.get('/tickets/:userId', userCtrl.getTicketsofUser)
 api.put('/:ticketId/prodtick/:productId', ticketCtrl.addProductToTicket)
 //listar los productos de un ticket - FUNCIONA **
 api.get('/prodtick/:ticketId', ticketCtrl.getProductsofTicket)
-
-/*TIENDAS Y PRODUCTOS*/
-//añadir un producto a una tienda - FUNCIONA
-api.put('/:tiendaId/prodtienda/:productId', tiendaCtrl.addProductToTienda)
-//listar los productos de una tienda - FUNCIONA
-api.get('/prodtienda/:tiendaId', tiendaCtrl.getProductsofTienda)
-
 
 /*TIENDAS: http://localhost:3000/api/tienda*/
 //Añadir una tienda en la bbdd - FUNCIONA **
@@ -92,7 +86,15 @@ api.delete('/tiendas/:tiendaId', tiendaCtrl.deleteTienda)
 /*TIENDAS Y USUARIO:*/
 //Añadir una tienda a un user - FUNCIONA *
 api.put('/:userId/tiendauser/:tiendaId', userCtrl.addTiendaToUser)
+//listar tiendas de un usuario
+api.get('/tiendas/:userId', userCtrl.getTiendasofUser)
 
+
+/*TIENDAS Y PRODUCTOS*/
+//añadir un producto a una tienda - FUNCIONA
+api.put('/:tiendaId/prodtienda/:productId', tiendaCtrl.addProductToTienda)
+//listar los productos de una tienda - FUNCIONA
+api.get('/prodtienda/:tiendaId', tiendaCtrl.getProductsofTienda)
 
 
 

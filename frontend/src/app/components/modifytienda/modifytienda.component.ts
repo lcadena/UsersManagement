@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../services/auth.service";
+import { TiendaService } from "../../services/tienda.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import { Tienda } from '../../models/tienda';
@@ -17,7 +17,7 @@ export class ModifytiendaComponent implements OnInit {
   tiendaForm: FormGroup;
   lista: Tienda[];
 
-  constructor(private tiendaService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private tiendaService: TiendaService, private router: Router, private formBuilder: FormBuilder) {
 
     this.tiendaForm = this.formBuilder.group({
       name: new FormControl(),

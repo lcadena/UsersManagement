@@ -18,14 +18,16 @@ export class TiendaService {
   saveTienda(tienda: Tienda) {
     return this.http.post(this.environment.urlTienda, tienda)
   }
-
   
   getTiendas():Observable<Tienda>{
     return this.http.get<Tienda>(this.environment.urlUser + "tiendas")
   }
-
   
   modifytienda(tienda: Tienda){
    return this.http.put(this.environment.urlTienda + `/${tienda._id}`, tienda)
+  }
+
+  getTiendasUser(_id: string):Observable<Tienda[]> {
+    return this.http.get<Tienda[]>(this.environment.urlUser + "tiendas" + `/${_id}`)
   }
 }

@@ -1,3 +1,15 @@
-<p>
-  tiendasuser works!
-</p>
+<p> Lista de tiendas del usuario </p>
+
+
+
+<button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</button>
+
+<div *ngFor = "let tienda of tiendas; let i=index">
+    <div class="border border-secondary">
+
+  <p><b>ID tienda:</b> {{tienda._id}}</p>
+  <p><b>name tienda:</b> {{tienda.name}}</p>  
+  <p><b>direccion tienda:</b> {{tienda.direccion}}</p>
+  </div>
+
+</div>

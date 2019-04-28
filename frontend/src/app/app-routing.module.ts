@@ -16,7 +16,7 @@ import {ModifytiendaComponent } from "./components/modifytienda/modifytienda.com
 import {ModifyticketComponent } from "./components/modifyticket/modifyticket.component";
 import {ProductsuserComponent } from "./components/productsuser/productsuser.component";
 import { TicketsuserComponent } from './components/ticketsuser/ticketsuser.component';
-
+import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.component';
 const routes: Routes = [ 
   //usuario
   { path: 'api/signin', component: LoginComponent },
@@ -39,7 +39,7 @@ const routes: Routes = [
   //lista dependiendta de usuario
   { path: 'api/productsuser/:id', component: ProductsuserComponent},
   { path: 'api/ticketsuser/:id', component: TicketsuserComponent},
-  { path: 'api/tiendasuser/:id', component: TiendaComponent},
+  { path: 'api/tiendasuser/:id', component: TiendasuserComponent},
  
 ];
 
