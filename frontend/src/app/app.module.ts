@@ -11,8 +11,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { InterceptorService } from "./services/interceptor.service";
 import { ProductdetailComponent } from './components/productdetail/productdetail.component';
 import { UserinfoComponent } from "./components/userinfo/userinfo.component";
-import {UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
-import {AddproductComponent} from "./components/addproduct/addproduct.component";
+import { UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
+import { AddproductComponent} from "./components/addproduct/addproduct.component";
 import { AddtiendaComponent } from './components/addtienda/addtienda.component';
 import { AddticketComponent } from './components/addticket/addticket.component';
 import { ModifytiendaComponent } from './components/modifytienda/modifytienda.component';
@@ -22,6 +22,10 @@ import { ModifyproductComponent } from './components/modifyproduct/modifyproduct
 import { TicketComponent } from './components/ticket/ticket.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
 import { ProductsfromticketComponent } from './productsfromticket/productsfromticket.component';
+import { ProductsuserComponent } from './components/productsuser/productsuser.component';
+import { TicketsuserComponent } from './components/ticketsuser/ticketsuser.component';
+import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.component';
+
 //import { ProductsuserComponent } from './components/productsuser/productsuser.component';
 
 @NgModule({
@@ -43,6 +47,9 @@ import { ProductsfromticketComponent } from './productsfromticket/productsfromti
     TicketComponent,
     TiendaComponent,
     ProductsfromticketComponent,
+    ProductsuserComponent,
+    TicketsuserComponent,
+    TiendasuserComponent,
     //ProductsuserComponent
 ],
 

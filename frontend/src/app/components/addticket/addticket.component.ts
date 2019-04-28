@@ -34,6 +34,7 @@ export class AddticketComponent implements OnInit {
       .subscribe(
         res => {
           console.log ("respuesta "+ res);
+          this.router.navigateByUrl("/api/tickets")
         })  
   }
 }

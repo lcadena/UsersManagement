@@ -1,3 +1,16 @@
-<p>
-  productsuser works!
-</p>
+<p> Lista de productos del usuario </p>
+
+
+
+<button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</button>
+
+<div *ngFor = "let product of products; let i=index">
+    <div class="border border-secondary">
+
+  <p><b>ID producto:</b> {{product._id}}</p>
+  <p><b>name producto:</b> {{product.name}}</p>  
+  <p><b>price producto:</b> {{product.price}}</p>
+  <p><b>category producto:</b> {{product.category}}</p>
+  </div>
+
+</div>

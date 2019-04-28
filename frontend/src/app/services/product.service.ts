@@ -38,4 +38,8 @@ export class ProductService {
   deleteProduct(_id: string) {
     return this.http.delete(this.environment.urlProduct + `/${_id}`);
   }
+  //Lista de los productos por usuario
+  getProductUser(_id: string ):Observable<Product[]>{
+    return this.http.get<Product[]>(this.environment.urlUser + 'products' + `/${_id}`);
+  }
 }

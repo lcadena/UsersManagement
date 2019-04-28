@@ -34,6 +34,7 @@ export class AddtiendaComponent implements OnInit {
       .subscribe(
         res => {
           console.log ("respuesta "+ res);
+          this.router.navigateByUrl("/api/tiendas")
         })  
   }
 }
