@@ -3,6 +3,7 @@ import { TicketService } from "../../services/ticket.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import { Ticket } from "../../models/ticket";
+import { formControlBinding } from '@angular/forms/src/directives/ng_model';
 
 @Component({
   selector: 'app-modifyticket',
@@ -43,10 +44,14 @@ export class ModifyticketComponent implements OnInit {
 
   modify(ticket: Ticket){
      console.log("El ticket a modificar  " + ticket._id)
+     ticket.name = this.ticketsForm.value.name;
+     ticket.cif= this.ticketsForm.value.cif;
+     ticket.foto= this.ticketsForm.value.foto;
+     //ticket.expedicion= this.ticketsForm.value.expedicion (calendario)
     this.ticketService.modifyticket(ticket)
     .subscribe(
       res => {
-        console.log("resp de modificar " + res);
+        console.log("resp de modificar " + ticket.name);
       })
   }
 }

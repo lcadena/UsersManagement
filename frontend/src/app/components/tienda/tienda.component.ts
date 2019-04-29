@@ -13,7 +13,10 @@ export class TiendaComponent implements OnInit {
   ticketsForm: FormGroup;
   lista: Tienda[];
 
-  constructor(private tiendaService: TiendaService, private router: Router, private formBuilder: FormBuilder) { }
+
+  constructor(private tiendaService: TiendaService, private router: Router, private formBuilder: FormBuilder) {
+   
+   }
 
   ngOnInit() {
     this.listTiendas();

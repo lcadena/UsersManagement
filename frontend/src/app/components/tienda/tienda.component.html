@@ -9,6 +9,7 @@
   <p><b>name tienda:</b> {{tienda.name}}</p>  
   <p><b>direccion tienda:</b> {{tienda.direccion}}</p>
   <p><b>productos tienda:</b> {{tienda.productos}}</p>
+  <button class="btn btn-primary" [routerLink]="['/api/tienda/', tienda._id]"><i class="fa fa-eye"></i> Modify Tienda</button>
   </div>
 
 </div>

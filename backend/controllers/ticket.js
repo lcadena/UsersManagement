@@ -39,6 +39,8 @@ function updateTicket(req, res) {
     let ticketId = req.params.ticketId
     let update = req.body
 
+    console.log("uptateTicket", update);
+
     Ticket.findByIdAndUpdate(ticketId, update, (err, ticketUpdated) => {
         if (err) res.status(500).send({message: `Error al actualizarlo: ${err}`})
     

@@ -29,6 +29,16 @@ function getTiendas(req, res) {
     })
 }
 
+function getTiendaID(req,res){
+  console.log("holllllliii get tiendaID");
+  let tiendaId = req.params.tiendaId
+Tienda.findById(tiendaId,(err, tienda) => {
+  if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
+  if (!tienda) return res.status(404).send({message: 'No existe la tiendas en la bbdd'})
+  console.log("get una tienda",tienda)
+  res.status(200).send(tienda)
+})
+}
 //Modificar tienda
 function updateTienda(req, res) {
     let tiendaId = req.params.tiendaId
@@ -87,13 +97,10 @@ function getProductsofTienda(req, res) {
     })
 }
 
-
-
-
-
 module.exports = {
     saveTienda,
     getTiendas,
+    getTiendaID,
     updateTienda,
     addProductToTienda,
     getProductsofTienda,

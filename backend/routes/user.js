@@ -78,6 +78,8 @@ api.get('/prodtick/:ticketId', ticketCtrl.getProductsofTicket)
 api.post('/tienda', tiendaCtrl.saveTienda) 
 //listar todas las tiendas - FUNCIONA **
 api.get('/tiendas', tiendaCtrl.getTiendas) 
+//recoger los datos de la tienda por ID
+api.get('/tiendaId/:tiendaId',tiendaCtrl.getTiendaID)
 //modificar info tienda - FUNCIONA *
 api.put('/tienda/:tiendaId', tiendaCtrl.updateTienda)
 //eliminar tienda por id - FUNCIONA
