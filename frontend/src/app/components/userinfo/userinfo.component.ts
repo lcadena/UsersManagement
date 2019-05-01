@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {UserinfoService} from "../../services/userinfo.service";
 import {User} from "../../models/user";
@@ -10,22 +10,46 @@ import {User} from "../../models/user";
   styleUrls: ['./userinfo.component.css']
 })
 export class UserinfoComponent implements OnInit {
-
-  constructor(private userinfoService: UserinfoService, private router: Router) { }
-
   users: User[];
+  user: User;
+  constructor(private userinfoService: UserinfoService, private router: Router, private activatedRouter: ActivatedRoute) { 
+    this.user = new User("","", "","","","",null);
+  }
+  
 
   ngOnInit() {
+    //para recoger el email de la URL
+  this.activatedRouter.params.subscribe(params => {
+    if (typeof params['email'] !== 'undefined') {
+      console.log("params", params);
+      this.user.email = params['email'];      
+      console.log("user: ", this.user);
+    } else {
+      this.user.email = '';
+    }
+  });
     this.getUsers();
   }
-
   getUsers(){
     this.userinfoService.getUsers()
       .subscribe(res =>{
-        this.users = res; //res me recibe la lista de users
-      });
+        this.users = res; //res me recibe la lista de users    
+      for(let i in this.users){
+        if (this.users[i].email == this.user.email){
+          this.getUser(this.users[i]._id);
+          console.log("id: " + this.users[i]._id)
+          this.getUser(this.users[i]._id)
+        }
+      }
+    });
   }
-
+  getUser(id:string){
+    this.userinfoService.getUser(id)
+    .subscribe(res =>{
+      this.user = res;
+      console.log("Usuario" + this.user._id) //porque pasa dos veces 
+    })
+  }
   /**
    *
    * @param id
@@ -48,7 +72,6 @@ export class UserinfoComponent implements OnInit {
           });
     }
   }
-
   /**
    *
    * @param err
@@ -58,7 +81,6 @@ export class UserinfoComponent implements OnInit {
       alert(err);
     }
   }
-
   goBack() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('');

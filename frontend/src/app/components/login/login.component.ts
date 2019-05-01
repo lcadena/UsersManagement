@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
           console.log(res);
           let token = res['token'];
           localStorage.setItem('token', token);
-          this.router.navigateByUrl("/api/userinfo");
+          this.router.navigateByUrl("/api/userinfo/" + this.loginForm.value.email);
         },
         err => {
           console.log(err);

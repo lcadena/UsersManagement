@@ -17,8 +17,6 @@ export class ProductsuserComponent implements OnInit {
   constructor(private router: Router, private productService: ProductService, private activatedRouter: ActivatedRoute) { 
     this.user = new User("","", "","","","",null);
   }
- 
-
 
   ngOnInit() {
     //para recoger el id del user

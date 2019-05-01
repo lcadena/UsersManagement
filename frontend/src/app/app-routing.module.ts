@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'api/signin', component: LoginComponent },
   { path: 'api/signup', component: RegisterComponent },
   { path: '', redirectTo: '/api/signin', pathMatch: 'full' },   
-  { path: 'api/userinfo', component: UserinfoComponent, canActivate: [MyguardGuard] },
+  { path: 'api/userinfo/:email', component: UserinfoComponent, canActivate: [MyguardGuard] },
   { path: 'api/user/:id', component: UserinfodetailComponent, canActivate: [MyguardGuard] },
   //productos
   { path: 'api/product', component: ProductsComponent, canActivate: [MyguardGuard] },
