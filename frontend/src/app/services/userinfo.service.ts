@@ -44,7 +44,7 @@ export class UserinfoService {
     return this.http.put(this.environment.urlTicketUser + `/${_iduser}` + `/${_idticket}`, body)
   }//ticketuser/:userId/:ticketId
 
-  addTiendaToUser(_iduser: string, _idtienda: string) {
-    return this.http.put(this.environment.urlUser + 'tiendauser' + `/${_iduser}` + `/${_idtienda}`,null)
+  addTiendaToUser(_iduser: string, _idtienda: string, body: string) {
+    return this.http.put(this.environment.urlUser + 'tiendauser' + `/${_iduser}` + `/${_idtienda}`,body)
   } //tiendauser/:userId/:tiendaId
 }

@@ -41,63 +41,58 @@ export class AddticketComponent implements OnInit {
     //para recoger el id del user
     this.activatedRouter.params.subscribe(params => {
       if (typeof params['id'] !== 'undefined') {
-        console.log("params", params);
-        console.log("user: ", this.user);
+        console.log("params", params);        
         this.user._id = params['id'];
       } else {
         this.user._id = '';
       }
     });
   }
-  /*public class Id {
-    public string iduser
-  }*/
+  
   addTickets(){
-    console.log(this.ticketsForm);
-    this.ticket = new Ticket(this.ticketsForm.value._id, this.ticketsForm.value.name, this.ticketsForm.value.cif, this.ticketsForm.value.foto, this.ticketsForm.value.expedicion, this.ticketsForm.value.products)
-    console.log(this.tiendaForm);
-    this.tienda = new Tienda(this.ticketsForm.value._id ,this.ticketsForm.value.nametienda, this.ticketsForm.value.direccion)
+    this.ticket = new Ticket("",this.ticketsForm.value.name, this.ticketsForm.value.cif, this.ticketsForm.value.foto, this.ticketsForm.value.expedicion, this.ticketsForm.value.products)
+    this.tienda = new Tienda("",this.ticketsForm.value.nametienda, this.ticketsForm.value.direccion)
 
     this.ticketService.saveTickets(this.ticket)
       .subscribe(
         (res:Ticket)  => {
-          console.log ("respuesta "+ JSON.stringify(res));         
+          console.log ("respuesta "+ res);         
           this.ticket = res;
-         
+          console.log(this.ticket._id)
+          //añadir el ticket al usuario
+          let data = {
+            "iduser": this.user._id,
+            "idticket": this.ticket._id };
+          console.log('data ', data)
+          let body = JSON.stringify(data )
+          this.userService.addTicketToUser(this.user._id , this.ticket._id, body)
+          .subscribe(
+            res => {
+      
+           console.log ("ticket" + res);
+          })
+        })
+
+        
     this.tiendaService.saveTienda(this.tienda)
       .subscribe(
         (res:Tienda) => {
-          console.log ("respuesta " + JSON.stringify(res));
-          this.tienda = res; 
-        })    
+          console.log ("respuesta " + res);
+          this.tienda = res;         
+        //añadir tienda a usuario
+        let data = {
+          "iduser": this.user._id,
+          "idtienda": this.tienda._id };
+        console.log('data ', data)
+        let body = JSON.stringify(data )
+        
+    this.userService.addTiendaToUser(this.user._id, this.tienda._id, body)
+      .subscribe(
+      res => {
+        console.log ("tienda" + res);
+        })
       }) 
-      
-
-      //actulizar ID de teda y user
-        this.addtoUser();
-}
-
-addtoUser(){
-  let data = {
-  "iduser": this.user._id,
-  "idticket": this.ticket._id };
-console.log('data ', data)
-let body = JSON.stringify(data )
-this.userService.addTicketToUser(this.user._id , this.ticket._id, body)
-.subscribe(
-  res => {
-    
-    console.log ("ticket" + res);
-  })
-
-  this.userService.addTiendaToUser(this.user._id, this.tienda._id)
-.subscribe(
-  res => {
-    console.log ("tienda" + res);
-  })
-
-    //hacer que el ticket y la tienda se añadan a un usuario
 
     this.router.navigateByUrl("api/user/" + this.user._id)
-}
+  }
 }
