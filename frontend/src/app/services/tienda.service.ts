@@ -11,7 +11,7 @@ export class TiendaService {
   environment: Environment;
 
   constructor(private http: HttpClient) { 
-    this.environment = new Environment();
+    this.environment = new Environment()
   }
   
 

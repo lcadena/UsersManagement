@@ -32,7 +32,7 @@ export class UserinfodetailComponent implements OnInit {
   getUser(id: string) {
     this.userinfoService.getUser(id)
       .subscribe(res =>{
-        this.user = res["user"];
+        this.user = res;
       });
     console.log(this.user);
   }

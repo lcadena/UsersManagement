@@ -109,7 +109,6 @@ function getUsers(req, res) {
     return res.status(200).send(userslist)
   })
 }
-
 function updateUser(req, res) {
   //obtener el id de 
   let userId = req.params.userId
@@ -123,7 +122,6 @@ function updateUser(req, res) {
     return res.status(200).send(userUpdated)
   })
 }
-
 function getSingleUser(req, res) {
   //obtener el id de usuario
   let userId = req.params.userId // coge de un parametro el id? (por ejemplo si yo le paso el mail me devuelve el id?)
@@ -134,7 +132,6 @@ function getSingleUser(req, res) {
     return res.status(200).send(user)
   })
 }
-
 function deleteUser(req, res) {
   let userId = req.params.userId
 
@@ -147,7 +144,6 @@ function deleteUser(req, res) {
     })
   })
 }
-
 function getUserswithProducts(req, res) {
   //busca todos los usuarios, claudator vacio
   User.find({ }, (err, userslistwithproducts) => { //l'array de productes no m'ho dona
@@ -161,7 +157,6 @@ function getUserswithProducts(req, res) {
     })
   })
 }
-
 ///añadir producto a usario
 function addProductToUser(req, res) {
   let userId = req.params.userId
@@ -174,7 +169,6 @@ function addProductToUser(req, res) {
     return res.status(200).send(result)
     })
 }
-
 ///añadir tienda a usario
 function addTiendaToUser(req, res) {
   let userId = req.params.userId
@@ -187,7 +181,6 @@ function addTiendaToUser(req, res) {
     return res.status(200).send(result)
     })
 }
-
 //añadir ticket a usuario
 function addTicketToUser(req, res) {
   let userId = req.params.userId
@@ -199,8 +192,6 @@ function addTicketToUser(req, res) {
     return res.status(200).send(result)
   })
 }
-
-
 ///listar productos de un usuario 
 function getProductsofUser(req, res) {
   let userId = req.params.userId
@@ -219,7 +210,6 @@ function getProductsofUser(req, res) {
     })
   })
 }
-
 //listar tickets de un usuario 
 function getTicketsofUser(req, res) {
   let userId = req.params.userId
@@ -238,7 +228,6 @@ function getTicketsofUser(req, res) {
     })
   })
 }
-
 //listar tiendas por usuario
 function getTiendasofUser(req, res) {
   let userId = req.params.userId

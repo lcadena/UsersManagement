@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'api/product/:id', component: ProductdetailComponent, canActivate: [MyguardGuard], pathMatch: 'full'},
   { path: 'api/addproduct', component: AddproductComponent, canActivate: [MyguardGuard] },
   //ticket
-  { path: 'api/ticket', component: AddticketComponent},
+  { path: 'api/ticket/:id', component: AddticketComponent},
   { path: 'api/tickets', component: TicketComponent, },
   { path: 'api/ticket/:id', component: ModifyticketComponent},
   //tienda

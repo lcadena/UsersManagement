@@ -19,13 +19,10 @@ export class AddtiendaComponent implements OnInit {
       direccion: new FormControl(),     
       products: new FormControl()
     })
-
    }
 
   ngOnInit() {
   }
-
-
   addTienda(){
     console.log(this.tiendaForm);
     let tienda = new Tienda(this.tiendaForm.value._id, this.tiendaForm.value.name, this.tiendaForm.value.direccion)

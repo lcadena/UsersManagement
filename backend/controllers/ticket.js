@@ -20,7 +20,7 @@ function saveTicket(req, res) {
     ticket.save((err, ticketStored) => {
       if (err) res.status(500).send({message: `Error al salvar en la bbdd: ${err}`})
   
-      res.status(200).send({message: ticketStored})
+      res.status(200).send( ticketStored)
     })
   }
 

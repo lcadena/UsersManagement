@@ -4,4 +4,6 @@ export class Environment {
   urlProduct: string = "http://localhost:3000/api/product";
   urlTicket: string = "http://localhost:3000/api/ticket";
   urlTienda: string = "http://localhost:3000/api/tienda";
+  urlTicketUser: string = "http://localhost:3000/api/ticketuser";
 }
+

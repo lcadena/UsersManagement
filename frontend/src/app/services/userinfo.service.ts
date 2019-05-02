@@ -38,4 +38,13 @@ export class UserinfoService {
     return this.http.put(this.environment.urlUserList + `/${user.email}`, user);
   }*/
 
+  addTicketToUser(_iduser: string, _idticket: string, body: string)  {
+    console.log('iduser ', _iduser)
+    console.log('idticket ', _idticket)
+    return this.http.put(this.environment.urlTicketUser + `/${_iduser}` + `/${_idticket}`, body)
+  }//ticketuser/:userId/:ticketId
+
+  addTiendaToUser(_iduser: string, _idtienda: string) {
+    return this.http.put(this.environment.urlUser + 'tiendauser' + `/${_iduser}` + `/${_idtienda}`,null)
+  } //tiendauser/:userId/:tiendaId
 }

@@ -63,7 +63,7 @@ api.put('/ticket/:ticketId', ticketCtrl.updateTicket)
 
 /*TICKETS Y USUARIOS*/
 //añadir un ticket a un usuario - FUNCIONA *
-api.put('/:userId/tickets/:ticketId', userCtrl.addTicketToUser)
+api.put('/ticketuser/:userId/:ticketId', userCtrl.addTicketToUser)
 //listar los tickets de un usuario - FUNCIONA **
 api.get('/tickets/:userId', userCtrl.getTicketsofUser)
 
@@ -87,7 +87,7 @@ api.delete('/tiendas/:tiendaId', tiendaCtrl.deleteTienda)
 
 /*TIENDAS Y USUARIO:*/
 //Añadir una tienda a un user - FUNCIONA *
-api.put('/:userId/tiendauser/:tiendaId', userCtrl.addTiendaToUser)
+api.put('/tiendauser/:userId/:tiendaId', userCtrl.addTiendaToUser)
 //listar tiendas de un usuario
 api.get('/tiendas/:userId', userCtrl.getTiendasofUser)
 
