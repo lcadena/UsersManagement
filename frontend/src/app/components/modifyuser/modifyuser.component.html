@@ -1,9 +1,9 @@
 <h2>User Detail of {{user.firstName}}</h2>
 <p><p>
-  <button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See my products</button>
+  <ion-button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See my products</ion-button>
 </p><p>
 <p>
-  <button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</button>
+  <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
 </p>
 
 <div class="border border-secondary">
@@ -15,5 +15,5 @@
 </div>
 
 <p><p>
-  <button class="logout" (click)="goBack()" [routerLink]="['']">Log out</button>
+  <ion-button class="logout" (click)="goBack()" [routerLink]="['']">Log out</ion-button>
 </p><p>

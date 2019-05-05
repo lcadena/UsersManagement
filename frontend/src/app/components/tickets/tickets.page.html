@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tickets</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <app-ticket-item 
+      *ngFor="let ticket of tickets"
+      [ticketItem] ="ticket"
+      ></app-ticket-item>
+  </ion-list>
+</ion-content>

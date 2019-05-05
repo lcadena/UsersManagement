@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse } from "@angular/common/http";
-import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {ProductService} from "../../services/product.service";
-import {Product} from "../../models/product";
+import { HttpErrorResponse } from '@angular/common/http';
+import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {ProductService} from '../../services/product.service';
+import {Product} from '../../models/product';
 
 
 @Component({
@@ -45,19 +45,19 @@ export class AddproductComponent implements OnInit {
 
   ngOnInit() {
     this.validation_messages = {
-      'name': [
+      name: [
         { type: 'required', message: 'Name is required'},
         { type: 'pattern', message: 'It has to be between 3 and 15 characters long'}
       ],
-      'category': [
+      category: [
         { type: 'required', message: 'Category is required'},
         { type: 'pattern', message: 'It has to be between 3 and 25 characters long'}
       ],
-      'price': [
+      price: [
         { type: 'required', message: 'Price is required'},
         { type: 'pattern', message: 'It can not begin by a 0 and has to be between 2 and 4 digits long'}
       ],
-      'description': [
+      description: [
         { type: 'required', message: 'Dates are required' },
         { type: 'pattern', message: 'It has to be between 3 and 22 characters long: XX/XX/XXXX--XX/XX/XXXX' }
       ]
@@ -66,11 +66,13 @@ export class AddproductComponent implements OnInit {
 
   addProduct() {
     console.log(this.addproductForm.value);
-    //let product2 = new Product("", this.addproductForm.value.name, "",parseInt(this.addproductForm.value.price), this.addproductForm.value.category, this.addproductForm.value.description);
+    //let product2 = new Product("", this.addproductForm.value.name, "",
+    //parseInt(this.addproductForm.value.price), this.addproductForm.value.category,
+    // this.addproductForm.value.description);
     let product = new Product();
-    product._id = "";
+    product._id = '';
     product.name = this.addproductForm.value.name;
-    product.picture = "";
+    product.picture = '';
     product.price = this.addproductForm.value.price;
     product.category = this.addproductForm.value.category;
     product.garantia = null;
@@ -84,7 +86,7 @@ export class AddproductComponent implements OnInit {
           let token = res['token'];
           localStorage.setItem('token', token);
 
-          this.router.navigateByUrl("/api/product");
+          this.router.navigateByUrl('/api/product');
         },
 
         err => {
@@ -95,9 +97,9 @@ export class AddproductComponent implements OnInit {
   }
 
 private handleError(err: HttpErrorResponse) {
-  if( err.status == 500 ) {
+  if( err.status === 500 ) {
     alert(err);
-  } else if ( err.status == 404 ) {
+  } else if ( err.status === 404 ) {
     alert('404 not found');
   }
 

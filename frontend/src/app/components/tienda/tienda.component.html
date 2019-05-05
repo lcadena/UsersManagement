@@ -1,16 +1,16 @@
 <h2> LIST Tienda </h2>
 
-<button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</button>
+<ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
 
 <div *ngFor = "let tienda of lista; let i=index">
     <div class="border border-secondary">
 
-  <p><b>ID tenda:</b> {{tienda._id}}</p>
+  <p><b>ID tienda:</b> {{tienda._id}}</p>
   <p><b>name tienda:</b> {{tienda.name}}</p>  
   <p><b>direccion tienda:</b> {{tienda.direccion}}</p>
-  <p><b>productos tienda:</b> {{tienda.productos}}</p>
+  <p><b>productos tienda:</b> {{tienda.products}}</p>
   </div>
 
 </div>
 
-<button class="btn btn-primary btn-block" [routerLink]="['/api/tienda']"><i class="fa fa-eye"></i> Add tienda</button>
+<ion-button class="btn btn-primary btn-block" [routerLink]="['/api/tienda']"><i class="fa fa-eye"></i> Add tienda</ion-button>

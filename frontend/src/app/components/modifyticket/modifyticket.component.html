@@ -7,34 +7,33 @@
   <form [formGroup]="ticketsForm" (ngSubmit)="modify(ticket)">
 
     <div class="form-group">
-      <label>Name:</label>
-      <input type="text" class="form-control" formControlName="name"/>   
+      <ion-label>Name:</ion-label>
+      <ion-input type="text" class="form-control" formControlName="name"></ion-input>   
     </div>
   
     <div class="form-group">
-      <label>cif:</label>
-      <input type="text" class="form-control" formControlName="cif"/>   
+      <ion-label>cif:</ion-label>
+      <ion-input type="text" class="form-control" formControlName="cif"></ion-input>   
     </div>
   
     <div class="form-group">
-      <label>Foto</label>
-      <input type="text" class="form-control" formControlName="foto"/>   
+      <ion-label>Foto</ion-label>
+      <ion-input type="text" class="form-control" formControlName="foto"></ion-input>   
     </div>
   
     <div class="form-group">
-      <label>Fecha de expedicion</label>
-      <input type="text" class="form-control" formControlName="expedicion"/>   
+      <ion-label>Fecha de expedicion</ion-label>
+      <ion-input type="text" class="form-control" formControlName="expedicion"></ion-input>   
+    </div>
+  
+    <div class="form-group">
+      <ion-label>Lista de Productos </ion-label>
+      <ion-input type="text" class="form-control" formControlName="products"></ion-input>   
     </div>
   
   
     <div class="form-group">
-      <label>Lista de Productos </label>
-      <input type="text" class="form-control" formControlName="products"/>   
-    </div>
-  
-  
-    <div class="form-group">
-      <button class="btn btn-primary" type="submit" [disabled]="ticketsForm.invalid"> Modify </button>
+      <ion-button class="btn btn-primary" type="submit" [disabled]="ticketsForm.invalid"> Modify </ion-button>
     </div>
     
   </form>

@@ -1,8 +1,6 @@
 <p> Lista de productos del usuario </p>
 
-
-
-<button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</button>
+<ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
 
 <div *ngFor = "let product of products; let i=index">
     <div class="border border-secondary">

@@ -2,20 +2,17 @@
 <form [formGroup]="tiendaForm" (ngSubmit)="addTienda()">
 
   <div class="form-group">
-    <label>Name:</label>
-    <input type="text" class="form-control" formControlName="name"/>   
+    <ion-label>Name:</ion-label>
+    <ion-input type="text" class="form-control" formControlName="name"></ion-input>   
   </div>
 
   <div class="form-group">
-    <label>direccion:</label>
-    <input type="text" class="form-control" formControlName="direccion"/>   
+    <ion-label>direccion:</ion-label>
+    <ion-input type="text" class="form-control" formControlName="direccion"></ion-input>   
   </div>
 
-
-
-
   <div class="form-group">
-    <button class="btn btn-primary" type="submit" [disabled]="tiendaForm.invalid"> Add </button>
+    <ion-button class="btn btn-primary" type="submit" [disabled]="tiendaForm.invalid"> Add </ion-button>
   </div>
   
 </form>

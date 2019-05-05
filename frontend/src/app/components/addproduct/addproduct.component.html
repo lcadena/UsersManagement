@@ -1,10 +1,12 @@
 <h2>Add new product</h2>
 <form [formGroup]="addproductForm" (ngSubmit)="addProduct()">
-
   <div class="form-group">
-    <label>Name of the product</label>
-    <input type="text" class="form-control" formControlName="name"/>
-    <div class="validation-errors">
+  <ion-item>
+    <ion-label>Name of the product</ion-label>
+    <ion-input type="text" class="form-control" formControlName="name"></ion-input>
+  </ion-item>
+    
+  <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.name">
         <div class="alert alert-danger" *ngIf="addproductForm.get('name').hasError(validation.type) && (addproductForm.get('name').dirty || addproductForm.get('name').touched)">
           {{ validation.message }}
@@ -14,20 +16,26 @@
   </div>
 
   <div class="form-group">
-    <label>Price</label>
-    <input type="text" class="form-control" formControlName="price"/>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.price">
-        <div class="alert alert-danger" *ngIf="addproductForm.get('price').hasError(validation.type) && (addproductForm.get('price').dirty || addproductForm.get('price').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
+    <ion-item>
+      <ion-label>Price</ion-label>
+      <input type="text" class="form-control" formControlName="price"/>
+    </ion-item>
+
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.price">
+          <div class="alert alert-danger" *ngIf="addproductForm.get('price').hasError(validation.type) && (addproductForm.get('price').dirty || addproductForm.get('price').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
   </div>
 
   <div class="form-group">
-    <label>Category: phones, transportation, electronics</label>
-    <input type="text" class="form-control" formControlName="category"/>
+    <ion-item>
+      <ion-label>Category: phones, transportation, electronics</ion-label>
+      <ion-input type="text" class="form-control" formControlName="category"></ion-input>
+    </ion-item>
+    
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.category">
         <div class="alert alert-danger" *ngIf="addproductForm.get('category').hasError(validation.type) && (addproductForm.get('category').dirty || addproductForm.get('category').touched)">
@@ -38,8 +46,8 @@
   </div>
 
   <div class="form-group">
-    <label>Warranty Date -- Expiration Date</label>
-    <input type="text" class="form-control" formControlName="description"/>
+    <ion-label>Warranty Date -- Expiration Date</ion-label>
+    <ion-input type="text" class="form-control" formControlName="description"></ion-input>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.description">
         <div class="alert alert-danger" *ngIf="addproductForm.get('description').hasError(validation.type) && (addproductForm.get('description').dirty || addproductForm.get('description').touched)">
@@ -50,7 +58,7 @@
   </div>
 
   <div class="form-group">
-    <button class="btn btn-primary" type="submit" [disabled]="addproductForm.invalid">Add product</button>
+    <ion-button class="btn btn-primary" type="submit" [disabled]="addproductForm.invalid">Add product</ion-button>
     <a [routerLink]="['']" style="margin-left: 30px">Cancel</a>
   </div>
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
-import { Ticket } from "../../models/ticket";
-import { TicketService } from "../../services/ticket.service";
-import {Router} from "@angular/router";
+import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import { Ticket } from '../../models/ticket';
+import { TicketService } from '../../services/ticket.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-addticket',
@@ -33,8 +33,8 @@ export class AddticketComponent implements OnInit {
     this.ticketService.saveTickets(ticket)
       .subscribe(
         res => {
-          console.log ("respuesta "+ res);
-          this.router.navigateByUrl("/api/tickets")
+          console.log ('respuesta '+ res);
+          this.router.navigateByUrl('/api/tickets')
         })  
   }
 }
