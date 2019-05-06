@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {TicketService} from "../../services/ticket.service";
+import { UserinfoService } from '../../services/userinfo.service';
 import {ActivatedRoute} from "@angular/router";
 import { User } from '../../models/user';
 import { Ticket } from '../../models/ticket';
@@ -14,7 +15,7 @@ export class TicketsuserComponent implements OnInit {
   user: User;
   tickets: Ticket[]
 
-  constructor(private router: Router, private ticketService: TicketService, private activatedRouter: ActivatedRoute) { 
+  constructor(private userinfoService: UserinfoService, private router: Router, private ticketService: TicketService, private activatedRouter: ActivatedRoute) { 
     this.user = new User("","", "","","","",null);
   }
 
@@ -32,6 +33,7 @@ export class TicketsuserComponent implements OnInit {
     console.log ("info del URL:   " + this.user._id);
 
     this.getTicketsuser(this.user._id);
+    this.getUser(this.user._id);
   }
 
   getTicketsuser(id: string){
@@ -41,5 +43,11 @@ export class TicketsuserComponent implements OnInit {
       });
     console.log("lista de ticket del usuario  " + this.tickets);
   }
-
+  getUser(id:string){
+    this.userinfoService.getUser(id)
+    .subscribe(res =>{
+      this.user = res;
+      console.log("Usuario" + this.user._id) //porque pasa dos veces 
+    })
+  }
 }

@@ -1,21 +1,21 @@
-
+.
 <ion-header>
     <ion-toolbar color="primary">
       <ion-title>List of Tickets of User</ion-title>
     </ion-toolbar>
 </ion-header>
-
 <ion-content>
 
-<ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
+<ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email ]"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
 
 <div *ngFor = "let ticket of tickets; let i=index">
+    <ion-input type="hidden" value="{{ticket._id}}"></ion-input>
     <div class="border border-secondary">
-
-  <p><b>ID ticket:</b> {{ticket._id}}</p>
-  <p><b>name ticket:</b> {{ticket.name}}</p>  
-  <p><b>cif ticket:</b> {{ticket.cif}}</p>
+  <h2>{{ticket.name}}</h2>
+  <p><b>Cif:</b> {{ticket.cif}}</p>
+  <p><b>Foto:</b> {{ticket.foto}</p>
+  <p><b>Expedicion:</b> {{ticket.expedicion}}</p>
   </div>
-
+  <ion-button class="btn btn-primary" [routerLink]="['/api/ticketmod', ticket._id]"><i class="fa fa-eye"></i>&nbsp; Modify Ticket</ion-button>
 </div>
 </ion-content>

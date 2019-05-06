@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {TiendaService} from "../../services/tienda.service";
+import { UserinfoService } from '../../services/userinfo.service';
 import {ActivatedRoute} from "@angular/router";
 import { User } from '../../models/user';
 import { Tienda } from '../../models/tienda';
@@ -14,7 +15,7 @@ export class TiendasuserComponent implements OnInit {
   user: User;
   tiendas: Tienda[];
 
-  constructor(private router: Router, private tiendaService: TiendaService, private activatedRouter: ActivatedRoute) { 
+  constructor(private userinfoService: UserinfoService, private router: Router, private tiendaService: TiendaService, private activatedRouter: ActivatedRoute) { 
     this.user = new User("","", "","","","",null); }
 
   ngOnInit() {
@@ -31,6 +32,7 @@ export class TiendasuserComponent implements OnInit {
 console.log ("info del URL:   " + this.user._id);
 
 this.getTiendasuser(this.user._id);
+this.getUser(this.user._id)
 }
 
 getTiendasuser(id: string){
@@ -40,5 +42,11 @@ this.tiendaService.getTiendasUser(id)
   });
 console.log("lista de tiendas del usuario  " + this.tiendas);
 }
-
+getUser(id:string){
+  this.userinfoService.getUser(id)
+  .subscribe(res =>{
+    this.user = res;
+    console.log("Usuario" + this.user._id) //porque pasa dos veces 
+  })
+}
 }
