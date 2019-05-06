@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { User } from "../../models/user";
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { resetComponentState } from '@angular/core/src/render3/state';
+import { ToastController } from '@ionic/angular';
 declare var FB: any;
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   validation_messages: any;
 
-  constructor(private userService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private userService: AuthService, private router: Router, private formBuilder: FormBuilder, public toastController: ToastController) {
 
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
@@ -62,6 +63,39 @@ export class LoginComponent implements OnInit {
         { type: 'pattern', message: 'Password must be valid. Must contain at least one number and must be between 4 and 8 characters' }
       ]
     }  
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Your settings have been saved.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  async presentToastWithOptions() {
+    const toast = await this.toastController.create({
+      header: 'Toast header',
+      message: 'Click to Close',
+      position: 'top',
+      buttons: [
+        {
+          side: 'start',
+          icon: 'star',
+          text: 'Favorite',
+          handler: () => {
+            console.log('Favorite clicked');
+          }
+        }, {
+          text: 'Done',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    toast.present();
   }
 
   login() {
