@@ -1,27 +1,32 @@
-
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>List of Users</ion-title>
+    <ion-toolbar color="rgba(1, 50, 67, 1)">
+      <ion-title>My User</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-card>
+        <img src="http://eleinternacional.com/wp-content/uploads/avatar_user_156_1539847437.png">
+        <!--<img src="https://redash.io/assets/images/elements/icon-user-management.png">-->
+        <ion-card-header>
+            <ion-card-title style="font-family: 'normal'" >
+                <h2><b>Name:</b> {{user.firstName}}</h2>
+                <b>Last Name:</b> {{user.lastName}}
+            </ion-card-title>
+            <ion-card-subtitle><b>email:</b> {{user.email}}</ion-card-subtitle>
+        </ion-card-header>
 
-  <div class= "border border-secondary">
-      <span><img src="https://redash.io/assets/images/elements/icon-user-management.png"></span>
-      <h2>{{user.firstName}}</h2>
-      <p><b>Last Name:</b> {{user.lastName}}</p>
-      <p><b>Email:</b> {{user.email}}</p>
-
-    <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/user/', user._id]"><i class="fa fa-eye"></i>&nbsp;See user details</ion-button>
-    <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/productsuser', user._id]"><i class="fa fa-clone"></i> See user products</ion-button>
-    <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/ticketsuser', user._id]"><i class="fa fa-eye"></i> See my ticket</ion-button>
-    <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/tiendasuser', user._id]"><i class="fa fa-eye"></i> See my shops </ion-button>
-    <ion-button class="btn btn-info btn-block" [routerLink]="['/api/addproduct']" ><i class="fa fa-plus"></i> Add new product to the user </ion-button>
-    <ion-button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See all the products</ion-button>
-    <ion-button class="btn btn-primary" [routerLink]="['/api/tickets']"><i class="fa fa-eye"></i> See all the tickets</ion-button>
-    <ion-button class="btn btn-primary" [routerLink]="['/api/tiendas']"><i class="fa fa-eye"></i> See all the shops </ion-button>
-  </div>
+        <ion-card-content>
+            <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/user/', user._id]"><i class="fa fa-eye"></i>&nbsp;See my details</ion-button>
+            <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/productsuser', user._id]"><i class="fa fa-clone"></i> See my products</ion-button>
+            <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/ticketsuser', user._id]"><i class="fa fa-eye"></i> See my ticket</ion-button>
+            <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/tiendasuser', user._id]"><i class="fa fa-eye"></i> See my shops </ion-button>
+            <ion-button class="btn btn-info btn-block" [routerLink]="['/api/addproduct']" ><i class="fa fa-plus"></i> Add new product to the user </ion-button>
+            <ion-button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See all the products</ion-button>
+            <ion-button class="btn btn-primary" [routerLink]="['/api/tickets']"><i class="fa fa-eye"></i> See all the tickets</ion-button>
+            <ion-button class="btn btn-primary" [routerLink]="['/api/tiendas']"><i class="fa fa-eye"></i> See all the shops </ion-button>
+        </ion-card-content>
+    </ion-card>
 
 <div *ngFor = "let user of users; let i=index">
   <ion-label>{{user.email}}</ion-label>

@@ -61,7 +61,7 @@ mongod
 
 >(2) Keep it running on a separate cmd while you are working on your project in order to see the changes  
 
-Run the project on local server:
+Run the project on local server (for angular):
 
 ```
 ng serve --open
@@ -70,6 +70,22 @@ ng serve --open
 
 >(3) Keep it running on a separate cmd while you are working on your project in order to see the changes   
 
+Install ionic:
+
+```
+npm install cordoba
+npm install ionic
+```
+>You have to be on your root user's directory
+
+Run the project on local server (for ionic):
+
+```
+ionic serve --open
+```
+>CAUTION!: You have to be on .\frontend folder in order to run this line 
+
+>(4) Keep it running on a separate cmd while you are working on your project in order to see the changes   
 
 #### Add-on
 

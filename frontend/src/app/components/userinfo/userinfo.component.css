@@ -1,10 +1,19 @@
-.logout {
-    margin-bottom: 10px;
-    margin-top: 0px;
+  ion-toolbar{
+    background: rgba(1, 50, 67, 1);
+    color: rgba(197, 239, 247, 1);
   }
-  
+
+  ion-content{
+    --background:  url('https://d39l2hkdp2esp1.cloudfront.net/img/photo/141880/141880_00_2x.jpg') no-repeat 40% 10%;
+    }
+
+  img{
+  position: center;
+  size: 5px;
+  }
+
   div {
-    background: #FAFAFA;
+    background:  url('https://img.freepik.com/free-vector/blue-abstract-acrylic-brush-stroke-textured-background_53876-86373.jpg?size=626&ext=jpg') 40% 10%;
     padding: 2em;
     border-radius: 40px;
     margin-bottom: 7px;
@@ -18,6 +27,37 @@
   button {
     margin-top: 10px;
   }
-  
+
+  ion-card {
+  position: relative;
+  text-align: left;
+  background:rgba(255,255,255,0.5);
+  /*rgba(red, green, blue, alpha)
+  --> alpha defines the opacity as a number
+  between 0.0 (fully transparent) and 1.0 (fully opaque)*/
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: lightskyblue;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+
+  .logout {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
   
   
