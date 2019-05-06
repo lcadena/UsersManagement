@@ -118,19 +118,18 @@ export class LoginComponent implements OnInit {
      let usuario;
      console.log("logearse con facebook");
      FB.login((response) => {
-       console.log("respuesta de logearse:  " + response);
+       console.log("FBBBBBBBBBBB: respuesta de logearse:  " , response);
        if (response.authResponse) { 
           usuario = new User (response.email, response.firstname, response.lastname, response.password,"","", null)
        }
-       this.userService.signin(usuario)
-      .subscribe( 
-          res => {
-            let token = res['token'];
-            localStorage.setItem('token', token);
-          }, 
-      err => console.log (err)
-      )}
-    )}
+      //recoger los datos de accesos necesarios
+       
+
+
+      
+    }
+     )
+  }
 
   private handleError(err: HttpErrorResponse) {
     if( err.status == 500 ) {

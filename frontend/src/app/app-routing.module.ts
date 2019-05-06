@@ -43,12 +43,14 @@ const routes: Routes = [
     //productos
     { path: 'api/product', component: ProductsComponent, canActivate: [MyguardGuard] },
     { path: 'api/product/:id', component: ProductdetailComponent, canActivate: [MyguardGuard], pathMatch: 'full'},
-    { path: 'api/addproduct', component: AddproductComponent, canActivate: [MyguardGuard] },
+    { path: 'api/addproduct/:id', component: AddproductComponent, canActivate: [MyguardGuard] },
+   
     //ticket
     { path: 'api/ticket/:id', component: AddticketComponent},
     { path: 'api/tickets', component: TicketComponent, },
     { path: 'api/ticketmod/:id', component: ModifyticketComponent},
     //tienda
+    { path: 'api/tienda/:id', component: AddtiendaComponent},
     { path: 'api/tiendas', component: TiendaComponent},
     { path: 'api/tiendamod/:id', component: ModifytiendaComponent},
     //lista dependiendta de usuario
