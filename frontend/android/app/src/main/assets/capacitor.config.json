@@ -1,0 +1,7 @@
+{
+  "appId": "com.ionic-angular.heypeyApp",
+  "appName": "HeyPeyApp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
