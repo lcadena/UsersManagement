@@ -1,19 +1,30 @@
-<h2>User Detail of {{user.firstName}}</h2>
-<p><p>
-<button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See my products</button>
-</p><p>
-<p>
-  <button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>&nbsp;  See my users</button>
-</p>
 
-<div class="border border-secondary">
-  <span><img src="http://corporativoseconafem.com/images/user-f.png"></span>
-  <h2>{{user.firstName + " " + user.lastName}}</h2>
-  <p><b>Email:</b> {{user.email}}</p>
-  <p><b>Id:</b> {{user._id}}</p>
-  <p><b>Sing up date:</b> {{user.signUpDate}}</p>
-</div>
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>User Detail of {{user.firstName}}</ion-title>
+    </ion-toolbar>
+</ion-header>
 
-<p><p>
-<button class="logout" (click)="goBack()" [routerLink]="['']">Log out</button>
-</p><p>
+<ion-content>
+
+  <ion-button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See my products</ion-button>
+
+  <p>
+    <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
+  </p>
+
+  <div class="border border-secondary">
+    <span><img src="http://corporativoseconafem.com/images/user-f.png"></span>
+    <h2>{{user.firstName + " " + user.lastName}}</h2>
+    <p><b>Email:</b> {{user.email}}</p>
+    <p><b>Id:</b> {{user._id}}</p>
+    <p><b>Sing up date:</b> {{user.signUpDate}}</p>
+  </div>
+
+
+  <ion-button class="logout" (click)="goBack()" [routerLink]="['']">Log out</ion-button>
+
+
+</ion-content>
+
+

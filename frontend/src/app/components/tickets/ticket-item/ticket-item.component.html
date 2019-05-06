@@ -1,0 +1,6 @@
+<ion-item [routerLink]="['./', ticketItem.id]">
+  <ion-avatar slot = "start">
+    <ion-img [src]="ticketItem.imageUrl"></ion-img>
+  </ion-avatar>
+  <ion-label> {{ ticketItem.title }}</ion-label>
+</ion-item>

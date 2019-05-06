@@ -1,7 +1,14 @@
 
-<h2> LIST Ticket </h2>
 
-<button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</button>
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>List of Tickets</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
 
 <div *ngFor = "let ticket of list; let i=index">
     <div class="border border-secondary">
@@ -13,3 +20,8 @@
   <button class="btn btn-primary" [routerLink]="['/api/ticketmod', ticket._id]"><i class="fa fa-eye"></i> Modify Ticket</button>
   </div>
 </div>
+
+
+<ion-button class="btn btn-primary btn-block" [routerLink]="['/api/ticket']"><i class="fa fa-eye"></i> Add ticket</ion-button>
+</ion-content>
+

@@ -1,10 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { BrowserModule } from '@angular/platform-browser';
+import { RouteReuseStrategy } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
 import { ProductsComponent } from './components/products/products.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -14,6 +18,7 @@ import { UserinfoComponent } from "./components/userinfo/userinfo.component";
 import { UserinfodetailComponent} from "./components/userinfodetail/userinfodetail.component";
 import { AddproductComponent} from "./components/addproduct/addproduct.component";
 import { AddticketComponent } from './components/addticket/addticket.component';
+import {AddtiendaComponent} from './components/addtienda/addtienda.component';
 import { ModifytiendaComponent } from './components/modifytienda/modifytienda.component';
 import { ModifyticketComponent } from './components/modifyticket/modifyticket.component';
 import { ModifyuserComponent } from './components/modifyuser/modifyuser.component';
@@ -23,8 +28,9 @@ import { TiendaComponent } from './components/tienda/tienda.component';
 import { ProductsuserComponent } from './components/productsuser/productsuser.component';
 import { TicketsuserComponent } from './components/ticketsuser/ticketsuser.component';
 import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-//import { ProductsuserComponent } from './components/productsuser/productsuser.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +43,7 @@ import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.compo
     UserinfodetailComponent,
     AddproductComponent,
     AddticketComponent,
+    AddtiendaComponent,
     ModifytiendaComponent,
     ModifyticketComponent,
     ModifyuserComponent,
@@ -47,17 +54,21 @@ import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.compo
     TicketsuserComponent,
     TiendasuserComponent,
     //ProductsuserComponent
-],
-
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
+  ],
+  entryComponents: [],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},
+    { provide: RouteReuseStrategy,  useClass: IonicRouteStrategy },
+    ],
+
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}

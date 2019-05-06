@@ -1,26 +1,33 @@
-<h2>User</h2>
-    <div class="border border-secondary">
-        <span><img src="https://redash.io/assets/images/elements/icon-user-management.png"></span>
-        <h2>{{user.firstName}}</h2>
-        <p><b>Last Name:</b> {{user.lastName}}</p>
-        <p><b>Email:</b> {{user.email}}</p>
-        <button class="btn btn-primary btn-block" [routerLink]="['/api/user/', user._id]"><i class="fa fa-eye"></i>&nbsp;See user details</button>
-        <button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See all the products</button>
-        <button class="btn btn-primary btn-block" [routerLink]="['/api/productsuser/', user._id]"><i class="fa fa-clone"></i> See user products</button>
-        <button class="btn btn-primary btn-block" [routerLink]="['/api/ticketsuser/', user._id]"><i class="fa fa-eye"></i> See my ticket</button>
-        <button class="btn btn-primary" [routerLink]="['/api/tickets']"><i class="fa fa-eye"></i> See all the tickets</button>
-        <button class="btn btn-primary btn-block" [routerLink]="['/api/tiendasuser/', user._id]"><i class="fa fa-eye"></i> See my shops </button>
-        <button class="btn btn-primary" [routerLink]="['/api/tiendas']"><i class="fa fa-eye"></i> See all the shops </button>
-        <button class="btn btn-info btn-block" [routerLink]="['/api/ticket', user._id]" ><i class="fa fa-plus"></i> Add ticket </button>
-        <button class="btn btn-danger btn-block" (click)="confirmDelete(user._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
-    </div>
-<h2>List of User</h2>
-<div class="border border-secondary">
+
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>List of Users</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See all the products</ion-button>
+<ion-button class="btn btn-primary" [routerLink]="['/api/tickets']"><i class="fa fa-eye"></i> See all the tickets</ion-button>
+<ion-button class="btn btn-primary" [routerLink]="['/api/tiendas']"><i class="fa fa-eye"></i> See all the shops </ion-button>
+
 <div *ngFor = "let user of users; let i=index">
-    <h5>{{user.firstName}}</h5>      
+  <input type="hidden" value="{{user.email}}">
+  <div class="border border-secondary">
+    <span><img src="https://redash.io/assets/images/elements/icon-user-management.png"></span>
+    <h2>{{user.firstName}}</h2>
+    <p><b>Last Name:</b> {{user.lastName}}</p>
+    <p><b>Email:</b> {{user.email}}</p>
+    <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/user/', user._id]"><i class="fa fa-eye"></i>&nbsp;See user details</ion-button>
+    <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/productsuser', user._id]"><i class="fa fa-clone"></i> See user products</ion-button>
+    <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/ticketsuser', user._id]"><i class="fa fa-eye"></i> See my ticket</ion-button>
+    <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/tiendasuser', user._id]"><i class="fa fa-eye"></i> See my shops </ion-button>
+    <ion-button class="btn btn-info btn-block" [routerLink]="['/api/addproduct']" ><i class="fa fa-plus"></i> Add new product to the user </ion-button>
+    <ion-button class="btn btn-danger btn-block" (click)="confirmDelete(user._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </ion-button>
   </div>
 </div>
-<p><p>
-  <button class="logout" (click)="goBack()"><i class="fa fa-toggle-left" aria-hidden="true"></i>   Log out</button>
-</p><p>
+
+  <ion-button class="logout" (click)="goBack()"><i class="fa fa-toggle-left" aria-hidden="true"></i>   Log out</ion-button>
+
+</ion-content>
 

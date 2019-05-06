@@ -82,7 +82,7 @@ export class AddproductComponent implements OnInit {
           let token = res['token'];
           localStorage.setItem('token', token);
 
-          this.router.navigateByUrl("/api/product");
+          this.router.navigateByUrl('/api/product');
         },
 
         err => {
@@ -93,9 +93,9 @@ export class AddproductComponent implements OnInit {
   }
 
 private handleError(err: HttpErrorResponse) {
-  if( err.status == 500 ) {
+  if( err.status === 500 ) {
     alert(err);
-  } else if ( err.status == 404 ) {
+  } else if ( err.status === 404 ) {
     alert('404 not found');
   }
 
