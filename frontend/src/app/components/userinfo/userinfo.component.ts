@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {UserinfoService} from "../../services/userinfo.service";
 import {User} from "../../models/user";
@@ -11,11 +11,25 @@ import {User} from "../../models/user";
 })
 export class UserinfoComponent implements OnInit {
 
-  constructor(private userinfoService: UserinfoService, private router: Router) { }
-
   users: User[];
+  user: User;
+
+  constructor(private userinfoService: UserinfoService, private router: Router, private ActivatedRouter: ActivatedRoute) { 
+    this.user = new User ("","","","","","",null);
+  }
+
 
   ngOnInit() {
+    //para recoger el email de la URL
+  this.ActivatedRouter.params.subscribe(params => {
+    if (typeof params['email'] !== 'undefined') {
+      console.log("params", params);
+      this.user.email = params['email'];      
+      console.log("user: ", this.user);
+    } else {
+      this.user.email = '';
+    }
+  });
     this.getUsers();
   }
 
@@ -24,6 +38,14 @@ export class UserinfoComponent implements OnInit {
       .subscribe(res =>{
         this.users = res; //res me recibe la lista de users
       });
+  }
+
+  getUser(id:string){
+    this.userinfoService.getUser(id)
+    .subscribe(res =>{
+      this.user = res;
+      console.log("Usuario" + this.user._id) //porque pasa dos veces 
+    })
   }
 
   /**

@@ -1,4 +1,11 @@
-<h2> Modify Tienda </h2>
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Modify Tienda</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+<ion-content>
 
 <div *ngFor = "let tienda of lista; let i=index">
   <p><b>Modify tienda:</b> {{tienda._id}}</p>
@@ -29,3 +36,4 @@
     
   </form>
 </div>
+</ion-content>

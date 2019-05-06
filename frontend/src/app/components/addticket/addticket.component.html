@@ -1,35 +1,99 @@
-<h2>Add Tickets</h2>
-<form [formGroup]="ticketsForm" (ngSubmit)="addTickets()">
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Add Tickets</ion-title>
+    </ion-toolbar>
+</ion-header>
 
-  <div class="form-group">
-    <ion-label>Name:</ion-label>
-    <ion-input type="text" class="form-control" formControlName="name"></ion-input>   
-  </div>
-
-  <div class="form-group">
-    <ion-label>cif:</ion-label>
-    <ion-input type="text" class="form-control" formControlName="cif"></ion-input>   
-  </div>
-
-  <div class="form-group">
-    <ion-label>Foto</ion-label>
-    <ion-input type="text" class="form-control" formControlName="foto"></ion-input>   
-  </div>
-
-  <div clas="form-group">
-    <ion-label>Fecha de expedicion</ion-label>
-    <ion-input type="text" class="form-control" formControlName="expedicion"></ion-input>   
-  </div>
-
-
-  <div class="form-group">
-    <ion-label>Lista de Productos </ion-label>
-    <ion-input type="text" class="form-control" formControlName="products"></ion-input>   
-  </div>
-
-
-  <div class="form-group">
-    <ion-button class="btn btn-primary" type="submit" [disabled]="ticketsForm.invalid"> Add </ion-button>
-  </div>
   
-</form>
+<ion-content>
+  <form [formGroup]="ticketsForm" (ngSubmit)="addTickets()">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <div class="form-group">
+              <ion-item>
+              <ion-label position="floating">Name:</ion-label>
+              <ion-input type="text" class="form-control" formControlName="name"></ion-input>   
+          </ion-item>
+        </div>
+
+
+        <div class="form-group">
+          <ion-item>
+              <ion-label position="floating">CIF:</ion-label>
+              <ion-input type="text" class="form-control" formControlName="cif"></ion-input>   
+          </ion-item>
+        </div>
+
+
+        <div class="form-group">
+          <ion-item>
+              <ion-label position="floating">Foto</ion-label>
+              <ion-input type="text" class="form-control" formControlName="foto"></ion-input>   
+          </ion-item>
+        </div>
+
+
+        <div class="form-group">
+          <ion-item>
+              <ion-label position="floating">Fecha de expedicion</ion-label>
+              <ion-input type="text" class="form-control" formControlName="expedicion"></ion-input>   
+          </ion-item>
+        </div>
+
+        <h2>Add Tienda</h2> 
+
+        <div class="form-group">
+          <ion-item>
+              <ion-label>Name tienda:</ion-label>
+              <ion-input type="text" class="form-control" formControlName="nametienda"></ion-input>   
+          </ion-item>
+        </div>
+
+        <div class="form-group">
+          <ion-item>
+              <ion-label>direccion:</ion-label>
+              <ion-input type="text" class="form-control" formControlName="direccion"></ion-input>   
+          </ion-item>
+        </div> 
+      
+        <h2>Add Producto</h2>
+        <div class="form-group">
+          <ion-item>
+              <ion-label>Name producto:</ion-label>
+              <ion-input type="text" class="form-control" formControlName="nameproducto"></ion-input>  
+          </ion-item> 
+        </div>
+        <div class="form-group">
+          <ion-item>
+              <ion-label>Price: </ion-label>
+              <ion-input type="text" class="form-control" formControlName="price"></ion-input> 
+          </ion-item>  
+        </div>
+       
+        <div class="form-group">
+          <ion-item>
+              <ion-label>Category: </ion-label>
+              <ion-input type="text" class="form-control" formControlName="category"></ion-input>   
+          </ion-item>
+        </div>
+
+        <div class="form-group">
+          <ion-item>
+            <ion-label>Description: </ion-label>
+            <ion-input type="text" class="form-control" formControlName="description"></ion-input> 
+          </ion-item>  
+        </div>
+      
+        <div class="form-group">
+          <ion-item>
+              <ion-button class="btn btn-primary" type="submit" [disabled]="ticketsForm.invalid" > <ion-icon slot="start" name ="add"></ion-icon>Add Product</ion-button>
+              <ion-button id="input-cancel" fill="outline" color="danger" [routerLink]="['']" >Cancel</ion-button>
+            </ion-item>
+        </div>
+
+        </ion-col> 
+      </ion-row>
+    </ion-grid>    
+  </form>
+</ion-content>

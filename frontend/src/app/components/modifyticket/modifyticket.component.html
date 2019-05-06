@@ -1,5 +1,11 @@
-<h2> Modify Ticket </h2>
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Modify Ticket</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
+
+<ion-content>
 <div *ngFor = "let ticket of list; let i=index">
   <p><b>Modify ticket:</b> {{ticket._id}}</p>
   <p>Rellena los campos a modificar</p>
@@ -38,3 +44,4 @@
     
   </form>
 </div>
+</ion-content>

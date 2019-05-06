@@ -1,10 +1,15 @@
-<h2>Users</h2>
 
-<p><p>
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>List of Users</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
 <ion-button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See all the products</ion-button>
 <ion-button class="btn btn-primary" [routerLink]="['/api/tickets']"><i class="fa fa-eye"></i> See all the tickets</ion-button>
 <ion-button class="btn btn-primary" [routerLink]="['/api/tiendas']"><i class="fa fa-eye"></i> See all the shops </ion-button>
-</p><p>
 
 <div *ngFor = "let user of users; let i=index">
   <input type="hidden" value="{{user.email}}">
@@ -22,7 +27,9 @@
   </div>
 </div>
 
-<p><p>
+
   <ion-button class="logout" (click)="goBack()"><i class="fa fa-toggle-left" aria-hidden="true"></i>   Log out</ion-button>
-</p><p>
+
+
+</ion-content>
 

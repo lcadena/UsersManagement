@@ -22,8 +22,8 @@ export class UserinfoService {
     return this.http.get<User[]>(this.environment.urlUser + 'users');
   }
 
-  getUser(_id: string) {
-    return this.http.get(this.environment.urlUserList + `/${_id}`);
+  getUser(_id: string): Observable<User> {
+    return this.http.get<User>(this.environment.urlUserList + `/${_id}`);
   }
 
   deleteUser(_id: string) {

@@ -119,7 +119,7 @@ var TicketsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Tickets</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <app-ticket-item \n      *ngFor=\"let ticket of tickets\"\n      [ticketItem] =\"ticket\"\n      ></app-ticket-item>\n  </ion-list>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar color="primary">\n    <ion-title>Tickets</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <app-ticket-item \n      *ngFor=\"let ticket of tickets\"\n      [ticketItem] =\"ticket\"\n      ></app-ticket-item>\n  </ion-list>\n</ion-content>\n"
 
 /***/ }),
 
