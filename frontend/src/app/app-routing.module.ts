@@ -41,23 +41,24 @@ const routes: Routes = [
     { path: 'api/userinfo/:email', component: UserinfoComponent, canActivate: [MyguardGuard] },
     { path: 'api/user/:id', component: UserinfodetailComponent, canActivate: [MyguardGuard] },
     //productos
-    { path: 'api/product', component: ProductsComponent, canActivate: [MyguardGuard] },
+    //{ path: 'api/product', component: ProductsComponent, canActivate: [MyguardGuard] },
     { path: 'api/product/:id', component: ProductdetailComponent, canActivate: [MyguardGuard], pathMatch: 'full'},
-    { path: 'api/addproduct/:id', component: AddproductComponent, canActivate: [MyguardGuard] },
-   
+    { path: 'api/addproduct/:id', component: AddproductComponent, canActivate: [MyguardGuard] },   
     //ticket
-    { path: 'api/ticket/:id', component: AddticketComponent},
-    { path: 'api/tickets', component: TicketComponent, },
+    //{ path: 'api/tickets', component: TicketComponent},
+    { path: 'api/ticket/:id', component: AddticketComponent},    
     { path: 'api/ticketmod/:id', component: ModifyticketComponent},
     //tienda
-    { path: 'api/tienda/:id', component: AddtiendaComponent},
-    { path: 'api/tiendas', component: TiendaComponent},
+    //{ path: 'api/tiendas', component: TiendaComponent},
+    { path: 'api/tienda/:id', component: AddtiendaComponent},    
     { path: 'api/tiendamod/:id', component: ModifytiendaComponent},
     //lista dependiendta de usuario
     { path: 'api/productsuser/:id', component: ProductsuserComponent},
     { path: 'api/ticketsuser/:id', component: TicketsuserComponent},
     { path: 'api/tiendasuser/:id', component: TiendasuserComponent},
-
+    
+    //chat
+    
 ];
 
 @NgModule({
