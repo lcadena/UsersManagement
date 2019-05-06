@@ -3,6 +3,23 @@ export class Product {
   name: string;
   picture: string;
   price: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   category: string;
   garantia: Date;
   devolucion: Date;

@@ -10,7 +10,6 @@
   <p><b>cif ticket:</b> {{ticket.cif}}</p>
   <p><b>foto ticket:</b> {{ticket.foto}</p>
   <p><b>expedicion ticket:</b> {{ticket.expedicion}}</p>
-  <p><b>products ticket:</b> {{ticket.products}}</p>
-  <button class="btn btn-primary" [routerLink]="['/api/ticket', ticket._id]"><i class="fa fa-eye"></i> Modify Ticket</button>
+  <button class="btn btn-primary" [routerLink]="['/api/ticketmod', ticket._id]"><i class="fa fa-eye"></i> Modify Ticket</button>
   </div>
 </div>

@@ -13,12 +13,15 @@ export class TicketService {
   constructor(private http: HttpClient) {
     this.environment = new Environment();
    }
-   
-   saveTickets(ticket: Ticket) {      
-    return this.http.post(this.environment.urlTicket, ticket)
+  
+  saveTickets(ticket: Ticket) {      
+   return this.http.post(this.environment.urlTicket, ticket)
   }
-  getTickets():Observable<Ticket>{
-    return this.http.get<Ticket>(this.environment.urlUser + "tickets" )
+  getTickets():Observable<Ticket[]>{
+    return this.http.get<Ticket[]>(this.environment.urlUser + "tickets" )
+  }
+  getTicket(_id: string):Observable<Ticket>{
+    return this.http.get<Ticket>(this.environment.urlUser + "ticketID"+ `/${_id}`)
   }
   
   modifyticket(ticket: Ticket){    

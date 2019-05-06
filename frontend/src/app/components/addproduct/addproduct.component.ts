@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from "@angular/common/http";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {ProductService} from "../../services/product.service";
-import {Product} from "../../models/product";
+import { ProductService } from "../../services/product.service";
+import { Product } from "../../models/product";
 
 
 @Component({
@@ -15,12 +15,10 @@ import {Product} from "../../models/product";
 export class AddproductComponent implements OnInit {
 
   addproductForm: FormGroup;
-
   validation_messages: any;
 
 
-  constructor(private addproductService: ProductService,
-              private router: Router, private formBuilder: FormBuilder) {
+  constructor(private addproductService: ProductService, private router: Router, private formBuilder: FormBuilder) {
 
     this.addproductForm = this.formBuilder.group({
         name: new FormControl('', Validators.compose([

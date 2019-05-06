@@ -29,10 +29,28 @@
     <input type="text" class="form-control" formControlName="direccion"/>   
   </div> 
 
+  <h2>Add Producto</h2>
+  <div class="form-group">
+    <label>Name producto:</label>
+    <input type="text" class="form-control" formControlName="nameproducto"/>   
+  </div>
+  <div class="form-group">
+    <label>Price: </label>
+    <input type="text" class="form-control" formControlName="price"/>   
+  </div>
+  <div class="form-group">
+    <label>Category: </label>
+    <input type="text" class="form-control" formControlName="category"/>   
+  </div>
+  <div class="form-group">
+    <label>Description: </label>
+    <input type="text" class="form-control" formControlName="description"/>   
+  </div>
+
   <div class="form-group">
     <button class="btn btn-primary" type="submit">  Add </button>
-
     <a [routerLink]="['']" style="margin-left: 30px">Cancel</a>
   </div>
+  
 </form>
 

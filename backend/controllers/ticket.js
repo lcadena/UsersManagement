@@ -20,10 +20,9 @@ function saveTicket(req, res) {
     ticket.save((err, ticketStored) => {
       if (err) res.status(500).send({message: `Error al salvar en la bbdd: ${err}`})
   
-      res.status(200).send( ticketStored)
+      res.status(200).send(ticketStored)
     })
-  }
-
+}
   //función listar tickets
 function getTickets(req, res) {
     Ticket.find({}, (err, tickets) => {
@@ -33,7 +32,15 @@ function getTickets(req, res) {
       res.status(200).send({tickets})
     })
 }
-
+//funciones de listar los atributos de ticket por ID
+function getSingleTicket(req, res){
+  let ticketId = req.params.ticketId
+  Ticket.findById(ticketId, (err, ticket) => {
+    if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
+    if (!ticket) return res.status(404).send({message: 'El ticket no existe'})
+    return res.status(200).send(ticket)
+  })
+}
 //Modificar ticket
 function updateTicket(req, res) {
     let ticketId = req.params.ticketId
@@ -47,7 +54,6 @@ function updateTicket(req, res) {
         res.status(200).send({ticketUpdated})
     })
 }
-
 //Añadir producto a un ticket
 function addProductToTicket(req, res) {
     let ticketId = req.params.ticketId
@@ -60,7 +66,6 @@ function addProductToTicket(req, res) {
       res.status(200).send(result)
       })
 }
-
 //listar productos de un ticket
 function getProductsofTicket(req, res) {
   let ticketId = req.params.ticketId
@@ -79,11 +84,12 @@ function getProductsofTicket(req, res) {
     })
   })
 }
-
 module.exports = {
     saveTicket,
     getTickets,
+    getSingleTicket,
     updateTicket,
     addProductToTicket,
-    getProductsofTicket
+    getProductsofTicket,
+    
 }

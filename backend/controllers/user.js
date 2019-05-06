@@ -97,7 +97,7 @@ function signIn(req, res) {
    })
  })
 }*/
-
+//listar los usuarios 
 function getUsers(req, res) {
   //busca todos los usuarios, claudator vacio
   User.find({}, {products:0}, (err, userslist) => { //l'array de productes no m'ho dona
@@ -109,6 +109,7 @@ function getUsers(req, res) {
     return res.status(200).send(userslist)
   })
 }
+//modificar un usuario 
 function updateUser(req, res) {
   //obtener el id de 
   let userId = req.params.userId
@@ -122,6 +123,7 @@ function updateUser(req, res) {
     return res.status(200).send(userUpdated)
   })
 }
+//listar l ainfo de un solo usuario
 function getSingleUser(req, res) {
   //obtener el id de usuario
   let userId = req.params.userId // coge de un parametro el id? (por ejemplo si yo le paso el mail me devuelve el id?)
@@ -132,6 +134,7 @@ function getSingleUser(req, res) {
     return res.status(200).send(user)
   })
 }
+//eliminar un usuario 
 function deleteUser(req, res) {
   let userId = req.params.userId
 
@@ -144,6 +147,7 @@ function deleteUser(req, res) {
     })
   })
 }
+//recoger los usuarios y los productos de cada usuario
 function getUserswithProducts(req, res) {
   //busca todos los usuarios, claudator vacio
   User.find({ }, (err, userslistwithproducts) => { //l'array de productes no m'ho dona

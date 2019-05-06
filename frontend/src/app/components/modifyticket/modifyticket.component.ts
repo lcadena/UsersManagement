@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from "../../services/ticket.service";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import { Ticket } from "../../models/ticket";
 import { formControlBinding } from '@angular/forms/src/directives/ng_model';
@@ -13,9 +13,10 @@ import { formControlBinding } from '@angular/forms/src/directives/ng_model';
 export class ModifyticketComponent implements OnInit {
 
   ticketsForm: FormGroup;
-  list: Ticket[];
+  ticket: Ticket;
 
-  constructor(private ticketService: TicketService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private ticketService: TicketService, private router: Router, private formBuilder: FormBuilder, private activatedRouter: ActivatedRoute) {
+    this.ticket = new Ticket("","", "","",null);
     this.ticketsForm = this.formBuilder.group({
       name: new FormControl(),
       cif: new FormControl(),
@@ -26,19 +27,27 @@ export class ModifyticketComponent implements OnInit {
    }
 
   ngOnInit() {
-    //al cargar se me listan los tickets
-    this.listTickets();
-   
-    
+   //para recoger el id de la URL 
+   this.activatedRouter.params.subscribe(params => {
+    if (typeof params['id'] !== 'undefined') {
+      console.log("params", params);
+      this.ticket._id = params['id'];
+    } else {
+      this.ticket._id = '';
+    }
+  });
+  console.log ("info del URL:   " + this.ticket._id);
+      this.getTicket(this.ticket._id);
+      
   }
 
-  listTickets(){
-    console.log("listado de las tickets")
-    this.ticketService.getTickets()
+  getTicket(id: string){
+    console.log("informacion del ticket  " + id)
+    this.ticketService.getTicket(id)
       .subscribe(
         res => {
           console.log ("respuesta "+ res);
-          this.list = res["tickets"];
+          this.ticket = res;
         })
   }
 

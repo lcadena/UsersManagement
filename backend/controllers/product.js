@@ -26,7 +26,6 @@ function getProduct (req,res) {
         return res.status(200).send({ product })
     })
 }
-
 //modificar - actualizar un  producto
 function saveProduct (req, res) {
     console.log('POST /api/product')
@@ -34,16 +33,16 @@ function saveProduct (req, res) {
 
     let product = new Product()
     product.name = req.body.name
-    product.category = req.body.category
-    product.lugar = req.body.lugar
+    product.picture = ""
     product.price = req.body.price
-    /*product.garantia = req.body.garantia
-    product.devolucion = req.body.devolucion*/
+    product.category = req.body.category
+    product.garantia = null
+    product.devolucion = null
+    product.description = req.body.description
 
     product.save((err, productStored) => {
-        if (err) res.status(500).send({message: `Error al salvar en la BBDD: ${err}`})
-    
-        res.status(200).send({product: productStored})
+        if (err) res.status(500).send({message: `Error al salvar en la BBDD: ${err}`})    
+        res.status(200).send(productStored)
     })
 }
 //añadir un producto a la base de datos
@@ -71,9 +70,6 @@ function deleteProduct (req, res) {
         })
     })
 }
-
-
-
 module.exports = {
     getProducts,
     getProduct,

@@ -1,17 +1,16 @@
 <h2> Modify Tienda </h2>
-
 <div>
-  <p><b>Modify tienda:</b> {{tienda.name}}</p>
+  <p><b>Modify tienda:</b> {{tienda._id}}</p>
   <p>Rellena los campos a modificar</p>
   <form [formGroup]="tiendaForm" (ngSubmit)="modify(tienda)">
 
     <div class="form-group">
-      <label>Name:</label>
+      <label>Name:</label> <p>{{tienda.name}}</p>
       <input type="text" class="form-control" formControlName="name"/>   
     </div>
   
     <div class="form-group">
-      <label>direccion:</label>
+      <label>direccion:</label> <p>{{tienda.direccion}}</p>
       <input type="text" class="form-control" formControlName="direccion"/>   
     </div>  
   

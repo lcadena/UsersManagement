@@ -11,7 +11,6 @@ import {AddproductComponent} from "./components/addproduct/addproduct.component"
 import {TicketComponent} from "./components/ticket/ticket.component";
 import {TiendaComponent} from "./components/tienda/tienda.component";
 import {AddticketComponent} from "./components/addticket/addticket.component";
-import {AddtiendaComponent } from "./components/addtienda/addtienda.component";
 import {ModifytiendaComponent } from "./components/modifytienda/modifytienda.component";
 import {ModifyticketComponent } from "./components/modifyticket/modifyticket.component";
 import {ProductsuserComponent } from "./components/productsuser/productsuser.component";
@@ -31,11 +30,10 @@ const routes: Routes = [
   //ticket
   { path: 'api/ticket/:id', component: AddticketComponent},
   { path: 'api/tickets', component: TicketComponent, },
-  { path: 'api/ticket/:id', component: ModifyticketComponent},
+  { path: 'api/ticketmod/:id', component: ModifyticketComponent},
   //tienda
-  { path: 'api/tienda', component: AddtiendaComponent},
   { path: 'api/tiendas', component: TiendaComponent},
-  { path: 'api/tienda/:id', component: ModifytiendaComponent},
+  { path: 'api/tiendamod/:id', component: ModifytiendaComponent},
   //lista dependiendta de usuario
   { path: 'api/productsuser/:id', component: ProductsuserComponent},
   { path: 'api/ticketsuser/:id', component: TicketsuserComponent},

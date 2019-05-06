@@ -55,6 +55,8 @@ api.get('/products/:userId', userCtrl.getProductsofUser)
 /*TICKETS: http://localhost:3000/api/ticket*/
 //listar tickets en la bbdd - FUNCIONA **
 api.get('/tickets', ticketCtrl.getTickets)
+//listar un solo ticket mediante ID
+api.get('/ticketID/:ticketId', ticketCtrl.getSingleTicket)
 //añadir un ticket - FUNCIONA **
 api.post('/ticket', ticketCtrl.saveTicket)
 //modificar info ticket - FUNCIONA *
