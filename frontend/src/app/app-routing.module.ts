@@ -17,6 +17,7 @@ import {ModifyticketComponent } from './components/modifyticket/modifyticket.com
 import {ProductsuserComponent } from './components/productsuser/productsuser.component';
 import { TicketsuserComponent } from './components/ticketsuser/ticketsuser.component';
 import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -58,7 +59,7 @@ const routes: Routes = [
     { path: 'api/tiendasuser/:id', component: TiendasuserComponent},
     
     //chat
-    
+    {path: 'api/chat/:id', component: ChatComponent},
 ];
 
 @NgModule({

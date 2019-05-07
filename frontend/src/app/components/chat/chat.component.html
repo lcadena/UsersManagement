@@ -1,3 +1,20 @@
-<p>
-  chat works!
-</p>
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Chat</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-input type="text" placeholder="Mensaje" [(ngModel)]="message"></ion-input> 
+  <div  class ="multichat" >
+      <p *ngFor="let message of messages">
+          {{message}}
+      </p>
+  </div> 
+  <ion-button class="btn btn-primary" (click)=" sendChat(message)">&nbsp; Send </ion-button>
+</ion-content>
+
+        
+
+
+
