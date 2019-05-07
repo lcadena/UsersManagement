@@ -19,9 +19,11 @@ export class ChatComponent implements OnInit {
   
   user: User;
   socket: SocketIOClient.Socket;
+  mensaje: string;
+  email: string;
   
   constructor(private activatedRouter: ActivatedRoute, private userinfoService: UserinfoService) {
-   this.socket = io.connect('http://localhost:8100')
+   this.socket = io.connect('http://localhost:3000')
     this.user = new User ("","","","","","",null)
     
    }  
@@ -36,6 +38,14 @@ export class ChatComponent implements OnInit {
       }
     });
     this.getUser(this.user._id)
+
+
+    //escuchar los mensajes que llegan 
+    this.socket.on("chat", function(mensaje, email){
+      console.log("llegada:  " + email +"  " + mensaje)
+    })
+
+    
   }
 
   getUser(id:string){
@@ -49,6 +59,6 @@ export class ChatComponent implements OnInit {
   sendChat(message: string){
     console.log("email" + this.user.email)
     console.log("mensage" + message)
-    //this.socket.emit("chat", message, this.user.email);
+    this.socket.emit("chat", message, this.user.email);
   }
 }

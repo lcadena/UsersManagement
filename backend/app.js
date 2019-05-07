@@ -11,6 +11,8 @@ const api_user = require('./routes/user')
 var swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('../swagger.json');
 
+
+
 //Método use
 app.use(bodyParser.urlencoded({ extended: false}))
 
