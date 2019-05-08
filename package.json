@@ -25,7 +25,6 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-simple": "^0.5.5",
     "moment": "^2.24.0",
-    "mongoose": "^5.4.16",
     "morgan": "^1.9.1",
     "socket.io": "^2.2.0",
     "swagger-node-express": "^2.1.3",
