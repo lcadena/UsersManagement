@@ -9,8 +9,8 @@ const ProductSchema = Schema({
     name: String,
     picture: String,
     price: { type: Number, default:0 },
-    category: {type: String, enum: ['telefono', 'transporte', 'restaurante', 'compra', 'comida',
-    'casa','deporte','higiene','taxi','salud','fiesta','vehiculo', 'phones', 'transportation', 'electronics']},
+    category: {type: String, enum: ['phone', 'transport', 'restaurant', 'food',
+    'home','sport','higiene','hygiene', 'party','vehicle', 'transportation', 'electronics']},
     garantia: { type: Date, default: Date.now() },
     devolucion: { type: Date, default: Date.now() },
     description: String

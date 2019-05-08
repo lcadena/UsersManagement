@@ -71,12 +71,23 @@ function addProductToTienda(req, res) {
     let tiendaId = req.params.tiendaId
     let productId = req.params.productId
 
-    Tienda.update({_id: tiendaId}, {"$push": {"products": productId}}, (err, result) => {
-      if (err) res.status(500).send({message: `Error al actualizar la tienda: ${err}`})
-      if (!result) return res.status(404).send({message: 'La tienda no existe'})
-  
-      res.status(200).send(result)
-      })
+    Product.findById(productId, function(err, productEncontrado) {
+      console.log('ID product: ', productId)
+      if(err) {
+        next(err)
+      }
+      if(productEncontrado) {
+        console.log(productEncontrado)
+        Tienda.update({_id: tiendaId}, {"$push": {"products": productId}}, (err, result) => {
+          if (err) res.status(500).send({message: `Error al actualizar la tienda: ${err}`})
+          if (!result) return res.status(404).send({message: 'La tienda no existe'})
+      
+          res.status(200).send(result)
+        })
+      } else {
+        return res.status(404).send("El producto no existe, añadalo")
+      }
+  })
 }
 
 //listar productos de una tienda

@@ -27,8 +27,8 @@ function isAdmin (req, res, next) {
           var rol = userEncontrado.rol
           console.log(rol)
           if (rol == 'admin') {
-            res.status(200).send({message: "Eres administrador"})
-            req.user = response
+            //res.status(200).send({message: "Eres administrador"})
+            //req.user = response
             next()
           } 
           if (rol !== 'admin') {
