@@ -107,6 +107,7 @@ export class LoginComponent implements OnInit {
           console.log(res);
           let token = res['token'];
           localStorage.setItem('token', token);
+          //asigno el socket al logearse          
           this.router.navigateByUrl("/api/userinfo/" + this.loginForm.value.email);
         },
         err => {

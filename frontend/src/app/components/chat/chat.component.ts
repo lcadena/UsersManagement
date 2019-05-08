@@ -41,8 +41,8 @@ export class ChatComponent implements OnInit {
 
 
     //escuchar los mensajes que llegan 
-    this.socket.on("chat", function(mensaje, email){
-      console.log("llegada:  " + email +"  " + mensaje)
+    this.socket.on("conect", function(email){
+      console.log("llegada:  " + email)
     })
 
     
@@ -56,9 +56,9 @@ export class ChatComponent implements OnInit {
     console.log(this.user);
   }
 
-  sendChat(message: string){
+  /*sendChat(message: string){
     console.log("email" + this.user.email)
     console.log("mensage" + message)
     this.socket.emit("chat", message, this.user.email);
-  }
+  }*/
 }

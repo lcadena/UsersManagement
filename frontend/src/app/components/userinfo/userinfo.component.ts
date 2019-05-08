@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import * as io from 'socket.io-client' ;
 import {Router, ActivatedRoute} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {UserinfoService} from "../../services/userinfo.service";
@@ -10,8 +11,11 @@ import {User} from "../../models/user";
   styleUrls: ['./userinfo.component.css']
 })
 export class UserinfoComponent implements OnInit {
+
+  socket: SocketIOClient.Socket;
   users: User[];
   user: User;
+
   constructor(private userinfoService: UserinfoService, private router: Router, private activatedRouter: ActivatedRoute) { 
     this.user = new User("","", "","","","",null);
   }
@@ -84,5 +88,10 @@ export class UserinfoComponent implements OnInit {
   goBack() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('');
+  }
+
+  conect(email: string){
+    this.socket.emit("conect", email);
+    console.log("conect" + email);
   }
 }
