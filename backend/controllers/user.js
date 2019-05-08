@@ -164,36 +164,70 @@ function addProductToUser(req, res) {
   let userId = req.params.userId
   let productId = req.params.productId
   //let update = req.body
-  User.update({_id: userId}, {"$push": {"products": productId}}, (err, result) => {
-    if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
-    if (!result) return res.status(404).send({message: 'El usuario no existe'})
-    console.log(result)
-    return res.status(200).send(result)
-    })
+  Product.findById(productId, function(err, productEncontrado) {
+    if(err) {
+      next(err)
+    }
+    if(productEncontrado) {
+      User.update({_id: userId}, {"$push": {"products": productId}}, (err, result) => {
+        if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
+        if (!result) return res.status(404).send({message: 'El usuario no existe'})
+        console.log(result)
+        return res.status(200).send(result)
+      })
+    } else {
+      return res.status(404).send("El producto no existe, añadalo")
+    }
+  })
 }
+
 ///añadir tienda a usario
 function addTiendaToUser(req, res) {
   let userId = req.params.userId
   let tiendaId = req.params.tiendaId
-  //let update = req.body
-  User.update({_id: userId}, {"$push": {"tiendas": tiendaId}}, (err, result) => {
-    if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
-    if (!result) return res.status(404).send({message: 'El usuario no existe'})
-    console.log(result)
-    return res.status(200).send(result)
-    })
+  
+  Tiendas.findById(tiendaId, function(err, tiendaEncontrada) {
+    console.log('ID tienda: ', tiendaId)
+    if (err) {
+      next(err)
+    }
+    if (tiendaEncontrada) {
+      console.log(tiendaEncontrada)
+      User.update({_id: userId}, {"$push": {"tiendas": tiendaId}}, (err, result) => {
+        if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
+        if (!result) return res.status(404).send({message: 'El usuario no existe'})
+        console.log(result)
+        return res.status(200).send(result)
+        })
+    } else {
+      return res.status(404).send("La tienda no existe, añadala")
+    }
+  })
 }
 //añadir ticket a usuario
 function addTicketToUser(req, res) {
   let userId = req.params.userId
   let ticketId = req.params.ticketId
-  User.update({_id: userId}, {"$push": {"tickets": ticketId}}, (err, result) => {
-    if(err) return res.status(500).send({message: `Error al actualizar el usaurio: ${err}`})
-    if(!result) return res.status(404).send({message: 'El usuario no existe'})
-    console.log(result)
-    return res.status(200).send(result)
+
+  Ticket.findById(ticketId, function (err, ticketEncontrado) {
+    console.log('ID de ticket: ', ticketId)
+    if (err) {
+      next(err);
+    }
+    if (ticketEncontrado) {
+      console.log(ticketEncontrado)
+      User.update({_id: userId}, {"$push": {"tickets": ticketId}}, (err, result) => {
+        if(err) return res.status(500).send({message: `Error al actualizar el usaurio: ${err}`})
+        if(!result) return res.status(404).send({message: 'El usuario no existe'})
+        console.log(result)
+        return res.status(200).send(result)
+      })
+    } else {
+      return res.status(404).send("El ticket no existe, añadalo")
+    }
   })
 }
+
 ///listar productos de un usuario 
 function getProductsofUser(req, res) {
   let userId = req.params.userId
