@@ -47,7 +47,7 @@ api.delete('/product/:productId', productCtrl.deleteProduct)
 //listar todos los usuarios con productos - FUNCIONA *
 api.get('/usersproducts', userCtrl.getUserswithProducts)
 //añadir un producto a un usuario - FUNCIONA *
-api.put('/:userId/products/:productId', userCtrl.addProductToUser)
+api.put('/productuser/:userId/:productId', userCtrl.addProductToUser)
 //listar los productos de un usuario - FUNCIONA **
 api.get('/products/:userId', userCtrl.getProductsofUser)
 
@@ -71,7 +71,7 @@ api.get('/tickets/:userId', userCtrl.getTicketsofUser)
 
 /*TICKETS Y PRODUCTOS*/
 //añadir un producto a un ticket - FUNCIONA *
-api.put('/:ticketId/prodtick/:productId', ticketCtrl.addProductToTicket)
+api.put('/prodtick/:ticketId/:productId', ticketCtrl.addProductToTicket)
 //listar los productos de un ticket - FUNCIONA **
 api.get('/prodtick/:ticketId', ticketCtrl.getProductsofTicket)
 
@@ -96,7 +96,7 @@ api.get('/tiendas/:userId', userCtrl.getTiendasofUser)
 
 /*TIENDAS Y PRODUCTOS*/
 //añadir un producto a una tienda - FUNCIONA
-api.put('/:tiendaId/prodtienda/:productId', tiendaCtrl.addProductToTienda)
+api.put('/prodtienda/:tiendaId/:productId', tiendaCtrl.addProductToTienda)
 //listar los productos de una tienda - FUNCIONA
 api.get('/prodtienda/:tiendaId', tiendaCtrl.getProductsofTienda)
 

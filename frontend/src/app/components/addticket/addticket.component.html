@@ -1,9 +1,8 @@
 <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Add Tickets</ion-title>
+      <ion-title>Add Ticket</ion-title>
     </ion-toolbar>
 </ion-header>
-
 
 <ion-content>
   <form [formGroup]="ticketsForm" (ngSubmit)="addTickets()">
@@ -40,54 +39,10 @@
               <ion-input type="text" class="form-control" formControlName="expedicion"></ion-input>
           </ion-item>
         </div>
-
-        <h2>Add Tienda</h2>
-
+       
         <div class="form-group">
           <ion-item>
-              <ion-label>Name tienda:</ion-label>
-              <ion-input type="text" class="form-control" formControlName="nametienda"></ion-input>
-          </ion-item>
-        </div>
-
-        <div class="form-group">
-          <ion-item>
-              <ion-label>direccion:</ion-label>
-              <ion-input type="text" class="form-control" formControlName="direccion"></ion-input>
-          </ion-item>
-        </div>
-
-        <h2>Add Producto</h2>
-        <div class="form-group">
-          <ion-item>
-              <ion-label>Name producto:</ion-label>
-              <ion-input type="text" class="form-control" formControlName="nameproducto"></ion-input>
-          </ion-item>
-        </div>
-        <div class="form-group">
-          <ion-item>
-              <ion-label>Price: </ion-label>
-              <ion-input type="text" class="form-control" formControlName="price"></ion-input>
-          </ion-item>
-        </div>
-
-        <div class="form-group">
-          <ion-item>
-              <ion-label>Category: </ion-label>
-              <ion-input type="text" class="form-control" formControlName="category"></ion-input>
-          </ion-item>
-        </div>
-
-        <div class="form-group">
-          <ion-item>
-            <ion-label>Description: </ion-label>
-            <ion-input type="text" class="form-control" formControlName="description"></ion-input>
-          </ion-item>
-        </div>
-
-        <div class="form-group">
-          <ion-item>
-              <ion-button class="btn btn-primary" type="submit" [disabled]="ticketsForm.invalid" > <ion-icon slot="start" name ="add"></ion-icon>Add Product</ion-button>
+              <ion-button class="btn btn-primary" type="submit" [disabled]="ticketsForm.invalid"  [routerLink]="['/api/tienda', user._id]"> <ion-icon slot="start" name ="add"></ion-icon>Add Shop</ion-button>
               <ion-button id="input-cancel" fill="outline" color="danger" [routerLink]="['']" >Cancel</ion-button>
             </ion-item>
         </div>

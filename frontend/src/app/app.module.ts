@@ -9,6 +9,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { Camera } from '@ionic-native/camera/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+
+
+
 import { ProductsComponent } from './components/products/products.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -64,6 +69,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},
     { provide: RouteReuseStrategy,  useClass: IonicRouteStrategy },
     ],

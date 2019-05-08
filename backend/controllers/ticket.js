@@ -59,13 +59,23 @@ function addProductToTicket(req, res) {
     let ticketId = req.params.ticketId
     let productId = req.params.productId
 
-    Ticket.update({_id: ticketId}, {"$push": {"products": productId}}, (err, result) => {
-      if (err) res.status(500).send({message: `Error al actualizar el ticket: ${err}`})
-      if (!result) return res.status(404).send({message: 'El ticket no existe'})
-  
-      res.status(200).send(result)
-      })
+    Product.findById(productId, function(err, productEncontrado) {
+      if(err) {
+        next(err)
+      }
+      if(productEncontrado) {
+        Ticket.update({_id: ticketId}, {"$push": {"products": productId}}, (err, result) => {
+          if (err) res.status(500).send({message: `Error al actualizar el ticket: ${err}`})
+          if (!result) return res.status(404).send({message: 'El ticket no existe'})
+      
+          return res.status(200).send(result)
+        })
+      } else {
+        return res.status(404).send("El producto no existe, añadalo")
+      }
+    })
 }
+
 //listar productos de un ticket
 function getProductsofTicket(req, res) {
   let ticketId = req.params.ticketId

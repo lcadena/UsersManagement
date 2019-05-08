@@ -39,12 +39,14 @@ export class UserinfoService {
   }*/
 
   addTicketToUser(_iduser: string, _idticket: string, body: string)  {
-    console.log('iduser ', _iduser)
-    console.log('idticket ', _idticket)
-    return this.http.put(this.environment.urlTicketUser + `/${_iduser}` + `/${_idticket}`, body)
+      return this.http.put(this.environment.urlTicketUser + `/${_iduser}` + `/${_idticket}`, body)
   }//ticketuser/:userId/:ticketId
 
   addTiendaToUser(_iduser: string, _idtienda: string, body: string) {
     return this.http.put(this.environment.urlUser + 'tiendauser' + `/${_iduser}` + `/${_idtienda}`,body)
   } //tiendauser/:userId/:tiendaId
+
+  addProductToUser(_iduser: string, _idproduct: string, body: string){
+    return this.http.put(this.environment.urlUser + 'productuser'+ `/${_iduser}` + `/${_idproduct}`,body)
+  }//productuser/:userId/:productId
 }

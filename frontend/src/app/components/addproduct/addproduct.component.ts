@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from "@angular/common/http";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import { ProductService } from "../../services/product.service";
+import {ActivatedRoute} from "@angular/router"
+import { User } from '../../models/user';
+import { UserinfoService } from '../../services/userinfo.service';
 import { Product } from "../../models/product";
+import { ProductService } from "../../services/product.service";
 
 
 @Component({
@@ -14,14 +17,18 @@ import { Product } from "../../models/product";
 })
 export class AddproductComponent implements OnInit {
 
-  addproductForm: FormGroup;
+  productForm: FormGroup;
   validation_messages: any;
+  user: User;
+  product: Product;
 
 
-  constructor(private addproductService: ProductService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private productService: ProductService, private router: Router, private formBuilder: FormBuilder,
+    private userService: UserinfoService, private activatedRouter: ActivatedRoute) {
+      this.user = new User("","", "","","","",null);
 
-    this.addproductForm = this.formBuilder.group({
-        name: new FormControl('', Validators.compose([
+    this.productForm = this.formBuilder.group({
+        nameproducto: new FormControl('', Validators.compose([
           Validators.required,
           Validators.pattern(/.{3,15}$/)])),
 
@@ -42,6 +49,16 @@ export class AddproductComponent implements OnInit {
   }
 
   ngOnInit() {
+    //para recoger el id del user de la URL
+    this.activatedRouter.params.subscribe(params => {
+      if (typeof params['id'] !== 'undefined') {
+        console.log("params", params);        
+        this.user._id = params['id'];
+      } else {
+        this.user._id = '';
+      }
+    });
+
     this.validation_messages = {
       'name': [
         { type: 'required', message: 'Name is required'},
@@ -63,26 +80,25 @@ export class AddproductComponent implements OnInit {
   }
 
   addProduct() {
-    console.log(this.addproductForm.value);
-    //let product2 = new Product("", this.addproductForm.value.name, "",parseInt(this.addproductForm.value.price), this.addproductForm.value.category, this.addproductForm.value.description);
-    let product = new Product();
-    product._id = "";
-    product.name = this.addproductForm.value.name;
-    product.picture = "";
-    product.price = this.addproductForm.value.price;
-    product.category = this.addproductForm.value.category;
-    product.garantia = null;
-    product.devolucion = null;
-    product.description = this.addproductForm.value.description;
+    this.product = new Product ("",this.productForm.value.nameproducto, "", this.productForm.value.price, this.productForm.value.category, null, null, this.productForm.value.description)
 
-    this.addproductService.saveProduct(product)
+    this.productService.saveProduct(this.product)
       .subscribe(
-        res => {
-          console.log(res);
+        (res:Product) => {
+          console.log("respuesta" + res)
+          this.product = res
           let token = res['token'];
-          localStorage.setItem('token', token);
-
-          this.router.navigateByUrl('/api/product');
+          localStorage.setItem('token', token)
+          let data ={
+            "iduser": this.user._id,
+            "idproduct": this.product._id};
+          console.log("data", data)
+          let body = JSON.stringify(data )
+          this.userService.addProductToUser(this.user._id, this.product._id, body)
+          .subscribe(
+            res => {
+              console.log("producto" + res);
+            })     
         },
 
         err => {
