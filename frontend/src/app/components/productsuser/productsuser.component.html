@@ -10,14 +10,20 @@
 <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
 
 <div *ngFor = "let product of products; let i=index">
+  <ion-list>
+      <ion-list-header>
+          <ion-label>Products</ion-label>
+      </ion-list-header>
     <div class="border border-secondary">
-
-  <p><b>ID producto:</b> {{product._id}}</p>
-  <p><b>name producto:</b> {{product.name}}</p>  
-  <p><b>price producto:</b> {{product.price}}</p>
-  <p><b>category producto:</b> {{product.category}}</p>
-  </div>
-
+      <ion-avatar>
+          <img src="http://corporativoseconafem.com/images/user-f.png">
+      </ion-avatar>
+      <p><b>ID:</b> {{product._id}}</p>
+      <p><b>Name:</b> {{product.name}}</p>  
+      <p><b>Price:</b> {{product.price}}</p>
+      <p><b>Category:</b> {{product.category}}</p>
+    </div>
+  </ion-list>
 </div>
 
 </ion-content>
