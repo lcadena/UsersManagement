@@ -56,6 +56,8 @@ const routes: Routes = [
     { path: 'api/productsuser/:id', component: ProductsuserComponent},
     { path: 'api/ticketsuser/:id', component: TicketsuserComponent},
     { path: 'api/tiendasuser/:id', component: TiendasuserComponent},
+    { path: 'gallery',
+    loadChildren: './pages/gallery/gallery.module#GalleryPageModule' },
 
 ];
 
