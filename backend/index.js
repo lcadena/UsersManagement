@@ -1,5 +1,5 @@
 'use strict'
-var socket = require('socket.io')
+//var socket = require('socket.io')
 
 
 const mongoose = require('mongoose')
@@ -35,9 +35,9 @@ mongoose.connect(config.db, (err, res) => {
       io.sockets.emit('conectado', allConnectedClients); //emito a todos los usuarios la nueva lista de conectados
     })
   })
-
-
-
-
-
 })
+
+
+
+
+

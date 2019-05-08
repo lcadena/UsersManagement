@@ -17,6 +17,7 @@ import {ModifyticketComponent } from './components/modifyticket/modifyticket.com
 import {ProductsuserComponent } from './components/productsuser/productsuser.component';
 import { TicketsuserComponent } from './components/ticketsuser/ticketsuser.component';
 import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -56,8 +57,7 @@ const routes: Routes = [
     { path: 'api/productsuser/:id', component: ProductsuserComponent},
     { path: 'api/ticketsuser/:id', component: TicketsuserComponent},
     { path: 'api/tiendasuser/:id', component: TiendasuserComponent},
-    { path: 'gallery',
-    loadChildren: './pages/gallery/gallery.module#GalleryPageModule' },
+    { path: 'api/gallery', component: GalleryComponent},
 
 ];
 

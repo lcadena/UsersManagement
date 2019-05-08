@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { PhotoService } from '../../services/photo.service',
+import { PhotoService } from '../../services/photo.service';
 
 @Component({
   selector: 'app-gallery',

@@ -26,6 +26,7 @@ import { AddticketComponent } from './components/addticket/addticket.component';
 import {AddtiendaComponent} from './components/addtienda/addtienda.component';
 import { ModifytiendaComponent } from './components/modifytienda/modifytienda.component';
 import { ModifyticketComponent } from './components/modifyticket/modifyticket.component';
+import { GalleryComponent } from './components/gallery/gallery.component'
 import { ModifyuserComponent } from './components/modifyuser/modifyuser.component';
 import { ModifyproductComponent } from './components/modifyproduct/modifyproduct.component';
 import { TicketComponent } from './components/ticket/ticket.component';
@@ -49,6 +50,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     AddproductComponent,
     AddticketComponent,
     AddtiendaComponent,
+    GalleryComponent,
     ModifytiendaComponent,
     ModifyticketComponent,
     ModifyuserComponent,
@@ -65,6 +67,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    IonicStorageModule.forRoot(),
   ],
   providers: [
     StatusBar,
