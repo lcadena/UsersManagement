@@ -6,13 +6,8 @@
 </ion-header>
 
 <ion-content>
-
-  <ion-button class="btn btn-primary" [routerLink]="['/api/product']"><i class="fa fa-clone"></i>&nbsp;  See my products</ion-button>
-
-  <p>
-    <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
-  </p>
-
+  <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
+  
   <div class="border border-secondary">
     <span><img src="http://corporativoseconafem.com/images/user-f.png"></span>
     <h2>{{user.firstName + " " + user.lastName}}</h2>

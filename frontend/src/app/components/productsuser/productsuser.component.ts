@@ -4,6 +4,7 @@ import {ProductService} from "../../services/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {Product} from "../../models/product";
 import {User} from '../../models/user';
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-productsuser',
@@ -44,6 +45,37 @@ export class ProductsuserComponent implements OnInit {
   }
 
 
+  /**
+   *
+   * @param id
+   */
+  confirmDelete(id: string, i: number) {
+    if(confirm('El producto se borrará de tu lista de productos...')){
+      this.productService.deleteProduct(id)
+        .subscribe(
+          res =>{
+            console.log(res);
+            console.log("Se ha borrado correctamente ", i);
+            //this.getProducts();
+            //Two way data binding!
+            this.products.splice(i,1);
+            console.log("Se ha borrado correctamente ", this.products);
+
+          },
+          err => {
+            this.handleError(err);
+          });
+    }
+  }
+/**
+   *
+   * @param err
+   */
+  private handleError(err: HttpErrorResponse) {
+    if( err.status == 500 ) {
+      alert(err);
+    }
+  }
 
 
 }
