@@ -1,8 +1,10 @@
-<!--<ion-header>
+<ion-header>
     <ion-toolbar color="primary">
       <ion-title>Add Shop</ion-title>
     </ion-toolbar>
 </ion-header>
+
+<ion-content> List of Shop</ion-content>
 
 <ion-content>  
   <form [formGroup]="tiendaForm" (ngSubmit)="addTienda()">
@@ -12,7 +14,7 @@
             <div class="form-group">
               <ion-item>
                 <ion-label position="floating">Name:</ion-label>
-                <ion-input type="text" class="form-control" formControlName="name"></ion-input>   
+                <ion-input type="text" class="form-control" formControlName="nametienda"></ion-input>   
               </ion-item> 
             </div>
 
@@ -24,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <ion-button class="btn btn-primary" type="submit" [disabled]="tiendaForm.invalid" > <ion-icon slot="start" name ="add"></ion-icon>Add Shop</ion-button>
+                <ion-button class="btn btn-primary" type="submit" [disabled]="tiendaForm.invalid" [routerLink]="['/api/addproduct', user._id]"  > <ion-icon slot="start" name ="add"></ion-icon>Add Shop</ion-button>
                 <ion-button id="input-cancel" fill="outline" color="danger" [routerLink]="['']" >Cancel</ion-button>
             </div>
         </ion-col>

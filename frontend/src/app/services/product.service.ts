@@ -42,4 +42,6 @@ export class ProductService {
   getProductUser(_id: string ):Observable<Product[]>{
     return this.http.get<Product[]>(this.environment.urlUser + 'products' + `/${_id}`);
   }
+  
 }
+

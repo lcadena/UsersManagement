@@ -47,7 +47,7 @@ api.delete('/product/:productId', productCtrl.deleteProduct)
 //listar todos los usuarios con productos - FUNCIONA *
 api.get('/usersproducts', userCtrl.getUserswithProducts)
 //añadir un producto a un usuario - FUNCIONA *
-api.put('/:userId/products/:productId', userCtrl.addProductToUser)
+api.put('/productuser/:userId/:productId', userCtrl.addProductToUser)
 //listar los productos de un usuario - FUNCIONA **
 api.get('/products/:userId', userCtrl.getProductsofUser)
 

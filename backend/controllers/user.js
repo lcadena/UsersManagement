@@ -31,7 +31,6 @@ function signUp(req, res) {
         })
       })
 }
-
 //función loguin
 function signIn(req, res) {
   User.find({email: req.body.email}, (err, user) => {
@@ -47,7 +46,6 @@ function signIn(req, res) {
     })
   })
 }
-
 /*User.findOne({email: email}, function (err, userEncontrado) {
     console.log(email)
     console.log(user)
