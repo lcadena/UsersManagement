@@ -15,7 +15,7 @@ export class TiendasuserComponent implements OnInit {
   user: User;
   tiendas: Tienda[];
 
-  constructor(private router: Router, private tiendaService: TiendaService, private activatedRouter: ActivatedRoute, , private userinfoService: UserinfoService) { 
+  constructor(private router: Router, private tiendaService: TiendaService, private activatedRouter: ActivatedRoute, private userinfoService: UserinfoService) { 
     this.user = new User("","", "","","","",null); }
 
   ngOnInit() {

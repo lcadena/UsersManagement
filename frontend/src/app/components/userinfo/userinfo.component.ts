@@ -13,12 +13,12 @@ import * as app from 'express'
   styleUrls: ['./userinfo.component.css']
 })
 export class UserinfoComponent implements OnInit {
-  socket: SocketIOClient.Socket;
+  //socket: SocketIOClient.Socket;
   users: User[];
   user: User;
   constructor(private userinfoService: UserinfoService, private router: Router, private activatedRouter: ActivatedRoute) { 
     this.user = new User("","", "","","","",null)
-    this.socket = io.connect('http://localhost:3000')
+    /*this.socket = io.connect('http://localhost:3000')
 
     this.socket.on('conectado', function(socket){
       var socketlength = socket.length;
@@ -27,9 +27,9 @@ export class UserinfoComponent implements OnInit {
         /*for (var i = 0; i <= socketlength-1; i++) {
             console.log("socket ", socket[i]);
             //this.outputList.push(socket[i])
-          }*/
-    }.bind(this));    
-  }
+          }
+    }.bind(this));*/    
+}
 
   ngOnInit() {
 
