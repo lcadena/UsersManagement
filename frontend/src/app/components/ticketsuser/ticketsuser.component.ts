@@ -42,4 +42,8 @@ export class TicketsuserComponent implements OnInit {
     console.log("lista de ticket del usuario  " + this.tickets);
   }
 
+  getUser(){
+    
+  }
+
 }

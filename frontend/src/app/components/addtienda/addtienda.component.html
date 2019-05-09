@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <ion-button class="btn btn-primary" type="submit" [disabled]="tiendaForm.invalid" [routerLink]="['/api/addproduct', user._id]"  > <ion-icon slot="start" name ="add"></ion-icon>Add Shop</ion-button>
-                <ion-button id="input-cancel" fill="outline" color="danger" [routerLink]="['']" >Cancel</ion-button>
+                <ion-button id="input-cancel" fill="outline" color="danger" [routerLink]="['/api/userinfo' ,user.email]" >Cancel</ion-button>
             </div>
         </ion-col>
       </ion-row>
