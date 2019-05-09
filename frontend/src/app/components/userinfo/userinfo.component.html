@@ -37,8 +37,8 @@
               <img src="http://corporativoseconafem.com/images/user-f.png">
           </ion-avatar>
         <ion-label style="padding-left: 2px">{{user.email}}</ion-label>
-        <ion-item-options>
-            <ion-button color="danger" (click)="deleteUser(user)"><ion-icon name="trash"></ion-icon>Delete</ion-button>
+        <ion-item-options (ionSwipe)="deleteUser(user)">
+            <ion-button style="font-size: 16px; padding-right: 25px" name="trash" color="danger" (click)="deleteUser(user)"><ion-icon name="trash"></ion-icon>Delete</ion-button>
           </ion-item-options>
       </ion-item>
 

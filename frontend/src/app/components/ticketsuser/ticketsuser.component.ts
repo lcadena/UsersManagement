@@ -14,9 +14,11 @@ import { Ticket } from '../../models/ticket';
 export class TicketsuserComponent implements OnInit {
   user: User;
   tickets: Ticket[]
+  ticket: Ticket;
 
   constructor(private router: Router, private ticketService: TicketService, private activatedRouter: ActivatedRoute, private userinfoService: UserinfoService) { 
     this.user = new User("","", "","","","",null);
+    this.ticket = new Ticket("","","","",null,null)
   }
 
   ngOnInit() {
@@ -52,4 +54,12 @@ export class TicketsuserComponent implements OnInit {
     })
   }
 
+  deleteTicket(ticket){
+
+    let index = this.tickets.indexOf(ticket);
+
+    if(index > -1){
+        this.tickets.splice(index, 1);
+    }
+}
 }

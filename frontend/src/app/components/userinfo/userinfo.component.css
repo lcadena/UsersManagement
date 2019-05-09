@@ -37,6 +37,11 @@
   between 0.0 (fully transparent) and 1.0 (fully opaque)*/
   }
 
+  .trash-btn{
+    background-size : 15px;
+    padding-right: 1cm;
+  }
+
   .card-title {
     position: absolute;
     top: 36%;
@@ -67,5 +72,4 @@
     margin-left: 10px;
   }
 
-  
   

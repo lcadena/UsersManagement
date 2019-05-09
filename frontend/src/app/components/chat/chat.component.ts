@@ -43,7 +43,7 @@ export class ChatComponent implements OnInit {
 
     //escucho los mensajes del chat
     this.socket.on('chat', function(mensaje){
-      console.log ("mensaje recivido  ", mensaje);
+      console.log ("mensaje recibido  ", mensaje);
       this.mensajes = mensaje;
     }.bind(this));
 

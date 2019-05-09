@@ -8,7 +8,7 @@
 
 <ion-content>  
 
-    <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
+    <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>&nbsp;Profile</ion-button>
 
   <div *ngFor = "let product of products; let i=index">
     <ion-input type="hidden" value="{{product._id}}"></ion-input>
