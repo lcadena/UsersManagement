@@ -103,6 +103,16 @@ export class UserinfoComponent implements OnInit {
   }
 
 
+  deleteUser(user){
+
+    let index = this.users.indexOf(user);
+
+    if(index > -1){
+        this.users.splice(index, 1);
+    }
+}
+
+
 
   /*enviar al servidor que me he conectado al chat-socket
   sendConection(){

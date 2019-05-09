@@ -20,6 +20,11 @@
   </ion-grid>
   </ng-container>
 
+  <ion-fab vertical="top" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="arrow-round-back" [routerLink]="['/api/userinfo', user.email]"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button (click)="photoService.takePicture()">
       <ion-icon name="camera"></ion-icon>
@@ -30,6 +35,7 @@
       <ion-icon name="trash"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
   <img [src]="currentImage" *ngIf="currentImage">
 
 </ion-content>
