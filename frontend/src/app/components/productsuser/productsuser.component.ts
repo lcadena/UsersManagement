@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {ProductService} from "../../services/product.service";
+import {UserinfoService} from "../../services/userinfo.service";
+
 import {ActivatedRoute} from "@angular/router";
 import {Product} from "../../models/product";
 import {User} from '../../models/user';
@@ -15,7 +17,7 @@ export class ProductsuserComponent implements OnInit {
   user: User;
   products: Product[];
 
-  constructor(private router: Router, private productService: ProductService, private activatedRouter: ActivatedRoute) { 
+  constructor(private router: Router, private userinfoService: UserinfoService , private productService: ProductService, private activatedRouter: ActivatedRoute) { 
     this.user = new User("","", "","","","",null);
   }
 
@@ -33,6 +35,7 @@ export class ProductsuserComponent implements OnInit {
     console.log ("info del URL:   " + this.user._id);
     
     this.getProductsuser(this.user._id);
+    this.getUser(this.user._id);
   }
 
   getProductsuser(id: string){
@@ -44,6 +47,14 @@ export class ProductsuserComponent implements OnInit {
 
   }
 
+  getUser(id: string){
+    this.userinfoService.getUser(id)
+      .subscribe(res =>{
+        this.user = res;
+      });
+    console.log("User:  " + this.user);
+
+  }
 
   /**
    *

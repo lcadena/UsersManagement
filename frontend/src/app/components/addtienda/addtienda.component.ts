@@ -18,7 +18,7 @@ export class AddtiendaComponent implements OnInit {
     user: User;
     tienda: Tienda;
  
-    constructor(private userService: UserinfoService,  private tiendaService: TiendaService, private router: Router, 
+    constructor(private userService: UserinfoService, private userinfoService: UserinfoService,  private tiendaService: TiendaService, private router: Router, 
         private formBuilder: FormBuilder, private activatedRouter: ActivatedRoute) {
             this.user = new User("","", "","","","",null);
 
@@ -40,6 +40,16 @@ export class AddtiendaComponent implements OnInit {
           this.user._id = '';
         }
       });
+      this.getUser(this.user._id);
+    }
+
+    getUser(id: string){
+      this.userinfoService.getUser(id)
+        .subscribe(res =>{
+          this.user = res;
+        });
+      console.log("User:  " + this.user);
+  
     }
 
     addTienda(){
