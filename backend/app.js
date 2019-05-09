@@ -17,9 +17,9 @@ app.use(bodyParser.json())
 //Todos los permisos de CORS (acceso a todos los dominios)
 //app.use(cors({origin: '*'}))
 app.use(cors())
-//cabecera de cros mas restictiva
+//cabecera de cors mas restictiva
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin","https://localhost:8100");
+    res.header("Access-Control-Allow-Origin","http://localhost:8100");
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept, Authorization"
