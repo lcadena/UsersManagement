@@ -15,10 +15,10 @@ app.use(bodyParser.urlencoded({ extended: false}))
 //Permitir peticiones con formato de mensaje JSON
 app.use(bodyParser.json())
 //Todos los permisos de CORS (acceso a todos los dominios)
-app.use(cors({origin: '*'}))
+//app.use(cors({origin: '*'}))
 
 //cabecera de cros mas restictiva
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin","http://localhost:8100");
     res.header(
         "Access-Control-Allow-Headers",
@@ -28,7 +28,8 @@ app.use(cors({origin: '*'}))
         res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
     }
     next()
-})*/
+})
+
 app.use(cors())
 //Ficheros hbs
 app.engine('.hbs', hbs({
