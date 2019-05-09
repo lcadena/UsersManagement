@@ -17,7 +17,7 @@ import { ProductService } from "../../services/product.service";
 })
 export class AddproductComponent implements OnInit {
 
-  productForm: FormGroup;
+  addproductForm: FormGroup;
   validation_messages: any;
   user: User;
   product: Product;
@@ -27,7 +27,7 @@ export class AddproductComponent implements OnInit {
     private userService: UserinfoService, private activatedRouter: ActivatedRoute) {
       this.user = new User("","", "","","","",null);
 
-    this.productForm = this.formBuilder.group({
+    this.addproductForm = this.formBuilder.group({
         nameproducto: new FormControl('', Validators.compose([
           Validators.required,
           Validators.pattern(/.{3,15}$/)])),
@@ -60,17 +60,17 @@ export class AddproductComponent implements OnInit {
     });
 
     this.validation_messages = {
-      'name': [
+      'nameproducto': [
         { type: 'required', message: 'Name is required'},
         { type: 'pattern', message: 'It has to be between 3 and 15 characters long'}
+      ],
+      'price': [
+            { type: 'required', message: 'Price is required'},
+            { type: 'pattern', message: 'It can not begin by a 0 and has to be between 2 and 4 digits long'}
       ],
       'category': [
         { type: 'required', message: 'Category is required'},
         { type: 'pattern', message: 'It has to be between 3 and 25 characters long'}
-      ],
-      'price': [
-        { type: 'required', message: 'Price is required'},
-        { type: 'pattern', message: 'It can not begin by a 0 and has to be between 2 and 4 digits long'}
       ],
       'description': [
         { type: 'required', message: 'Dates are required' },
@@ -80,7 +80,7 @@ export class AddproductComponent implements OnInit {
   }
 
   addProduct() {
-    this.product = new Product ("",this.productForm.value.nameproducto, "", this.productForm.value.price, this.productForm.value.category, null, null, this.productForm.value.description)
+    this.product = new Product ("",this.addproductForm.value.nameproducto, "", this.addproductForm.value.price, this.addproductForm.value.category, null, null, this.addproductForm.value.description)
 
     this.productService.saveProduct(this.product)
       .subscribe(
