@@ -84,16 +84,4 @@ export class UserinfoComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigateByUrl('');
   }
-<<<<<<< HEAD
 }
-=======
-
-
-
-  /*enviar al servidor que me he conectado al chat-socket
-  sendConection(){
-    this.socket.emit('user', this.user.email);
-    console.log("conexion enviada   " + this.user.email);
-  }*/
-}
->>>>>>> 738fc2531d3f968cad30bb4b8945c2e24356d6fe
