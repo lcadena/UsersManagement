@@ -19,19 +19,17 @@ export class UserinfoComponent implements OnInit {
   constructor(private userinfoService: UserinfoService, private router: Router, private activatedRouter: ActivatedRoute) { 
     this.user = new User("","", "","","","",null)
     this.socket = io.connect('http://localhost:3000')
+
     this.socket.on('conectado', function(socket){
       var socketlength = socket.length;
         console.log("numero de users", socketlength);
         this.outputList = [];
-        for (var i = 0; i <= socketlength-1; i++) {
+        /*for (var i = 0; i <= socketlength-1; i++) {
             console.log("socket ", socket[i]);
             //this.outputList.push(socket[i])
-            console.log("socket ", socket[i])
-          }
-    }.bind(this));
+          }*/
+    }.bind(this));    
   }
-
-  
 
   ngOnInit() {
 
@@ -102,5 +100,13 @@ export class UserinfoComponent implements OnInit {
   goBack() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('');
+  }
+
+
+
+  //enviar al servidor que me he conectado al chat-socket
+  sendConection(){
+    this.socket.emit('user', this.user.email);
+    console.log("conexion enviada   " + this.user.email);
   }
 }

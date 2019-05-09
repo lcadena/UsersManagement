@@ -32,6 +32,7 @@ export class TicketsuserComponent implements OnInit {
     console.log ("info del URL:   " + this.user._id);
 
     this.getTicketsuser(this.user._id);
+    this.getUser(this.user._id);
   }
 
   getTicketsuser(id: string){
@@ -40,6 +41,14 @@ export class TicketsuserComponent implements OnInit {
         this.tickets = res;
       });
     console.log("lista de ticket del usuario  " + this.tickets);
+  }
+
+  getUser(id:string){
+    this.userinfoService.getUser(id)
+    .subscribe(res =>{
+      this.user = res;
+      console.log("Usuario" + this.user._id) //porque pasa dos veces 
+    })
   }
 
 }

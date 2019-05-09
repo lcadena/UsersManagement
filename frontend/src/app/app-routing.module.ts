@@ -18,6 +18,7 @@ import {ProductsuserComponent } from './components/productsuser/productsuser.com
 import { TicketsuserComponent } from './components/ticketsuser/ticketsuser.component';
 import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -58,6 +59,9 @@ const routes: Routes = [
     { path: 'api/ticketsuser/:id', component: TicketsuserComponent},
     { path: 'api/tiendasuser/:id', component: TiendasuserComponent},
     { path: 'api/gallery', component: GalleryComponent},
+
+    //chat*socket
+    { path: 'api/chat/:id', component: ChatComponent},
 
 ];
 

@@ -31,6 +31,7 @@ export class TiendasuserComponent implements OnInit {
 console.log ("info del URL:   " + this.user._id);
 
 this.getTiendasuser(this.user._id);
+this.getUser(this.user._id);
 }
 
 getTiendasuser(id: string){
@@ -41,4 +42,11 @@ this.tiendaService.getTiendasUser(id)
 console.log("lista de tiendas del usuario  " + this.tiendas);
 }
 
+getUser(id:string){
+  this.userinfoService.getUser(id)
+  .subscribe(res =>{
+    this.user = res;
+    console.log("Usuario" + this.user._id) //porque pasa dos veces 
+  })
+}
 }

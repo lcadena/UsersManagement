@@ -13,24 +13,27 @@ mongoose.connect(config.db, (err, res) => {
   console.log('Conexión a la base de datos establecida...')
   server = app.listen(config.port, (err, res) => {
     console.log(`API REST corriendo en http://localhost:${config.port}`)
-    //server = res;
   })
   //conexion de los socket
   var io = socket(server);
   io.on('connection', function(socket){
-    console.log("conexion del ususario con el SOCKET:  ", socket.id)
+    console.log("conexion del ususario con el SOCKET:  ", socket.id);   
+      
     //recivo/envio a todos que me en conectado
-    socket.on('conectado', function(email){ //escucho que los socket que se conecten 
-      socket.nickname = email;
-      var allConnectedClients = io.sockets.connected;
+    socket.on('user', function(email){ //escucho que los socket que se conecten 
+      socket.nickname = email;   
+      console.log("recivo la conexion de un cliente", socket.nickname)
+      var allConnectedClients = io.sockets.connected; //list os socket connected
       Object.keys(allConnectedClients).forEach(function(key){
-        var val = allConnectedClients[key]["id"]+"+"+allConnectedClients[key]["email"];
-        send.push(val);
-      })
-      var send = []
-      io.sockets.emit('conectado', send); //se lo envio a todos los socket conectados
-      console.log("envio de la conexion ", send);  
+        let val = allConnectedClients[key]["id"]+"+"+allConnectedClients[key]["email"];
+        //¿?¿?¿?¿?¿?¿?¿send.push(val);
+      })             
+    //conexion 
+    var send = []
+    io.sockets.emit('conectado', send )//se lo envio a todos los socket conectados
+    console.log("envio de la conexion ", send);
     })
+    
     //desconexion de los socket
     socket.on('disconnect', function(){//escucho cuando se desconecta
         var allConnectedClients = Object.keys(io.sockets.connected);
