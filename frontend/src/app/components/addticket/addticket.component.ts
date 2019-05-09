@@ -19,7 +19,7 @@ export class AddticketComponent implements OnInit {
   ticket: Ticket;
   
 
-  constructor(private userService: UserinfoService,private ticketService: TicketService,  private router: Router, private formBuilder: FormBuilder,
+  constructor(private userService: UserinfoService, private userinfoService: UserinfoService,private ticketService: TicketService,  private router: Router, private formBuilder: FormBuilder,
     private activatedRouter: ActivatedRoute) {
       this.user = new User("","", "","","","",null);
 
@@ -40,6 +40,16 @@ export class AddticketComponent implements OnInit {
         this.user._id = '';
       }
     });
+    this.getUser(this.user._id);
+  }
+
+  getUser(id: string){
+    this.userinfoService.getUser(id)
+      .subscribe(res =>{
+        this.user = res;
+      });
+    console.log("User:  " + this.user);
+
   }
   
   addTickets(){

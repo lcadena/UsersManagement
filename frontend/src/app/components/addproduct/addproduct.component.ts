@@ -21,6 +21,7 @@ export class AddproductComponent implements OnInit {
   validation_messages: any;
   user: User;
   product: Product;
+  //
 
 
   constructor(private productService: ProductService, private router: Router, private formBuilder: FormBuilder,

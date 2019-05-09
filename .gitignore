@@ -4,8 +4,9 @@
 .DS_STORE
 
 # Node.
-node_modules
+/node_modules
 npm-debug.log
+./../n
 
 # compiled output
 /dist
@@ -13,7 +14,7 @@ npm-debug.log
 /out-tsc
 
 # dependencies
-/node_modules
+./../frontend/node_modules
 
 # profiling files
 chrome-profiler-events.json
