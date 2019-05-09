@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {TicketService} from "../../services/ticket.service";
+import {UserinfoService} from "../../services/userinfo.service"
 import {ActivatedRoute} from "@angular/router";
 import { User } from '../../models/user';
 import { Ticket } from '../../models/ticket';
@@ -14,7 +15,7 @@ export class TicketsuserComponent implements OnInit {
   user: User;
   tickets: Ticket[]
 
-  constructor(private router: Router, private ticketService: TicketService, private activatedRouter: ActivatedRoute) { 
+  constructor(private router: Router, private ticketService: TicketService, private activatedRouter: ActivatedRoute, private userinfoService: UserinfoService) { 
     this.user = new User("","", "","","","",null);
   }
 

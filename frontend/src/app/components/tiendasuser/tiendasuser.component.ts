@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {TiendaService} from "../../services/tienda.service";
+import {UserinfoService} from "../../services/userinfo.service"
 import {ActivatedRoute} from "@angular/router";
 import { User } from '../../models/user';
 import { Tienda } from '../../models/tienda';
@@ -14,7 +15,7 @@ export class TiendasuserComponent implements OnInit {
   user: User;
   tiendas: Tienda[];
 
-  constructor(private router: Router, private tiendaService: TiendaService, private activatedRouter: ActivatedRoute) { 
+  constructor(private router: Router, private tiendaService: TiendaService, private activatedRouter: ActivatedRoute, , private userinfoService: UserinfoService) { 
     this.user = new User("","", "","","","",null); }
 
   ngOnInit() {
