@@ -33,7 +33,8 @@
     "socket.io": "^2.2.0",
     "swagger-node-express": "^2.1.3",
     "swagger-ui-express": "^4.0.2",
-    "utf-8-validate": "^5.0.2"
+    "utf-8-validate": "^5.0.2",
+    "zone.js": "^0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.6",
