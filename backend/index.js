@@ -29,7 +29,7 @@ mongoose.connect(config.db, (err, res) => {
       var allConnectedClients = io.sockets.connected; //list os socket connected
       var send = []
       Object.keys(allConnectedClients).forEach(function(key){
-        send = send + allConnectedClients[key]["id"]+ " + " + allConnectedClients[key]["nickname"];              
+        send = send + allConnectedClients[key]["id"]+ "+" + allConnectedClients[key]["nickname"] + ",";              
      
       })  
     io.sockets.emit('envio', send )//envio que me he conectado

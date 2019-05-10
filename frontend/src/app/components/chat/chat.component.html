@@ -5,7 +5,10 @@
 </ion-header>
 
 <ion-content>
-<h2> lista {{outputList}}</h2>
+    <h2>Usuarios Conectados</h2>
+<div *ngFor = "let email of outputlist; let i=index">
+<h3> {{email}}</h3>
+</div>
 
 <ion-button class="btn btn-info btn-block" (click)= "sendConection()"><i class="fa fa-plus"></i> Conectarme </ion-button>
 

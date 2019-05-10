@@ -19,7 +19,11 @@ export class ChatComponent implements OnInit {
   user: User;  
   socket = io();
   chatForm: FormGroup;
-  mensajes: string[] = []
+  mensajes: string[] = [];
+  listasocket: string[] = [];
+  listaemail: string[] = [];
+  outputlist: string[] = [];
+  
 
   constructor(private router: Router,private formBuilder: FormBuilder, private activatedRouter: ActivatedRoute, private userinfoService: UserinfoService) {
     this.user = new User("","", "","","","",null)
@@ -32,13 +36,21 @@ export class ChatComponent implements OnInit {
     //escuchar mi socket          
     this.socket.on('envio', function(socket){
       var socketlength = socket.length;
-        console.log("mi socket ", socket);
-        this.outputList = [];
-        this.outputList = socket
-        /*for (var i = 0; i <= socketlength-1; i++) {
-            //console.log("socket ", socket[i]);
-            this.outputList.push(socket[i])
-          }*/
+        console.log("lista de socket ", socket);
+        //romper la cadena 
+        var lista =socket.split(",");
+        for (var i=0; i< lista.length-1; i++){
+          console.log("Los usuarios conectados  ",lista[i]);
+          var lista2 = lista[i].split("+");
+          for(var j=0; j<lista2.length; j++){            
+            this.listasocket.push(lista2[j]);
+            console.log("los socket conectados  " , lista2[j]);
+            this.listaemail.push(lista2[j+1]);
+            console.log("los email conectados" , lista2[j+1]);
+            j++;
+          }                
+        }
+        this.outputlist = this.listaemail;
     }.bind(this));
 
     //escucho los mensajes del chat

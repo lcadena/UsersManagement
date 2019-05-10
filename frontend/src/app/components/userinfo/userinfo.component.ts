@@ -94,12 +94,4 @@ export class UserinfoComponent implements OnInit {
         this.users.splice(index, 1);
     }
 }
-
-
-
-  /*enviar al servidor que me he conectado al chat-socket
-  sendConection(){
-    this.socket.emit('user', this.user.email);
-    console.log("conexion enviada   " + this.user.email);
-  }*/
 }
