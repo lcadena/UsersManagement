@@ -32,7 +32,17 @@ export class ChatComponent implements OnInit {
     //escuchar mi socket          
     this.socket.on('envio', function(socket){
       var socketlength = socket.length;
-        console.log("mi socket ", socket);
+        console.log("lista de socket ", socket);
+        //romper la cadena 
+        var lista =socket.split(",");
+        for (var i=0; i< lista.length-1; i++){
+          console.log("Los usuarios conectados  ",lista[i]);
+          var listasocket = lista[i].split("+");
+          for(var j=0; j<listasocket.length; j++){
+            console.log("los socket de los usuarios conectados" , listasocket[j]);
+          }
+        }
+
         this.outputList = [];
         this.outputList = socket
         /*for (var i = 0; i <= socketlength-1; i++) {
