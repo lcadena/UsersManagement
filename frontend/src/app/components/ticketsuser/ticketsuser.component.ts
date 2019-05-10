@@ -13,12 +13,11 @@ import { Ticket } from '../../models/ticket';
 })
 export class TicketsuserComponent implements OnInit {
   user: User;
-  tickets: Ticket[]
-  ticket: Ticket;
+  tickets: Ticket[];
 
-  constructor(private router: Router, private ticketService: TicketService, private activatedRouter: ActivatedRoute, private userinfoService: UserinfoService) { 
+  constructor(private router: Router, private ticketService: TicketService, 
+    private activatedRouter: ActivatedRoute, private userinfoService: UserinfoService) { 
     this.user = new User("","", "","","","",null);
-    this.ticket = new Ticket("","","","",null,null)
   }
 
   ngOnInit() {
@@ -34,7 +33,7 @@ export class TicketsuserComponent implements OnInit {
     });
     console.log ("info del URL:   " + this.user._id);
 
-    this.getTicketsuser(this.user._id);
+    
     this.getUser(this.user._id);
   }
 
@@ -42,8 +41,9 @@ export class TicketsuserComponent implements OnInit {
     this.ticketService.getTicketsUser(id)
       .subscribe(res =>{
         this.tickets = res;
+        console.log("lista de ticket del usuario  ", res);
       });
-    console.log("lista de ticket del usuario  " + this.tickets);
+    
   }
 
   getUser(id:string){
@@ -51,6 +51,7 @@ export class TicketsuserComponent implements OnInit {
     .subscribe(res =>{
       this.user = res;
       console.log("Usuario" + this.user._id) //porque pasa dos veces 
+      this.getTicketsuser(this.user._id);
     })
   }
 
