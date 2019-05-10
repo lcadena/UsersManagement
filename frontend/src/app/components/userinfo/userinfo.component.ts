@@ -84,4 +84,14 @@ export class UserinfoComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigateByUrl('');
   }
+
+
+  deleteUser(user){
+
+    let index = this.users.indexOf(user);
+
+    if(index > -1){
+        this.users.splice(index, 1);
+    }
+}
 }

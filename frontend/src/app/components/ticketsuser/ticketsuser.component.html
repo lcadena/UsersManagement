@@ -4,16 +4,27 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-<ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>&nbsp;  See my users</ion-button>
-<div *ngFor = "let ticket of tickets; let i=index">
-    <div class="border border-secondary">
-  <p><b>ID ticket:</b> {{ticket._id}}</p>
-  <h2><b>name ticket:</b> {{ticket.name}}</h2>  
-  <p><b>cif ticket:</b> {{ticket.cif}}</p>
-  <p><b>foto ticket:</b> {{ticket.foto}}</p>
-  <p><b>expedicion ticket:</b> {{ticket.expedicion}}</p>
-  <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/ticketmod', ticket._id]"><i class="fa fa-eye"></i> Modify Ticket</ion-button>
-  </div>
+
   <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/ticket', user._id]"><i class="fa fa-eye"></i> Add ticket</ion-button>
-</div>
+  <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>&nbsp;Profile</ion-button>
+
+  <ion-list>
+    <ion-item-sliding *ngFor = "let ticket of tickets; let i=index">
+      <ion-item>
+        <ion-avatar item-left>
+            <img src="http://corporativoseconafem.com/images/user-f.png">
+        </ion-avatar>
+        <ion-label style="padding-left: 2px"> ID of ticket: {{ticket._id}}</ion-label>
+        <ion-label style="padding-left: 2px"> Name of ticket: {{ticket.name}}</ion-label>
+        <ion-label style="padding-left: 2px"> Shop CIF: {{ticket.cif}}</ion-label>
+        <ion-label style="padding-left: 2px"> Photo of ticket: {{ticket.foto}}</ion-label>
+        <ion-label style="padding-left: 2px"> Expedition Date of ticket: {{ticket.expedicion}}</ion-label>
+          <ion-item-options>
+          <ion-button style="font-size: 16px; padding-right: 25px" name="trash" color="danger" (click)="deleteTicket(ticket)"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button style="font-size: 16px; padding-right: 25px" name="modify" color="primary" [routerLink]="['/api/ticketmod', ticket._id]"><ion-icon name="create"></ion-icon></ion-button>
+        </ion-item-options>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
+

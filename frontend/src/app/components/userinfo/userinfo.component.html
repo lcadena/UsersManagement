@@ -6,7 +6,7 @@
 
 <ion-content>
     <ion-card>
-      <ion-avatar>
+      <ion-avatar item-left>
         <img src="http://eleinternacional.com/wp-content/uploads/avatar_user_156_1539847437.png" style="width: 80%; height: 80%" class="center">
         <!--<img src="https://redash.io/assets/images/elements/icon-user-management.png">-->
       </ion-avatar>
@@ -30,16 +30,27 @@
     <ion-list-header>
         <ion-label>List of users</ion-label>
     </ion-list-header>
-    <ion-list *ngFor = "let user of users; let i=index">
+    <ion-list>
+    <ion-item-sliding *ngFor = "let user of users; let i=index">
       <ion-item>
-          <ion-avatar>
+          <ion-avatar item-left>
               <img src="http://corporativoseconafem.com/images/user-f.png">
           </ion-avatar>
         <ion-label style="padding-left: 2px">{{user.email}}</ion-label>
+        <ion-item-options (ionSwipe)="deleteUser(user)">
+            <ion-button style="font-size: 16px; padding-right: 25px" name="trash" color="danger" (click)="deleteUser(user)"><ion-icon name="trash"></ion-icon>Delete</ion-button>
+          </ion-item-options>
       </ion-item>
+
+
+
+    </ion-item-sliding>
     </ion-list>
-    <ion-button class="btn btn-info btn-block" [routerLink]="['/api/chat', user._id]" ><i class="fa fa-plus"></i> Chat </ion-button>
+    <ion-button ion-button large class="btn btn-info btn-block" [routerLink]="['/api/chat', user._id]" ><i class="fa fa-plus"></i> Chat </ion-button>
   <ion-button class="logout" (click)="goBack()"><i class="fa fa-toggle-left" aria-hidden="true"></i>   Log out</ion-button>
+
+
+  <!-- FALTA PONER ESTO EN EL 1R BOTON (click)= "sendConection()"-->
 
 </ion-content>
 

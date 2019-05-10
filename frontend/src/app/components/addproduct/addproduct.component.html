@@ -41,8 +41,21 @@
 
           <div class="form-group">
             <ion-item>
-              <ion-label position="floating">Category: phones, transportation, electronics</ion-label>
-              <ion-input type="text" class="form-control" formControlName="category"></ion-input>
+              <ion-label position="floating">Category:</ion-label>
+                <ion-select value="brown" okText="Okay" cancelText="Dismiss" placeholder="Escoja uno">
+                    <ion-select-option value="TransportePublico">Transporte público</ion-select-option>
+                    <ion-select-option value="restaurantes">Restaurantes</ion-select-option>
+                    <ion-select-option value="compras">Compras</ion-select-option>
+                    <ion-select-option value="comida">Comida</ion-select-option>
+                    <ion-select-option value="telefono">Teléfono</ion-select-option>
+                    <ion-select-option value="casa">Casa</ion-select-option>
+                    <ion-select-option value="deporte">Deporte</ion-select-option>
+                    <ion-select-option value="higiene">Higiene</ion-select-option>
+                    <ion-select-option value="taxi">Taxi</ion-select-option>
+                    <ion-select-option value="salud">Salud</ion-select-option>
+                    <ion-select-option value="fiesta">Fiesta</ion-select-option>
+                    <ion-select-option value="coche">Coche</ion-select-option>
+                  </ion-select>
             </ion-item>
 
             <div class="validation-errors">

@@ -22,10 +22,10 @@ mongoose.connect(config.db, (err, res) => {
   io.on('connection', function(socket){
     console.log("conexion del ususario con el SOCKET:  ", socket.id);   
       
-    //recivo/envio a todos que me en conectado
+    //recibo/envio a todos que me en conectado
     socket.on('user', function(nickname){ //escucho que los socket que se conecten 
       socket.nickname = nickname;   
-      console.log("recivo la conexion de un cliente", socket.nickname)
+      console.log("recibo la conexion de un cliente", socket.nickname)
       var allConnectedClients = io.sockets.connected; //list os socket connected
       var send = []
       Object.keys(allConnectedClients).forEach(function(key){

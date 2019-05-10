@@ -21,7 +21,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'api/signin', pathMatch: 'full' },
   /*{
     path: 'tickets',
     children: [
