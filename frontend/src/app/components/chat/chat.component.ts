@@ -31,32 +31,37 @@ export class ChatComponent implements OnInit {
 
     this.chatForm = this.formBuilder.group({
       message: new FormControl(),
+      destino: new FormControl(),
     })
 
-    //escuchar mi socket          
+    //escuchar evontos que recive mi socket        
     this.socket.on('envio', function(socket){
-      var socketlength = socket.length;
         console.log("lista de socket ", socket);
         //romper la cadena 
+        this.outputlist = [];
         var lista =socket.split(",");
         for (var i=0; i< lista.length-1; i++){
           console.log("Los usuarios conectados  ",lista[i]);
           var lista2 = lista[i].split("+");
-          for(var j=0; j<lista2.length; j++){            
+          for(var j=0; j<lista2.length; j=j+2){            
             this.listasocket.push(lista2[j]);
             console.log("los socket conectados  " , lista2[j]);
             this.listaemail.push(lista2[j+1]);
             console.log("los email conectados" , lista2[j+1]);
-            j++;
+            //si no esta definido no mostrar
+            this.outputlist.push(lista2[j+1]);
           }                
-        }
-        this.outputlist = this.listaemail;
+        }        
+       // this.outputlist = this.listaemail;
     }.bind(this));
 
     //escucho los mensajes del chat
-    this.socket.on('chat', function(mensaje){
-      console.log ("mensaje recibido  ", mensaje);
-      this.mensajes = mensaje;
+    this.socket.on('chat', function(mensaje, dest){
+      this.mensajes = [];
+      if (dest == this.socket.id){
+        console.log ("mensaje recibido  ", mensaje);
+        this.mensajes.push(mensaje); //cuando me centre en una hay que romperlo
+      }   
     }.bind(this));
 
    }
@@ -89,8 +94,9 @@ export class ChatComponent implements OnInit {
   }
 
   sendChat(){//envio el mensaje al server para que este lo redirecciona
-    this.socket.emit('chat', this.user.email, this.chatForm.value.message);
-    console.log("chat enviado  " , this.user.email)
-    console.log("message enviado  " , this.chatForm.value.message)
+    this.socket.emit('chat', this.user.email,this.chatForm.value.destino, this.chatForm.value.message);
+    console.log("email de :  " , this.user.email)
+    console.log("para(socket)   ", this.chatForm.value.destino)
+    console.log("message enviado:  " , this.chatForm.value.message)
   }
 }

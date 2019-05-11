@@ -17,6 +17,8 @@ mongoose.connect(config.db, (err, res) => {
     console.log(`API REST corriendo en http://localhost:${config.port}`)
   })
 
+  //SOCKETS//
+
   //conexion de los socket
   var io = socket(server);
   io.on('connection', function(socket){
@@ -26,7 +28,7 @@ mongoose.connect(config.db, (err, res) => {
     socket.on('user', function(nickname){ //escucho que los socket que se conecten 
       socket.nickname = nickname;   
       console.log("recibo la conexion de un cliente", socket.nickname)
-      var allConnectedClients = io.sockets.connected; //list os socket connected
+      var allConnectedClients = io.sockets.connected; //list os socket connectados
       var send = []
       Object.keys(allConnectedClients).forEach(function(key){
         send = send + allConnectedClients[key]["id"]+ "+" + allConnectedClients[key]["nickname"] + ",";              
@@ -43,9 +45,9 @@ mongoose.connect(config.db, (err, res) => {
     })
 
     //escucho los mensajes que me llegan del chay
-    socket.on('chat', function( email, message){
+    socket.on('chat', function( email, dest,  message){
       let mensaje =  email + ":  " + message;
-      io.sockets.emit('chat', mensaje);
+      io.sockets.emit('chat', mensaje, dest);
       console.log("emitido y escuchado  " , mensaje)
     })
   })
