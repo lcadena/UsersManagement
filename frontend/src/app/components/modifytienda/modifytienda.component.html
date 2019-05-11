@@ -1,33 +1,32 @@
 <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Modify Tienda</ion-title>
+      <ion-title>Modify Shop </ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content>
-<div *ngFor = "let tienda of lista; let i=index">
-  <p><b>Modify tienda:</b> {{tienda._id}}</p>
-  <p>Rellena los campos a modificar</p>
-  <form [formGroup]="tiendaForm" (ngSubmit)="modify(tienda)">
 
-    <div class="form-group">
-      <ion-label>Name:</ion-label> <p>{{tienda.name}}</p>
-      <ion-input type="text" class="form-control" formControlName="name"></ion-input>
-    </div>
+<ion-content>  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Modify the Shop: {{actual._id}}</ion-card-title>
+    </ion-card-header> 
   
-    <div class="form-group">
-      <ion-label>direccion:</ion-label> <p>{{tienda.direccion}}</p>
+    <form [formGroup]="tiendaForm" (ngSubmit)="modify(actual._id)">
+      <ion-label>Name: {{actual.name}}</ion-label> 
+    <ion-item class="form-group">
+      <ion-label>New name </ion-label>
+      <ion-input type="text" class="form-control" formControlName="name"></ion-input>
+    </ion-item>
+
+      <ion-label>Address: {{actual.direccion}} </ion-label>
+    <ion-item class="form-group">
+      <ion-label>New address </ion-label>
       <ion-input type="text" class="form-control" formControlName="direccion"></ion-input>
-    </div>
+    </ion-item>
 
-    <div class="form-group">
-      <ion-label>Lista de Productos </ion-label>
-      <ion-input type="text" class="form-control" formControlName="products"></ion-input>
-    </div>
-
-    <div class="form-group">
+    <ion-item class="form-group">
       <ion-button class="btn btn-primary" type="submit" [disabled]="tiendaForm.invalid"> Modify </ion-button>
-    </div>
-    
+    </ion-item>  
+      
   </form>
-</div>
+</ion-card>
 </ion-content>

@@ -10,60 +10,53 @@ import { User } from '../../models/user';
   templateUrl: './modifytienda.component.html',
   styleUrls: ['./modifytienda.component.css']
 })
-/*
-api.put('/tienda/:tiendaId', tiendaCtrl.updateTienda)
-*/
+
 export class ModifytiendaComponent implements OnInit {
 
   tiendaForm: FormGroup;
-  lista: Tienda[];
+  actual: Tienda;
   tienda: Tienda;
-  user: User;
 
-  constructor(private activatedRouter: ActivatedRoute, private tiendaService: TiendaService, private router: Router, private formBuilder: FormBuilder) {
-    this.tienda = new Tienda();
-
+  constructor(private activatedRouter: ActivatedRoute, private tiendaService: TiendaService, 
+    private router: Router, private formBuilder: FormBuilder) {
+    this.actual = new Tienda("","","",null)  
     this.tiendaForm = this.formBuilder.group({
       name: new FormControl(),
       direccion: new FormControl(),      
-      products: new FormControl()
+      //products: new FormControl()
     })
    }
 
-
   ngOnInit() {
-  //para recoger el id del user
+  //para recoger el id de la tienda del URL 
   this.activatedRouter.params.subscribe(params => {
     if (typeof params['id'] !== 'undefined') {
       console.log("params", params);
-      this.tienda._id = params['id'];
+      this.actual._id = params['id'];
     } else {
-      this.tienda._id = '';
+      this.actual._id = '';
     }
   });
-    //cargas la lista de tiendas
-    this.getTiendaID(this.tienda._id)
+    this.getTiendaID(this.actual._id)
   }  
   
   getTiendaID(id: string){
     this.tiendaService.getTiendaID(id)
     .subscribe(
       res => {
-        console.log("info de una tienda" + res)
-        this.tienda = res;
-        }
-      )}
+        console.log("info de una tienda",  res)
+        this.actual = res;
+        })
+    } 
 
-  modify(tienda: Tienda){
-    console.log("El tienda a modificar  " + tienda._id)
-    tienda.name = this.tiendaForm.value.name;
-    tienda.direccion= this.tiendaForm.value.direccion;
-   this.tiendaService.modifytienda(tienda)
+
+  modify(id: string){
+    this.tienda = new Tienda(id, this.tiendaForm.value.name, this.tiendaForm.value.direccion, null );
+    console.log("La tienda a modificar  ", this.tienda)
+   this.tiendaService.modifytienda(this.tienda)
    .subscribe(
      res => {
-       console.log("resp de modificar " + res);
+       console.log("resp de modificar ", res);
      })
  }
-
-
 }

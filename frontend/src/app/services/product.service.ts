@@ -42,6 +42,10 @@ export class ProductService {
   getProductUser(_id: string ):Observable<Product[]>{
     return this.http.get<Product[]>(this.environment.urlUser + 'products' + `/${_id}`);
   }
+  //product/:productId
+  modifyproduct(product: Product){
+    return this.http.put(this.environment.urlProduct + `/${product._id}`, product)
+  }
   
 }
 
