@@ -17,7 +17,6 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 export class ChatComponent implements OnInit {
   
   user: User;  
-  socket = io();
   chatForm: FormGroup;
   mensajes: string[] = [];
   lista: string[]=[]; //lista de socke + email de cada uno de los usuarios conectados al chat
@@ -26,46 +25,15 @@ export class ChatComponent implements OnInit {
   emaildestino: string ="";
   socketdestino: string;
   listaconectados: string[] = [];
-  
+  socket = null;
   
 
   constructor(private router: Router,private formBuilder: FormBuilder, private activatedRouter: ActivatedRoute, private userinfoService: UserinfoService) {
     this.user = new User("","", "","","","",null)
-    this.socket = io.connect("http://localhost:3000");
 
     this.chatForm = this.formBuilder.group({
       message: new FormControl(),
     })
-
-    //escuchar evontos que recive mi socket        
-    this.socket.on('envio', function(socket){
-        console.log("lista de socket ", socket);
-        //romper la cadena 
-        this.outputlist = [];
-        this.listaconectados = [];  
-        this.lista =socket.split(",");
-        for (var i=0; i< this.lista.length-1; i++){
-          console.log("Los usuarios conectados  ",this.lista[i]);
-          this.lista2 = this.lista[i].split("+");       
-           
-          for(var j=0; j<this.lista2.length; j=j+2){   //el j el socket y en j+1 el email            
-            if(this.lista2[j+1].value != "" ) {//si no esta definido no mostrar   ¡¡NO-FUNCIONA  y si soy yo tampoco          
-            this.outputlist.push(this.lista2[j+1]);
-            this.listaconectados.push(this.lista2[j]);
-            this.listaconectados.push(this.lista2[j+1]);
-            }
-          }                
-        }        
-       console.log("lista de conectados", this.listaconectados);
-    }.bind(this));
-
-    //escucho los mensajes del chat
-    this.socket.on('chat', function(mensaje, dest){
-      if (dest == this.socket.id){
-        console.log ("mensaje recibido  ", mensaje);
-        this.mensajes.push(mensaje); //cuando me centre en una hay que romperlo
-      }   
-    }.bind(this));
 
    }
 
@@ -92,7 +60,41 @@ export class ChatComponent implements OnInit {
   }
 
   sendConection(){ //enviar al servidor que me he conectado al chat-socket
-  this.socket.emit('user', this.user.email);
+    // socket = io();
+    this.socket = io.connect("http://localhost:3000");
+
+    //escuchar evontos que recive mi socket        
+    this.socket.on('envio', function(socket){
+      console.log("lista de socket ", socket);
+      //romper la cadena 
+      this.outputlist = [];
+      this.listaconectados = [];  
+      this.lista =socket.split(",");
+      for (var i=0; i< this.lista.length-1; i++){
+        console.log("Los usuarios conectados  ",this.lista[i]);
+        this.lista2 = this.lista[i].split("+");       
+         
+        for(var j=0; j<this.lista2.length; j=j+2){   //el j el socket y en j+1 el email            
+          if(this.lista2[j+1].value != "" ) {//si no esta definido no mostrar   ¡¡NO-FUNCIONA  y si soy yo tampoco          
+          this.outputlist.push(this.lista2[j+1]);
+          this.listaconectados.push(this.lista2[j]);
+          this.listaconectados.push(this.lista2[j+1]);
+          }
+        }                
+      }        
+     console.log("lista de conectados", this.listaconectados);
+  }.bind(this));
+
+  //escucho los mensajes del chat
+  this.socket.on('chat', function(mensaje, dest){
+    if (dest == this.socket.id){
+      console.log ("mensaje recibido  ", mensaje);
+      this.mensajes.push(mensaje); //cuando me centre en una hay que romperlo
+    }   
+  }.bind(this));
+
+    this.socket.emit('user', this.user.email);
+
   console.log("conexion enviada  " + this.user.email);
   }
 

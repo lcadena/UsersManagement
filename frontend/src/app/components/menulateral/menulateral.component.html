@@ -1,0 +1,73 @@
+<ion-menu side="start" menuId="first">
+  <ion-header>   
+    <ion-toolbar color="primary">
+      <ion-row color="primary">
+        <ion-item color ="primary">
+          <ion-button class="arrow-round-back" [routerLink]="['/api/userinfo', user.email]" >
+            <ion-icon name="arrow-back"> </ion-icon>         
+          </ion-button>
+        </ion-item>
+        <ion-item color="primary">
+          <ion-title>HeyPey</ion-title>
+        </ion-item>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item>      
+        <ion-button style="box-sizing: border-box" [routerLink]="['/api/user', user._id]"><i class="fa fa-eye"></i>&nbsp;See my details</ion-button>
+      </ion-item>
+      <ion-item> 
+        <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/productsuser', user._id]"><i class="fa fa-clone"></i> See my products</ion-button>
+      </ion-item>
+        <ion-item> 
+        <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/ticketsuser', user._id]"><i class="fa fa-eye"></i> See my ticket</ion-button>
+      </ion-item>
+        <ion-item> 
+        <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/tiendasuser', user._id]"><i class="fa fa-eye"></i> See my shops </ion-button>
+      </ion-item>
+        <ion-item> 
+        <ion-button class="btn btn-info btn-block" [routerLink]="['/api/ticket', user._id]" ><i class="fa fa-plus"></i> Add ticket </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-menu side="start" menuId="custom" class="my-custom-menu">
+  <ion-header>
+    <ion-toolbar color="tertiary">
+      <ion-title>HeyPey2</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+      <ion-list>
+        <ion-item> See my details </ion-item>
+        <ion-item> See my products </ion-item>
+        <ion-item> See my ticket </ion-item>
+        <ion-item> See my shop </ion-item>
+        <ion-item> Add ticket </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-menu side="end" type="push">
+    <ion-header>
+      <ion-toolbar color="danger">
+        <ion-title>HeyPey3</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+          <ion-item> See my details </ion-item>
+          <ion-item> See my products </ion-item>
+          <ion-item> See my ticket </ion-item>
+          <ion-item> See my shop </ion-item>
+          <ion-item> Add ticket </ion-item>
+        </ion-list>
+    </ion-content>
+  </ion-menu>
+
+<ion-router-outlet main> </ion-router-outlet>

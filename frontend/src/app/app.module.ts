@@ -35,7 +35,7 @@ import { ProductsuserComponent } from './components/productsuser/productsuser.co
 import { TicketsuserComponent } from './components/ticketsuser/ticketsuser.component';
 import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.component';
 import { ChatComponent } from './components/chat/chat.component';
-
+import { MenulateralComponent } from './components/menulateral/menulateral.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -63,9 +63,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     TicketsuserComponent,
     TiendasuserComponent,
     ChatComponent,
+    MenulateralComponent,    
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
