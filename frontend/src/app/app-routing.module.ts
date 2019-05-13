@@ -20,6 +20,8 @@ import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.compo
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ModifyproductComponent } from './components/modifyproduct/modifyproduct.component';
+import { MenulateralComponent } from './components/menulateral/menulateral.component';
+import { MenuController } from '@ionic/angular';
 
 const routes: Routes = [
   { path: '', redirectTo: 'api/signin', pathMatch: 'full' },
@@ -68,6 +70,8 @@ const routes: Routes = [
 
     //chat*socket
     { path: 'api/chat/:id', component: ChatComponent},
+    //menu lateral
+    { path: 'api/menu/:id', component: MenulateralComponent}
 
 ];
 

@@ -3,6 +3,11 @@ import {Router, ActivatedRoute} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {UserinfoService} from "../../services/userinfo.service";
 import {User} from "../../models/user";
+import { MenuController } from '@ionic/angular';
+
+//import {ToolbarService} from "../../../../services/toolbar.service"; crear
+
+
 
 @Component({
   selector: 'app-userinfo',
@@ -12,7 +17,8 @@ import {User} from "../../models/user";
 export class UserinfoComponent implements OnInit {
   users: User[];
   user: User;  
-  constructor(private userinfoService: UserinfoService, private router: Router, private activatedRouter: ActivatedRoute) { 
+  constructor(private userinfoService: UserinfoService, private router: Router,
+     private activatedRouter: ActivatedRoute, private menu: MenuController) { 
     this.user = new User("","", "","","","",null)        
 }
 
@@ -94,4 +100,13 @@ export class UserinfoComponent implements OnInit {
         this.users.splice(index, 1);
     }
 }
+
+
+  openMenu(){
+    console.log("Abrir menu");
+    this.router.navigateByUrl('/api/menu/' + this.user._id);
+    
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
 }
