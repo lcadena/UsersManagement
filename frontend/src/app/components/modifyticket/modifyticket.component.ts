@@ -13,54 +13,51 @@ import { formControlBinding } from '@angular/forms/src/directives/ng_model';
 export class ModifyticketComponent implements OnInit {
 
   ticketsForm: FormGroup;
+  actual: Ticket;
   ticket: Ticket;
 
-  constructor(private ticketService: TicketService, private router: Router, private formBuilder: FormBuilder, private activatedRouter: ActivatedRoute) {
-    this.ticket = new Ticket("","", "","",null);
+  constructor(private ticketService: TicketService, private router: Router, 
+    private formBuilder: FormBuilder, private activatedRouter: ActivatedRoute) {
+    this.actual = new Ticket("","", "","",null);
     this.ticketsForm = this.formBuilder.group({
       name: new FormControl(),
       cif: new FormControl(),
       foto: new FormControl(),
       expedicion: new FormControl(),
-      products: new FormControl()
+      //products: new FormControl()
     })
    }
 
   ngOnInit() {
-   //para recoger el id de la URL 
+   //para recoger el id del ticket de la URL
    this.activatedRouter.params.subscribe(params => {
     if (typeof params['id'] !== 'undefined') {
       console.log("params", params);
-      this.ticket._id = params['id'];
+      this.actual._id = params['id'];
     } else {
-      this.ticket._id = '';
+      this.actual._id = '';
     }
   });
-  console.log ("info del URL:   " + this.ticket._id);
-      this.getTicket(this.ticket._id);
-      
+      this.getTicketID(this.actual._id)     
   }
 
-  getTicket(id: string){
+  getTicketID(id: string){
     console.log("informacion del ticket  " + id)
     this.ticketService.getTicket(id)
       .subscribe(
         res => {
-          console.log ("respuesta "+ res);
-          this.ticket = res;
+          console.log ("info del ticket ", res);
+          this.actual = res;
         })
-  }
+    }
 
-  modify(ticket: Ticket){
-     console.log("El ticket a modificar  " + ticket._id)
-     ticket.name = this.ticketsForm.value.name;
-     ticket.cif= this.ticketsForm.value.cif;
-     ticket.foto= this.ticketsForm.value.foto;
-     //ticket.expedicion= this.ticketsForm.value.expedicion (calendario)
-    this.ticketService.modifyticket(ticket)
+  modify(id: string){
+    this.ticket = new Ticket(id, this.ticketsForm.value.name, this.ticketsForm.value.cif, this.ticketsForm.value.foto,null,null)
+     console.log("El ticket a modificar  ", this.ticket)
+    this.ticketService.modifyticket(this.ticket)
     .subscribe(
       res => {
-        console.log("resp de modificar " + ticket.name);
+        console.log("resp de modificar ", res);
       })
   }
 }

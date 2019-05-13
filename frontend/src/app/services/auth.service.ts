@@ -12,15 +12,12 @@ export class AuthService {
 
   environment: Environment;
   selectedUser: User;
-
   
   constructor(private http: HttpClient) {
     this.selectedUser = new User("","","","","","", null);
     this.environment = new Environment();
-
   }
-
-
+  
   signup(user: User) {
     return this.http.post(this.environment.urlUser + "signup", user)
   }

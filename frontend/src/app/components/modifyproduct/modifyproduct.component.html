@@ -1,21 +1,43 @@
 <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Product Detail of {{product.name}}</ion-title>
+      <ion-title>Modify Products</ion-title>
     </ion-toolbar>
-  </ion-header>
+</ion-header>
 
 <ion-content>
-  <ion-button class="logout" (click)="goBack()" [routerLink]="['']">Log out</ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Modify the Product: {{actual._id}}</ion-card-title>
+    </ion-card-header>
 
+    <form [formGroup]="productForm" (ngSubmit)="modify(actual._id)">
+        <ion-label>Name: {{actual.name}}</ion-label> 
+      <ion-item class="form-group">
+        <ion-label>New name </ion-label>
+        <ion-input type="text" class="form-control" formControlName="name"></ion-input>
+      </ion-item>
 
-  <div class="border border-secondary">
-    <span *ngIf="product.category === 'electronics'"><img src="https://img.icons8.com/color/96/000000/laptop.png"></span>
-    <span *ngIf="product.category === 'phones'"><img src="https://img.icons8.com/dusk/64/000000/cell-phone.png"></span>
-    <span *ngIf="product.category === 'transportation'"><img src="https://img.icons8.com/ios/50/000000/headphones-filled.png"></span>
-    
-    <h2>{{product.name}}</h2>
-<p><b>Category:</b> {{product.category}}</p>
-<p><b>Price:</b> {{product.price}} €</p>
-<p><b>Warranty Date -- Expiration Date:</b>{{product.description}}</p>
-</div>
+        <ion-label>Category: {{actual.category}}</ion-label> 
+      <ion-item class="form-group">
+        <ion-label>New category </ion-label>
+        <ion-input type="text" class="form-control" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-label>Price: {{actual.price}}</ion-label> 
+      <ion-item class="form-group">
+        <ion-label>New price </ion-label>
+        <ion-input type="text" class="form-control" formControlName="price"></ion-input>
+      </ion-item>
+
+        <ion-label>Date expiration: {{actual.description}}</ion-label> 
+      <ion-item class="form-group">
+        <ion-label>New date </ion-label>
+        <ion-input type="text" class="form-control" formControlName="description"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-button class="btn btn-primary" type="submit" [disabled]="productForm.invalid">Modify</ion-button>
+      </ion-item>
+    </form>
+  </ion-card>
 </ion-content>

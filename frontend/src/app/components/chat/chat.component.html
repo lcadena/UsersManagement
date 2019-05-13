@@ -5,34 +5,33 @@
 </ion-header>
 
 <ion-content>
+    <form [formGroup]="chatForm" (ngSubmit)="sendChat()">
     <h2>Usuarios Conectados</h2>
 <div *ngFor = "let email of outputlist; let i=index">
-<h3> {{email}}</h3>
+<ion-button (click)= "sendTo(email)"> {{email}}</ion-button>
 </div>
-
 <ion-button class="btn btn-info btn-block" (click)= "sendConection()"><i class="fa fa-plus"></i> Conectarme </ion-button>
-
-<h3>Chat</h3>
-  <form [formGroup]="chatForm" (ngSubmit)="sendChat()">
-    <ion-grid>
-      <ion-row>
-        <ion-col size-md="6" offset-md="3">
-          <div class="form-group">
-            <ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <h3>Chat</h3>
+        <div class="form-group">
+          <ion-item>
+              <ion-label position="floating">Message to : {{emaildestino}}</ion-label>       
               <ion-label position="floating">Message:</ion-label>
               <ion-input type="text" class="form-control" formControlName="message"></ion-input>
-            </ion-item>
-          </div>
-          <div class="form-group">
+          </ion-item>
+        </div>
+        <div class="form-group">
             <ion-button class="btn btn-primary" type="submit" [disabled]="chatForm.invalid" > Send </ion-button>
             <ion-button id="input-cancel" fill="outline" color="danger" [routerLink]="['/api/userinfo', user.email]" >Cancel</ion-button>
-          </div>
+        </div>
 
           <div>
             <ion-label>Mensajes recibidos </ion-label>
-             <p>
-               {{mensajes}}
-             </p>
+            <div *ngFor = "let mes of mensajes; let i=index">
+             <p> {{mes}}</p>
+            </div>
           </div>
 
         </ion-col>

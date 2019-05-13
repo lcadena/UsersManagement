@@ -3,17 +3,22 @@
       <ion-title>List of Shops of User</ion-title>
     </ion-toolbar>
 </ion-header>
+
 <ion-content>
-
-<ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>&nbsp;Profile</ion-button>
-
-<div *ngFor = "let tienda of tiendas; let i=index">
-    <div class="border border-secondary">
-
-  <p><b>ID tienda:</b> {{tienda._id}}</p>
-  <p><b>name tienda:</b> {{tienda.name}}</p>  
-  <p><b>direccion tienda:</b> {{tienda.direccion}}</p>
-  <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/tiendamod', tienda._id]"><i class="fa fa-eye"></i> Modify Shop</ion-button>
-  </div>  
-</div>
+  <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>&nbsp;Profile</ion-button>
+  <ion-list>
+    <ion-item-sliding *ngFor = "let tienda of tiendas; let i=index">
+      <ion-item>
+        <ion-avatar item-left>
+            <img src="http://corporativoseconafem.com/images/user-f.png">
+        </ion-avatar>
+        <ion-label style="padding-left: 2px">ID of Shop:  {{tienda._id}} </ion-label>
+        <ion-label style="padding-left: 2px">Name of Shop:  {{tienda.name}} </ion-label>
+        <ion-label style="padding-left: 2px">Address of Shop:  {{tienda.direccion}} </ion-label>
+        <ion-item-options>
+          <ion-button style="font-size: 16px; padding-right: 25px"  name="modify" color="primary" [routerLink]="['/api/tiendamod', tienda._id]"><ion-icon name="create"></ion-icon></ion-button>
+        </ion-item-options>
+      </ion-item>  
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

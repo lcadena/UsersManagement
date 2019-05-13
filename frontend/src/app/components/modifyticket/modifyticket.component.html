@@ -6,41 +6,38 @@
 
 
 <ion-content>
-<div *ngFor = "let ticket of list; let i=index">
-  <p><b>Modify ticket:</b> {{ticket._id}}</p>
-  <p>Rellena los campos a modificar</p>
-
-  <form [formGroup]="ticketsForm" (ngSubmit)="modify(ticket)">
-
-    <div class="form-group">
-      <ion-label>Name:</ion-label>  <p>{{ticket.name}}</p>
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title>Modify the Ticekt: {{actual._id}}</ion-card-title>
+    </ion-card-header> 
+    <form [formGroup]="ticketsForm" (ngSubmit)="modify(actual._id)">
+      <ion-label>Name: {{actual.name}}</ion-label> 
+    <ion-item class="form-group">
+      <ion-label>New name:</ion-label>
       <ion-input type="text" class="form-control" formControlName="name"></ion-input>
-    </div>
+    </ion-item>
   
-    <div class="form-group">
-      <ion-label>cif:</ion-label> <p>{{ticket.cif}}</p>
+      <ion-label>CIF: {{actual.cif}}</ion-label> 
+    <ion-item class="form-group">
+      <ion-label>New CIF:</ion-label>
       <ion-input type="text" class="form-control" formControlName="cif"></ion-input>
-    </div>
+    </ion-item>
   
-    <div class="form-group">
-      <ion-label>Foto</ion-label> <p>{{ticket.foto}}</p>
+      <ion-label>Photo: {{actual.foto}}</ion-label>
+    <ion-item class="form-group">
+      <ion-label>New photo:</ion-label>
       <ion-input type="text" class="form-control" formControlName="foto"></ion-input>
-    </div>
+    </ion-item>
   
-    <div class="form-group">
-      <ion-label>Fecha de expedicion</ion-label>  <p>{{ticket.expedicion}}</p>
+    <ion-label>Fecha de expedicion: {{actual.expedicion}}</ion-label>
+    <ion-item class="form-group">
+      <ion-label>New fecha de expedicion</ion-label> 
       <ion-input type="text" class="form-control" formControlName="expedicion"></ion-input>
-    </div>
+    </ion-item>
 
-    <div class="form-group">
-      <ion-label>Lista de Productos </ion-label>
-      <ion-input type="text" class="form-control" formControlName="products"></ion-input>
-    </div>
-
-    <div class="form-group">
+    <ion-item class="form-group">
       <ion-button class="btn btn-primary" type="submit" [disabled]="ticketsForm.invalid"> Modify </ion-button>
-    </div>
-    
-  </form>
-</div>
+    </ion-item>    
+    </form>
+  </ion-card>
 </ion-content>
