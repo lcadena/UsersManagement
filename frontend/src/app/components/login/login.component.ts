@@ -80,7 +80,12 @@ export class LoginComponent implements OnInit {
           console.log(err);
           this.handleError(err);
         });
-  } 
+  }
+
+    goToRegister() {
+        this.router.navigateByUrl('/api/signup');
+    }
+
   loginFacebook() {
      let usuario;
      console.log("logearse con facebook");
