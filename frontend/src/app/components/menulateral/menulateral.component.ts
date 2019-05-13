@@ -24,7 +24,6 @@ export class MenulateralComponent implements OnInit {
     if (typeof params['id'] !== 'undefined') {
       console.log("params", params);
       this.user._id = params['id'];      
-      console.log("user: ", this.user);
     } else {
       this.user._id = '';
     }
@@ -39,7 +38,7 @@ export class MenulateralComponent implements OnInit {
     })
   }
 
-/*
+
   openFirst(){
     console.log("Menu abierto");
     this.menu.enable(true, 'first');
@@ -55,5 +54,5 @@ export class MenulateralComponent implements OnInit {
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
   }
-*/
+
 }
