@@ -1,15 +1,17 @@
 <ion-menu side="start" menuId="first">
-  <ion-header>
-
-  <ion-toolbar color="primary">
-      <ion-item vertical="top" horizontal="start" slot="fixed">
-          <ion-button>
-            <ion-icon name="arrow-round-back" [routerLink]="['/api/userinfo', user.email]"></ion-icon>
+  <ion-header>   
+    <ion-toolbar color="primary">
+      <ion-row color="primary">
+        <ion-item color ="primary">
+          <ion-button class="arrow-round-back" [routerLink]="['/api/userinfo', user.email]" >
+            <ion-icon name="arrow-back"> </ion-icon>         
           </ion-button>
         </ion-item>
-    
-    <ion-title>HeyPey</ion-title>
-  </ion-toolbar>
+        <ion-item color="primary">
+          <ion-title>HeyPey</ion-title>
+        </ion-item>
+      </ion-row>
+    </ion-toolbar>
   </ion-header>
 
   <ion-content>
