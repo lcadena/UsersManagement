@@ -1,58 +1,121 @@
-<ion-header>
-    <ion-toolbar color="primary">
+<!-- <ion-header>
+  <ion-toolbar color="rgba(1, 50, 67, 1)">
       <ion-title>Login</ion-title>
     </ion-toolbar>
-</ion-header>
-<ion-content>
+</ion-header> -->
 
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <ion-grid>
-      <ion-row>
-        <ion-col size-md="6" offset-md="3">
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="theme-bg"></div>
+  <div class="auth-content">
 
-          <div class="form-group">
-            <ion-item>
-              <ion-label position="floating">Email</ion-label>
-              <ion-input type="text" class="form-control" formControlName="email"></ion-input>
-            </ion-item>
-              <div class="validation-errors">
-                  <ng-container *ngFor="let validation of validation_messages.email">
-                    <div class="alert alert-danger" *ngIf="loginForm.get('email').hasError(validation.type) 
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <h4 no-margin>
+        <ion-text color="light" class="fw700">
+          HeyPey
+        </ion-text>
+      </h4>
+    </div>
+
+    <!-- Login form -->
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="list-form">
+    <div class="form-group">
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+        <ion-icon name="mail" item-start></ion-icon>
+        Email
+      </ion-label>
+      <ion-input  color="secondary" type="text" class="form-control" formControlName="email"></ion-input>
+    </ion-item>
+
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <p ion-text class="text08" *ngIf="loginForm.get('email').hasError(validation.type)
                     && (loginForm.get('email').dirty || loginForm.get('email').touched)">
-                      {{ validation.message }}
-                    </div>
-                  </ng-container>
-              </div>
-          </div>
-          
-          <div class="form-group">
-            <ion-item>
-              <ion-label position="floating">Password</ion-label>
-              <ion-input type="password" class="form-control" formControlName="password"></ion-input>
-            </ion-item>
-            <div class="validation-errors">
-              <ion-item>
-                <ng-container *ngFor="let validation of validation_messages.password">
-                  <div class="alert alert-danger" *ngIf="loginForm.get('password').hasError(validation.type) 
+            <ion-text color="warning">
+              {{ validation.message }}
+            </ion-text>
+          </p>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="form-group">
+    <ion-item>
+      <ion-label floating>
+        <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+        Password
+      </ion-label>
+      <ion-input type="password" class="form-control" formControlName="password"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ion-item>
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <p ion-text class="text08" *ngIf="loginForm.get('password').hasError(validation.type)
                   && (loginForm.get('password').dirty || loginForm.get('password').touched)">
-                    {{ validation.message }}
-                  </div>
-                </ng-container>
-            </ion-item>
-            </div>
-          </div>
+            <ion-text color="warning">
+              {{ validation.message }}
+            </ion-text>
+          </p>
+        </ng-container>
+      </ion-item>
+    </div>
+   </div>
+  </form>
+    <!--
+        <p text-right ion-text color="secondary" tappable (click)="forgotPass()"><strong>Forgot Password?</strong></p>
+      -->
+    <div>
+      <button ion-button icon-start block color="dark" tappable (click)="login()">
+        <ion-icon name="log-in"></ion-icon>
+        SIGN IN
+      </button>
+
+      <p text-center ion-text color="secondary">Or Sign in with:</p>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-facebook">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-twitter">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-gplus">
+              <ion-icon name="logo-googleplus"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="secondary" tappable (click)="register()">New here? <strong>Sign up</strong></span>
+    </div>
+
+  </div>
+
+
+
 
           <div class="form-group">
-            <ion-button class="btn btn-primary" type = "submit" [disabled]="!loginForm.valid">Log in</ion-button>
+
             <ion-button class="btn btn-primary" [routerLink]="['/api/signup']" style="margin-left: 30px">Register</ion-button>
           </div>
-          
+
           <div>
-          
             <ion-button class="btn btn-primary" perm="email, user" type="button" (click)="loginFacebook()"><ion-icon padding-end="1px" name="logo-facebook"></ion-icon> Continue with facebook  </ion-button>
           </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+
+
+
 </ion-content>

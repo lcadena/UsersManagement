@@ -1,0 +1,13 @@
+ion-toolbar{
+    background: rgba(1, 50, 67, 1);
+}
+
+ion-content {
+    --background: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+}
+
+
+.paz {
+    position: relative;
+    z-index: 10;
+}

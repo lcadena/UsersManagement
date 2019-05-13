@@ -16,9 +16,9 @@ export class Environment {
   urlTicketUser: string = "http://147.83.7.157:3000/api/ticketuser";
 <<<<<<< HEAD
 }*/
-||||||| merged common ancestors
+/*||||||| merged common ancestors
 }
 =======
 }*/
 
->>>>>>> e931158f10a9aa49b80a17dbc9cf5ddc16d698fa
+//>>>>>>> e931158f10a9aa49b80a17dbc9cf5ddc16d698fa
