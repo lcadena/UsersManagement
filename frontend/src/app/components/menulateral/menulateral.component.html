@@ -13,21 +13,21 @@
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <ion-item>      
-        <ion-button style="box-sizing: border-box" [routerLink]="['/api/user/', user._id]"><i class="fa fa-eye"></i>&nbsp;See my details</ion-button>
+    <ion-list lines="none">
+      <ion-item lines="none">      
+        <ion-button outline="true" lines="none" color="white" [routerLink]="['/api/user/', user._id]"><i class="fa fa-eye"></i>&nbsp;See my details</ion-button>
       </ion-item>
       <ion-item> 
-        <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/productsuser', user._id]"><i class="fa fa-clone"></i> See my products</ion-button>
+        <ion-button lines="none" color="white" [routerLink]="['/api/productsuser', user._id]"><i class="fa fa-clone"></i> See my products</ion-button>
       </ion-item>
         <ion-item> 
-        <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/ticketsuser', user._id]"><i class="fa fa-eye"></i> See my ticket</ion-button>
+        <ion-button lines="none" color="white" [routerLink]="['/api/ticketsuser', user._id]"><i class="fa fa-eye"></i> See my ticket</ion-button>
       </ion-item>
         <ion-item> 
-        <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/tiendasuser', user._id]"><i class="fa fa-eye"></i> See my shops </ion-button>
+        <ion-button lines="none" color="white" [routerLink]="['/api/tiendasuser', user._id]"><i class="fa fa-eye"></i> See my shops </ion-button>
       </ion-item>
         <ion-item> 
-        <ion-button class="btn btn-info btn-block" [routerLink]="['/api/ticket', user._id]" ><i class="fa fa-plus"></i> Add ticket </ion-button>
+        <ion-button lines="none" color="white" [routerLink]="['/api/ticket', user._id]" ><i class="fa fa-plus"></i> Add ticket </ion-button>
       </ion-item>
     </ion-list>
   </ion-content>
