@@ -1,12 +1,17 @@
   ion-toolbar{
-    background: rgba(1, 50, 67, 1);
-    color: rgba(197, 239, 247, 1);
+    background: rgba(197, 239, 247, 1);;
+    color: rgb(8, 24, 27);
   }
 
   ion-content{
     --background:  url('https://d39l2hkdp2esp1.cloudfront.net/img/photo/141880/141880_00_2x.jpg') no-repeat 40% 10%;
+    background: rgba(197, 239, 247, 1);
+    color: rgba(8, 24, 27);
     }
-
+  ion-list{
+    background: rgba(197, 239, 247, 1);
+    color: rgba(8, 24, 27);
+    }
   img{
   position: center;
   size: 5px;
@@ -70,6 +75,15 @@
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 10px;
+  }
+
+  .active {
+    --ion-text-color: var(--ion-color-primary);
+  }
+  
+ion-item{
+    padding-left :20px;
+    font-size: large;
   }
 
   

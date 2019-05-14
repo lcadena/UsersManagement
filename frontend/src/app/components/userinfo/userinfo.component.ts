@@ -104,9 +104,16 @@ export class UserinfoComponent implements OnInit {
 
   openMenu(){
     console.log("Abrir menu");
-    this.router.navigateByUrl('/api/menu/' + this.user._id);
+    //this.router.navigateByUrl('/api/menu/' + this.user._id);
     
     this.menu.enable(true, 'first');
     this.menu.open('first');
+  }
+
+  closeMenu(){
+    console.log("Cerrar Menu");
+  
+    this.menu.close('first');
+
   }
 }
