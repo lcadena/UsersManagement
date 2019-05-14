@@ -17,23 +17,23 @@
     <ion-content> 
       <ion-list color="light">            
         <ion-item [routerLink]="['/api/user', user._id]">      
-          <ion-icon name="contact" ></ion-icon>
+          <ion-icon name="contact" slot="start"></ion-icon>
           <ion-label>See my User</ion-label>        
         </ion-item>
         <ion-item  [routerLink]="['/api/productsuser', user._id]">
-          <ion-icon name="pizza" ></ion-icon>
+          <ion-icon name="pizza" slot="start" ></ion-icon>
           <ion-label> See my products</ion-label>
         </ion-item>
         <ion-item  [routerLink]="['/api/ticketsuser', user._id]">
-          <ion-icon name="calculator" ></ion-icon>
+          <ion-icon name="calculator" slot="start" ></ion-icon>
           <ion-label> See my ticket</ion-label>
         </ion-item>
         <ion-item [routerLink]="['/api/tiendasuser', user._id]">
-          <ion-icon name="card" ></ion-icon>
+          <ion-icon name="card"  slot="start"></ion-icon>
           <ion-label> See my shops </ion-label>
         </ion-item>
         <ion-item [routerLink]="['/api/ticket', user._id]" >
-          <ion-icon name="add" ></ion-icon>
+          <ion-icon name="add"  slot="start" ></ion-icon>
           <ion-label> Add ticket </ion-label>
         </ion-item>
       </ion-list>

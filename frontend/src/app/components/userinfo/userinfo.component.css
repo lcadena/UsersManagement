@@ -81,9 +81,9 @@
     --ion-text-color: var(--ion-color-primary);
   }
   
-  .sub-item{
-    padding: left 20px;
-    font-size:small;
+ion-item{
+    padding-left :20px;
+    font-size: large;
   }
 
   
