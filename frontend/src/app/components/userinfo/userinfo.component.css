@@ -5,8 +5,13 @@
 
   ion-content{
     --background:  url('https://d39l2hkdp2esp1.cloudfront.net/img/photo/141880/141880_00_2x.jpg') no-repeat 40% 10%;
+    background: rgba(1, 50, 67, 1);
+    color: rgba(197, 239, 247, 1);
     }
-
+  ion-list{
+    background: rgba(1, 50, 67, 1);
+    color: rgba(197, 239, 247, 1);
+    }
   img{
   position: center;
   size: 5px;
