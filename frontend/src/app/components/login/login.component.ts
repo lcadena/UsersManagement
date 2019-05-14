@@ -93,15 +93,8 @@ export class LoginComponent implements OnInit {
        console.log("respuesta de logearse:  " + response);
        if (response.authResponse) { 
           usuario = new User (response.email, response.firstname, response.lastname, response.password,"","", null)
-       }
-       this.userService.signin(usuario)
-      .subscribe( 
-          res => {
-            let token = res['token'];
-            localStorage.setItem('token', token);
-          }, 
-      err => console.log (err)
-      )}
+       } }
+       //mirar con recoger email, nombres completo, imagen de perfil
     )}
 
   private handleError(err: HttpErrorResponse) {
