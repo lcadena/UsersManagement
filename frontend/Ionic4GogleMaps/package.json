@@ -1,5 +1,5 @@
 {
-  "name": "HeyPeyApp",
+  "name": "Ionic4GogleMaps",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -20,20 +20,13 @@
     "@angular/platform-browser": "^7.2.2",
     "@angular/platform-browser-dynamic": "^7.2.2",
     "@angular/router": "^7.2.2",
-    "@capacitor/android": "^1.0.0-beta.22",
-    "@capacitor/cli": "1.0.0-beta.22",
-    "@capacitor/core": "1.0.0-beta.22",
-    "@ionic-native/camera": "^5.5.1",
     "@ionic-native/core": "^5.0.0",
-    "@ionic-native/native-geocoder": "^5.0.0",
     "@ionic-native/splash-screen": "^5.0.0",
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.1.0",
-    "@ionic/storage": "^2.2.0",
-    "cordova-plugin-camera": "4.0.3",
+    "@ionic/pro": "2.0.4",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
-    "socket.io-client": "^2.2.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.29"
   },
@@ -47,7 +40,7 @@
     "@angular/compiler-cli": "~7.2.2",
     "@angular/language-service": "~7.2.2",
     "@ionic/angular-toolkit": "~1.5.1",
-    "@types/node": "~10.14.2",
+    "@types/node": "~12.0.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "codelyzer": "~4.5.0",
@@ -63,10 +56,5 @@
     "tslint": "~5.16.0",
     "typescript": "~3.1.6"
   },
-  "description": "An Ionic project",
-  "cordova": {
-    "plugins": {
-      "cordova-plugin-camera": {}
-    }
-  }
+  "description": "An Ionic project"
 }

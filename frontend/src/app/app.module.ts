@@ -38,7 +38,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { MenulateralComponent } from './components/menulateral/menulateral.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { MapsComponent } from './components/maps/maps.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     TicketsuserComponent,
     TiendasuserComponent,
     ChatComponent,
-    MenulateralComponent,    
+    MenulateralComponent,
+    MapsComponent,    
   ],
   entryComponents: [],
 

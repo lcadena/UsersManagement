@@ -2,6 +2,7 @@
 
 const Product = require('../models/product')
 const Tienda = require('../models/tienda')
+const User = require('../models/user')
  // funcion de salva /add tienda
 function saveTienda(req, res) {
     console.log('POST /api/tienda')
@@ -52,17 +53,43 @@ function updateTienda(req, res) {
 }
 
 //eliminar producto
-function deleteTienda (req, res) {
+/*function deleteTienda (req, res) {
   let tiendaId = req.params.tiendaId
 
   Tienda.findById(tiendaId, (err, tienda) => {
+    console.log(tiendaId)
+    console.log(tienda)
       if (err) res.status(500).send({message: `Error al eliminarla: ${err}`})
   
       tienda.remove(err => {
           if (err) res.status(500).send({message: `Error al eliminarla: ${err}`})
           
-          res.status(200).send({message: `tienda eliminada`})
+          return res.status(200).send({message: `tienda eliminada`})
       })
+  })
+}*/
+
+function deleteTienda (req, res) {
+  let tiendaId = req.params.tiendaId
+  Tienda.findById(tiendaId, function(err, tiendaEncontrada) {
+    console.log(tiendaId)
+    console.log(tiendaEncontrada)
+    if (err) {
+      return res.status(500).send({message: `Error al eliminar tienda:  ${err}`})
+    }
+    if (tiendaEncontrada) {
+      tiendaEncontrada.remove(err => {
+        if (err) {
+          return res.status(500).send({message: `Error al eliminarla: ${err}`})
+        } else {
+          console.log("pasas por aqui")
+          User.update({ }, {"$push": {"tiendas": tiendaId}})
+          return res.status(200).send({message: `tienda eliminada`})
+        }
+      })
+    } else {
+      return res.status(404).send("La tienda no existe")
+    }
   })
 }
 

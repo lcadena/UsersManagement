@@ -10,6 +10,13 @@ const app = express()
 const api_user = require('./routes/user')
 var swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('../swagger.json');
+
+/*create a client object google geocoding*/
+var googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyC8SXXPJotCm2iqvjD8N-DNpmycblMr-U4'
+});
+
+
 //Método use
 app.use(bodyParser.urlencoded({ extended: false}))
 //Permitir peticiones con formato de mensaje JSON
@@ -45,6 +52,8 @@ app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.get('/login', (req, res) => {
     res.render('login')
 })
+
+
 
 
 
