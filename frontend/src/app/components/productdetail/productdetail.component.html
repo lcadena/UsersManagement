@@ -1,6 +1,14 @@
 
 <ion-header>
     <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-button color="primary" (click)="openMenu()">             
+            <ion-icon slot="icon-only" name="menu"></ion-icon>
+          </ion-button> 
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo']"><i class="fa fa-id-badge"></i>Profile</ion-button>        
+        </ion-buttons>     
       <ion-title>Product Detail of {{product.name}}</ion-title>
     </ion-toolbar>
   </ion-header>

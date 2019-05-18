@@ -30,7 +30,7 @@ mongoose.connect(config.db, (err, res) => {
       socket.nickname = nickname;   
       console.log("recibo la conexion de un cliente", socket.nickname)
       var allConnectedClients = io.sockets.connected; //list os socket connectados
-      
+      send =[];
       Object.keys(allConnectedClients).forEach(function(key){
         send = send + allConnectedClients[key]["id"]+ "+" + allConnectedClients[key]["nickname"] + ",";              
      

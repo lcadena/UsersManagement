@@ -1,12 +1,20 @@
 <ion-header>
-    <ion-toolbar color="primary">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="openMenu()">             
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button> 
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>Profile</ion-button>        
+    </ion-buttons>    
       <ion-title>List of Tickets of User</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/ticket', user._id]"><i class="fa fa-eye"></i> Add ticket</ion-button>
-  <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>&nbsp;Profile</ion-button>
+ 
   <ion-list>
     <ion-item-sliding *ngFor = "let ticket of tickets; let i=index">
       <ion-item>

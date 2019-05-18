@@ -1,12 +1,20 @@
 
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>User Detail of {{user.firstName}}</ion-title>
-    </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="openMenu()">             
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button> 
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button ion-button large class="btn btn-info btn-block" [routerLink]="['/api/chat', user._id]" ><i class="fa fa-plus"></i> Chat </ion-button>
+      <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>Profile</ion-button>        
+    </ion-buttons>
+  <ion-title>User Detail of {{user.firstName}}</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>&nbsp;Profile</ion-button>
+<ion-content>  
   
   <div class="border border-secondary">
     <span><img src="http://corporativoseconafem.com/images/user-f.png"></span>
@@ -14,10 +22,7 @@
     <p><b>Email:</b> {{user.email}}</p>
     <p><b>Id:</b> {{user._id}}</p>
     <p><b>Sing up date:</b> {{user.signUpDate}}</p>
-  </div>
-
-
-  <ion-button class="logout" (click)="goBack()" [routerLink]="['']">Log out</ion-button>
+  </div> 
 
 
 </ion-content>

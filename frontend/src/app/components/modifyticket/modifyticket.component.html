@@ -1,5 +1,15 @@
 <ion-header>
-    <ion-toolbar color="primary">
+<ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="openMenu()">             
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button> 
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button ion-button large class="btn btn-info btn-block" [routerLink]="['/api/chat', user._id]" ><i class="fa fa-plus"></i> Chat </ion-button>
+      <ion-button class="btn btn-primary" [routerLink]="['/api/userinfo', user.email]"><i class="fa fa-id-badge"></i>Profile</ion-button>        
+    </ion-buttons>    
+
       <ion-title>Modify Ticket</ion-title>
     </ion-toolbar>
   </ion-header>
