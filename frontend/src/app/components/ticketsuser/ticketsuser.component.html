@@ -13,8 +13,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-button class="btn btn-primary btn-block" [routerLink]="['/api/ticket', user._id]"><i class="fa fa-eye"></i> Add ticket</ion-button>
- 
+  
   <ion-list>
     <ion-item-sliding *ngFor = "let ticket of tickets; let i=index">
       <ion-item>
@@ -32,6 +31,10 @@
           </ion-item-options>
       </ion-item>
     </ion-item-sliding>
+    <ion-fab-button color="primary"  size="small"  [routerLink]="['/api/ticket', user._id]" ><ion-icon name="add"></ion-icon></ion-fab-button>
   </ion-list>
+
+ 
+
 </ion-content>
 

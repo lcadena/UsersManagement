@@ -23,11 +23,12 @@
         </ion-avatar>
         <ion-label style="padding-left: 2px"> ID of the product: {{product._id}}</ion-label>
         <ion-label style="padding-left: 2px"> Name of the product: {{product.name}}</ion-label>
-          <ion-item-options>
-              <ion-button class="btn btn-primary" [routerLink]="['/api/product', product._id]"><i class="fa fa-eye"></i>&nbsp;See product detail</ion-button>
-              <ion-button class="btn btn-danger" [routerLink]="['/api/productmod', product._id]"><i class="fa fa-trash"></i>&nbsp; Modify </ion-button>        
-              <ion-button class="btn btn-danger" (click)="confirmDelete(product._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </ion-button>        
-          </ion-item-options>    
+          <ion-item-options>                         
+              <ion-button style="font-size: 16px; padding-right: 25px" name="detail" color="primary" [routerLink]="['/api/product', product._id]"><ion-icon name="eye"></ion-icon></ion-button>         
+              <ion-button style="font-size: 16px; padding-right: 25px" name="trash" color="danger" (click)="confirmDelete(product._id, i)"><ion-icon name="trash"></ion-icon></ion-button>
+              <ion-button style="font-size: 16px; padding-right: 25px" name="modify" color="primary" [routerLink]="['/api/productmod', product._id]"><ion-icon name="create"></ion-icon></ion-button>
+          
+            </ion-item-options>    
       </ion-item>
     </ion-item-sliding>
   </ion-list>
