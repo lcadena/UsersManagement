@@ -76,28 +76,7 @@
         </ion-card-header>
     </ion-card>
 
-    <ion-list-header>
-        <ion-label>List of users</ion-label>
-    </ion-list-header>
-    <ion-list>
-    <ion-item-sliding *ngFor = "let user of users; let i=index">
-      <ion-item>
-          <ion-avatar item-left>
-              <img src="http://corporativoseconafem.com/images/user-f.png">
-          </ion-avatar>
-        <ion-label style="padding-left: 2px">{{user.email}}</ion-label>
-        <ion-item-options (ionSwipe)="deleteUser(user)">
-            <ion-button style="font-size: 16px; padding-right: 25px" name="trash" color="danger" (click)="deleteUser(user)"><ion-icon name="trash"></ion-icon>Delete</ion-button>
-          </ion-item-options>
-      </ion-item>
-
-
-
-    </ion-item-sliding>
-    </ion-list>
     
-
-  <!-- FALTA PONER ESTO EN EL 1R BOTON (click)= "sendConection()"-->
 
 </ion-content>
 

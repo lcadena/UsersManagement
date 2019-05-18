@@ -39,6 +39,7 @@ import { MenulateralComponent } from './components/menulateral/menulateral.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MapsComponent } from './components/maps/maps.component';
+//import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,6 @@ import { MapsComponent } from './components/maps/maps.component';
     MapsComponent,    
   ],
   entryComponents: [],
-
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
@@ -76,6 +76,8 @@ import { MapsComponent } from './components/maps/maps.component';
     ReactiveFormsModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
+    //ChartsModule,
+    //MultiData,
   ],
   providers: [
     StatusBar,

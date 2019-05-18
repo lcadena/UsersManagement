@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from "@angular/router";
-import {HttpErrorResponse} from "@angular/common/http";
-import {UserinfoService} from "../../services/userinfo.service";
-import {User} from "../../models/user";
+import { Component, OnInit} from '@angular/core';
+import { ChartType } from 'chart.js';
+//import { MultiData, Label } from 'ng2-charts';
+import { Router, ActivatedRoute} from "@angular/router";
+import { HttpErrorResponse} from "@angular/common/http";
+import { UserinfoService} from "../../services/userinfo.service";
+import { User} from "../../models/user";
 import { MenuController } from '@ionic/angular';
 
 //import {ToolbarService} from "../../../../services/toolbar.service"; crear
@@ -21,6 +23,14 @@ export class UserinfoComponent implements OnInit {
      private activatedRouter: ActivatedRoute, private menu: MenuController) { 
     this.user = new User("","", "","","","",null)        
 }
+//para el grafico
+/*public donutChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+public donutChartData: MultiDataSet = [
+  [350, 450, 100],
+  [50, 150, 120],
+  [250, 130, 70],
+];
+public donutChartType: ChartType = 'doughnut';*/
 
   ngOnInit() {
     //para recoger el email de la URL
