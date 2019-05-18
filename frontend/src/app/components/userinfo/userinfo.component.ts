@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import { ChartType } from 'chart.js';
-//import { MultiData, Label } from 'ng2-charts';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
 import { Router, ActivatedRoute} from "@angular/router";
 import { HttpErrorResponse} from "@angular/common/http";
 import { UserinfoService} from "../../services/userinfo.service";
@@ -24,13 +24,23 @@ export class UserinfoComponent implements OnInit {
     this.user = new User("","", "","","","",null)        
 }
 //para el grafico
-/*public donutChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-public donutChartData: MultiDataSet = [
+public doughnutChartLabels: Label[] = ['Phones', 'Clotes', 'Food'];
+public doughnutChartData: MultiDataSet = [
   [350, 450, 100],
-  [50, 150, 120],
-  [250, 130, 70],
+
 ];
-public donutChartType: ChartType = 'doughnut';*/
+public doughnutChartType: ChartType = 'doughnut';
+public doughnutChartOptions: ChartOptions = {
+  responsive: true,
+};
+public doughnutChartColors: Color[] = [
+  {
+    borderColor: 'black',
+    backgroundColor: 'rgba(255,0,0,0.3)',
+  },
+];
+public doughnutChartLegend = true;
+public doughnutChartPlugins = [];
 
   ngOnInit() {
     //para recoger el email de la URL

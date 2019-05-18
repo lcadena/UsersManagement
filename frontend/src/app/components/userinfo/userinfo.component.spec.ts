@@ -2,6 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserinfoComponent } from './userinfo.component';
+import { MyLineChartComponent } from './my-line-chart.component';
+
 
 describe('UserinfoComponent', () => {
   let component: UserinfoComponent;

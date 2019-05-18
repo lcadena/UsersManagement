@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -11,8 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import { ChartsModule } from 'ng2-charts';
 
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ProductsComponent } from './components/products/products.component';
 import { LoginComponent } from './components/login/login.component';
@@ -36,10 +38,9 @@ import { TicketsuserComponent } from './components/ticketsuser/ticketsuser.compo
 import { TiendasuserComponent } from './components/tiendasuser/tiendasuser.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { MenulateralComponent } from './components/menulateral/menulateral.component'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { MapsComponent } from './components/maps/maps.component';
-//import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -65,9 +66,11 @@ import { MapsComponent } from './components/maps/maps.component';
     TiendasuserComponent,
     ChatComponent,
     MenulateralComponent,
-    MapsComponent,    
+    MapsComponent,
+  
   ],
   entryComponents: [],
+
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
@@ -76,8 +79,7 @@ import { MapsComponent } from './components/maps/maps.component';
     ReactiveFormsModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
-    //ChartsModule,
-    //MultiData,
+    ChartsModule,
   ],
   providers: [
     StatusBar,
