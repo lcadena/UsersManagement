@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 const app = require('./app')
 const config = require('./config')
 let server;
+var send = []
 
 mongoose.connect(config.db, (err, res) => {
   if (err) {return console.log(`Error al conectar a la base de datos: ${err}`)}
@@ -29,20 +30,30 @@ mongoose.connect(config.db, (err, res) => {
       socket.nickname = nickname;   
       console.log("recibo la conexion de un cliente", socket.nickname)
       var allConnectedClients = io.sockets.connected; //list os socket connectados
-      var send = []
+      
       Object.keys(allConnectedClients).forEach(function(key){
         send = send + allConnectedClients[key]["id"]+ "+" + allConnectedClients[key]["nickname"] + ",";              
      
       })  
     io.sockets.emit('envio', send )//envio que me he conectado
     console.log("envio de la conexion ", send);
-    })
+    });
     
-    //desconexion de los socket
-    socket.on('disconnect', function(){//escucho cuando se desconecta
-        var allConnectedClients = Object.keys(io.sockets.connected);
-      io.sockets.emit('conectado', allConnectedClients); //emito a todos los usuarios la nueva lista de conectados
-    })
+    //desconexion de los 
+    
+    socket.on('dis', function(email){//escucho cuando se desconecta
+      console.log("Desconexion de un ciente", socket.id)
+      socket.disconnect()
+      var allConnectedClients = io.sockets.connected; //list os socket connectados
+      send =[];
+      Object.keys(allConnectedClients).forEach(function(key){
+        send = send + allConnectedClients[key]["id"]+ "+" + allConnectedClients[key]["nickname"] + ",";              
+     
+      })  
+    io.sockets.emit('envio', send )//envio que me he conectado    
+     console.log("desconexion de  ", send);
+     
+    });
 
     //escucho los mensajes que me llegan del chay
     socket.on('chat', function( email, dest,  message){

@@ -8,6 +8,7 @@ import * as io from 'socket.io-client' ;
 import * as app from 'express';
 import { makeDecorator } from '@angular/core/src/util/decorators';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { when } from 'q';
 
 @Component({
   selector: 'app-chat',
@@ -39,41 +40,41 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     //para recoger el email de la URL
-  this.activatedRouter.params.subscribe(params => {
-    if (typeof params['id'] !== 'undefined') {
-      console.log("params", params);
-      this.user._id = params['id'];      
-      
-    } else {
+    this.activatedRouter.params.subscribe(params => {
+      if (typeof params['id'] !== 'undefined') {
+        console.log("params", params);
+        this.user._id = params['id'];      
+      } else {
       this.user._id= '';
-    }
-  });  
-  this.getUser(this.user._id);
-  
+      }
+    });  
+    this.getUser(this.user._id);
   }
+
   getUser(id:string){
     this.userinfoService.getUser(id)
     .subscribe(res =>{
       this.user = res;
-      console.log("Usuario  " + this.user.email) //porque pasa dos veces 
-    })
+      console.log("Usuario  " + this.user.email) 
+      this.sendConection()
+    })    
   }
 
   sendConection(){ //enviar al servidor que me he conectado al chat-socket
-    // socket = io();
+    
     this.socket = io.connect("http://localhost:3000");
+      this.socket.emit('user', this.user.email);
+      console.log("conexion enviada al server ", this.user.email);  
 
     //escuchar evontos que recive mi socket        
     this.socket.on('envio', function(socket){
-      console.log("lista de socket ", socket);
       //romper la cadena 
       this.outputlist = [];
       this.listaconectados = [];  
       this.lista =socket.split(",");
       for (var i=0; i< this.lista.length-1; i++){
-        console.log("Los usuarios conectados  ",this.lista[i]);
-        this.lista2 = this.lista[i].split("+");       
-         
+       // console.log("Los usuarios conectados  ",this.lista[i]);
+        this.lista2 = this.lista[i].split("+");           
         for(var j=0; j<this.lista2.length; j=j+2){   //el j el socket y en j+1 el email            
           if(this.lista2[j+1].value != "" ) {//si no esta definido no mostrar   ¡¡NO-FUNCIONA  y si soy yo tampoco          
           this.outputlist.push(this.lista2[j+1]);
@@ -93,10 +94,15 @@ export class ChatComponent implements OnInit {
     }   
   }.bind(this));
 
-    this.socket.emit('user', this.user.email);
-
-  console.log("conexion enviada  " + this.user.email);
+    
   }
+ 
+  sendDisconect(){
+    console.log("me desconecto");
+    //this.socket.emit('disconnect', this.user.email);
+    this.socket.emit('dis', this.user.email);
+  }
+
 
   sendTo(email: string){ //para elieguir a quien enviar   
    this.emaildestino = email;

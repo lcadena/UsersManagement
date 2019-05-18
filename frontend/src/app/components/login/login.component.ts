@@ -37,19 +37,19 @@ export class LoginComponent implements OnInit {
     (window as any).fbAsyncInit = function() {
       FB.init({
         appId      : '594255334407767',
-        cookie     : true,
         xfbml      : true,
-        version    : 'v3.2'
-      });      
-      FB.AppEvents.logPageView();      
+        version    : 'v3.3'
+      });
+      FB.AppEvents.logPageView();
     };
+  
     (function(d, s, id){
        var js, fjs = d.getElementsByTagName(s)[0];
        if (d.getElementById(id)) {return;}
        js = d.createElement(s); js.id = id;
        js.src = "https://connect.facebook.net/en_US/sdk.js";
        fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
+     }(document, 'script', 'facebook-jssdk'))
 
       //validacion de menssages
     this.validation_messages = {
@@ -89,13 +89,21 @@ export class LoginComponent implements OnInit {
   loginFacebook() {
      let usuario;
      console.log("logearse con facebook");
+
      FB.login((response) => {
-       console.log("respuesta de logearse:  " + response);
-       if (response.authResponse) { 
-          usuario = new User (response.email, response.firstname, response.lastname, response.password,"","", null)
-       } }
-       //mirar con recoger email, nombres completo, imagen de perfil
-    )}
+       console.log("respuesta de logearse:  ",  response);
+       if (response.status =='connected') { 
+          usuario = new User (response.email,"", "", response.password,"","", null)
+          this.userService.signin(usuario)
+          .subscribe(
+            res => {
+              console.log("respuesta de facebook", res)
+            })
+        } else{
+          console.log("No hay permisos")
+       }    
+       
+    } ) }
 
   private handleError(err: HttpErrorResponse) {
     if( err.status == 500 ) {

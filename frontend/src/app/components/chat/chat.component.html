@@ -10,7 +10,6 @@
 <div *ngFor = "let email of outputlist; let i=index">
 <ion-button (click)= "sendTo(email)"> {{email}}</ion-button>
 </div>
-<ion-button class="btn btn-info btn-block" (click)= "sendConection()"><i class="fa fa-plus"></i> Conectarme </ion-button>
   <ion-grid>
     <ion-row>
       <ion-col size-md="6" offset-md="3">
@@ -37,5 +36,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </form>
+  </form>                                                                                                                            
+  <ion-button (click)= "sendDisconect()"  >Disconect</ion-button>
 </ion-content>
