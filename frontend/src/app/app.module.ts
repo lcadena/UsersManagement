@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import { GoogleMaps} from '@ionic-native/google-maps';
 
 
 
@@ -39,6 +40,8 @@ import { MenulateralComponent } from './components/menulateral/menulateral.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MapsComponent } from './components/maps/maps.component';
+import { GooglemapsComponent } from './components/googlemaps/googlemaps.component';
+
 //import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
@@ -66,6 +69,7 @@ import { MapsComponent } from './components/maps/maps.component';
     ChatComponent,
     MenulateralComponent,
     MapsComponent,    
+    GooglemapsComponent
   ],
   entryComponents: [],
   imports: [
@@ -83,6 +87,7 @@ import { MapsComponent } from './components/maps/maps.component';
     StatusBar,
     SplashScreen,
     Camera,
+    GoogleMaps,
     [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},
     { provide: RouteReuseStrategy,  useClass: IonicRouteStrategy },
     ],

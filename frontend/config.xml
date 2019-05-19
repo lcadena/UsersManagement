@@ -19,6 +19,8 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="(AIzaSyBxSX3kFUMiQ0DggP3IM00q-A-RC2MxY1w)" />
+    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="(AIzaSyBxSX3kFUMiQ0DggP3IM00q-A-RC2MxY1w)" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -87,4 +89,7 @@
         <string>You can take photos</string>
     </config-file>
     <plugin name="cordova-sqlite-storage" spec="3.2.0" />
+    <plugin name="cordova-plugin-googlemaps" spec="2.6.2" />
+    <engine name="android" spec="7.1.4" />
+    <engine name="ios" spec="4.5.5" />
 </widget>

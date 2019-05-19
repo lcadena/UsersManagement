@@ -1,0 +1,4 @@
+#Sun May 19 12:22:40 CEST 2019
+base.0=/Users/sergicanalprat/Desktop/EETAC Q6/EA/UsersManagement/frontend/platforms/android/app/build/intermediates/transforms/dexMerger/debug/10
+path.0=classes.dex
+renamed.0=classes.dex
