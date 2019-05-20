@@ -41,10 +41,10 @@ export class LoginComponent implements OnInit {
         version    : 'v3.3'
       });
       FB.AppEvents.logPageView();
-      window.FB.Event.subscribe("auth.statusChange", response =>{
+      (window as any).FB.Event.subscribe("auth.statusChange", response =>{
         this.statusChangeCallback(response);
       });
-      
+
     };   
   
     (function(d, s, id){

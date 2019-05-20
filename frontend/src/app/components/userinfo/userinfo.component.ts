@@ -23,12 +23,13 @@ export class UserinfoComponent implements OnInit {
      private activatedRouter: ActivatedRoute, private menu: MenuController) { 
     this.user = new User("","", "","","","",null)        
 }
+/*
 //para el grafico
 public doughnutChartLabels: Label[] = ['Phones', 'Clotes', 'Food'];
 /*public doughnutChartData: MultiDataSet = [
   [350, 450, 100],
 
-];*/
+];
 public doughnutChartType: ChartType = 'doughnut';
 public doughnutChartOptions: ChartOptions = {
   responsive: true,
@@ -41,7 +42,7 @@ public doughnutChartColors: Color[] = [
 ];
 public doughnutChartLegend = true;
 public doughnutChartPlugins = [];
-
+*/
   ngOnInit() {
     //para recoger el email de la URL
   this.activatedRouter.params.subscribe(params => {

@@ -4,6 +4,7 @@
 .DS_STORE
 
 # Node.
+package-lock.json
 node_modules
 npm-debug.log
 ./../n
