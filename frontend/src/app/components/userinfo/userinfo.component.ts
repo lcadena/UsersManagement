@@ -25,10 +25,10 @@ export class UserinfoComponent implements OnInit {
 }
 //para el grafico
 public doughnutChartLabels: Label[] = ['Phones', 'Clotes', 'Food'];
-public doughnutChartData: MultiDataSet = [
+/*public doughnutChartData: MultiDataSet = [
   [350, 450, 100],
 
-];
+];*/
 public doughnutChartType: ChartType = 'doughnut';
 public doughnutChartOptions: ChartOptions = {
   responsive: true,
